@@ -20,7 +20,7 @@ resource "azurerm_linux_web_app" "this" {
   }
 
   identity {
-    type         = "UserAssigned"
+    type         = var.enable_system_assigned_managed_identity ? "SystemAssigned, UserAssigned" : "UserAssigned"
     identity_ids = var.managed_identity_ids
   }
 }

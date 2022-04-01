@@ -45,3 +45,9 @@ variable "app_service_name" {
   type        = string
   default     = null
 }
+
+variable "enable_system_assigned_managed_identity" {
+  description = "Configure a system assigned managed identity"
+  type        = bool
+  default     = false
+}
