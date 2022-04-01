@@ -7,7 +7,7 @@ resource "azurerm_service_plan" "this" {
 }
 
 resource "azurerm_linux_web_app" "this" {
-  name                = coalesce(var.app_service_plan_name, "app-${var.app_name}-${var.environment_name}")
+  name                = coalesce(var.app_service_name, "app-${var.app_name}-${var.environment_name}")
   resource_group_name = var.resource_group_name
   location            = var.location
   service_plan_id     = azurerm_service_plan.this.id
