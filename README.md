@@ -35,8 +35,10 @@ No modules.
 | <a name="input_app_service_name"></a> [app\_service\_name](#input\_app\_service\_name) | Name of app service to create, generated if not set | `string` | `null` | no |
 | <a name="input_app_service_plan_name"></a> [app\_service\_plan\_name](#input\_app\_service\_plan\_name) | Name of app service plan to create, generated if not set | `string` | `null` | no |
 | <a name="input_app_service_plan_sku_name"></a> [app\_service\_plan\_sku\_name](#input\_app\_service\_plan\_sku\_name) | SKU name of app service plan to create | `string` | `"B1"` | no |
+| <a name="input_app_settings"></a> [app\_settings](#input\_app\_settings) | App settings for the web app | `map(string)` | `{}` | no |
+| <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | Client ID of app registration to use for Azure AD authentication | `string` | n/a | yes |
+| <a name="input_azuread_client_secret"></a> [azuread\_client\_secret](#input\_azuread\_client\_secret) | Client secret of app registration to use for Azure AD authentication | <pre>object({<br>    vault_name  = string<br>    secret_name = string<br>  })</pre> | n/a | yes |
 | <a name="input_container_registry_managed_identity_client_id"></a> [container\_registry\_managed\_identity\_client\_id](#input\_container\_registry\_managed\_identity\_client\_id) | Client ID of managed identity that will be used to pull image from container registry | `string` | n/a | yes |
-| <a name="input_enable_system_assigned_managed_identity"></a> [enable\_system\_assigned\_managed\_identity](#input\_enable\_system\_assigned\_managed\_identity) | Configure a system assigned managed identity | `bool` | `false` | no |
 | <a name="input_environment_name"></a> [environment\_name](#input\_environment\_name) | Environment name, used to generate resource names | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Location to create resources in | `string` | n/a | yes |
 | <a name="input_managed_identity_ids"></a> [managed\_identity\_ids](#input\_managed\_identity\_ids) | IDs of managed identities to be assigned to the web app | `list(string)` | n/a | yes |

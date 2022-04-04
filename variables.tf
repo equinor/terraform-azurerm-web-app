@@ -46,8 +46,21 @@ variable "app_service_name" {
   default     = null
 }
 
-variable "enable_system_assigned_managed_identity" {
-  description = "Configure a system assigned managed identity"
-  type        = bool
-  default     = false
+variable "app_settings" {
+  description = "App settings for the web app"
+  type        = map(string)
+  default     = {}
+}
+
+variable "azuread_client_id" {
+  description = "Client ID of app registration to use for Azure AD authentication"
+  type        = string
+}
+
+variable "azuread_client_secret" {
+  description = "Client secret of app registration to use for Azure AD authentication"
+  type = object({
+    vault_name  = string
+    secret_name = string
+  })
 }
