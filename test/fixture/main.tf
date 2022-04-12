@@ -67,6 +67,7 @@ module "web_app" {
   resource_group_name = azurerm_resource_group.this.name
 
   azuread_client_id = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
+
   azuread_client_secret = {
     vault_name  = module.vault.key_vault_name
     secret_name = azurerm_key_vault_secret.this.name
