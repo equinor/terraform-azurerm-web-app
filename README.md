@@ -40,7 +40,7 @@ module "vault" {
 
 resource "azurerm_key_vault_secret" "example" {
   name         = "ClientSecret"
-  value        = "my-client-secret"
+  value        = "my-secret"
   key_vault_id = module.vault.key_vault_id
 }
 
