@@ -1,66 +1,66 @@
-variable "app_name" {
-  description = "Application name, used to generate resource names"
+variable "application" {
+  description = "The application to create the resources for."
   type        = string
 }
 
-variable "environment_name" {
-  description = "Environment name, used to generate resource names"
-  type        = string
-}
-
-variable "resource_group_name" {
-  description = "Name of resource group to create resources in"
-  type        = string
-}
-
-variable "location" {
-  description = "Location to create resources in"
-  type        = string
-}
-
-variable "managed_identity_ids" {
-  description = "IDs of managed identities to be assigned to the web app"
-  type        = list(string)
-}
-
-variable "container_registry_managed_identity_client_id" {
-  description = "Client ID of managed identity that will be used to pull image from container registry"
+variable "environment" {
+  description = "The environment to create the resources for."
   type        = string
 }
 
 variable "app_service_plan_name" {
-  description = "Name of app service plan to create, generated if not set"
+  description = "Specifies the name of the App Service Plan."
   type        = string
   default     = null
 }
 
+variable "location" {
+  description = "Specifies the supported Azure location where the resources exist."
+  type        = string
+}
+
+variable "resource_group_name" {
+  description = "The name of the resource group in which to create the resources."
+  type        = string
+}
+
 variable "app_service_plan_sku_name" {
-  description = "SKU name of app service plan to create"
+  description = "The SKU name of the App Service Plan."
   type        = string
   default     = "B1"
 }
 
 variable "app_service_name" {
-  description = "Name of app service to create, generated if not set"
+  description = "Specifies the name of the App Service."
   type        = string
   default     = null
 }
 
 variable "app_settings" {
-  description = "App settings for the web app"
+  description = "A map of key-value pairs of App Settings."
   type        = map(string)
   default     = {}
 }
 
 variable "azuread_client_id" {
-  description = "Client ID of app registration to use for Azure AD authentication"
+  description = "The ID of the Client to use to authenticate with Azure Active Directory."
   type        = string
 }
 
 variable "azuread_client_secret" {
-  description = "Client secret of app registration to use for Azure AD authentication"
+  description = "The secret for the Client to use to authenticate with Azure Active Directory."
   type = object({
     vault_name  = string
     secret_name = string
   })
+}
+
+variable "acr_identity_client_id" {
+  description = "The Client ID of the User Assigned Identity to use for connections to the Azure Container Registry."
+  type        = string
+}
+
+variable "acr_identity_id" {
+  description = "The ID of the User Assigned Identity to use for connections to the Azure Container Registry."
+  type        = string
 }
