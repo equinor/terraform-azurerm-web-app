@@ -41,7 +41,7 @@ module "vault" {
 
 resource "azurerm_key_vault_secret" "this" {
   name         = "ClientSecret"
-  value        = "my-client-secret"
+  value        = "my-secret"
   key_vault_id = module.vault.key_vault_id
 }
 
@@ -66,12 +66,8 @@ module "web_app" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 
-  azuread_client_id = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
-
-  azuread_client_secret = {
-    key_vault_name        = module.vault.key_vault_name
-    key_vault_secret_name = azurerm_key_vault_secret.this.name
-  }
+  azuread_client_id             = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
+  azuread_client_secret_setting = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.this.versionless_id})"
 
   acr_identity_client_id = module.acr.user_assigned_identity_client_id
   acr_identity_id        = module.acr.user_assigned_identity_id

@@ -1,8 +1,4 @@
 locals {
-  app_settings = {
-    ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.azuread_client_secret.key_vault_name};SecretName=${var.azuread_client_secret.key_vault_secret_name})"
-  }
-
   tags = merge({ application = var.application, environment = var.environment }, var.tags)
 }
 
@@ -24,7 +20,7 @@ resource "azurerm_linux_web_app" "this" {
 
   https_only = true
 
-  app_settings = merge(local.app_settings, var.app_settings)
+  app_settings = merge({ ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = var.azuread_client_secret_setting }, var.app_settings)
 
   tags = local.tags
 

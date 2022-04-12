@@ -53,12 +53,9 @@ variable "azuread_client_id" {
   type        = string
 }
 
-variable "azuread_client_secret" {
-  description = "The secret for the Client to use to authenticate with Azure Active Directory."
-  type = object({
-    key_vault_name        = string
-    key_vault_secret_name = string
-  })
+variable "azuread_client_secret_setting" {
+  description = "The value of the App Setting that contains the client secret of the Client."
+  type        = string
 }
 
 variable "acr_identity_client_id" {
