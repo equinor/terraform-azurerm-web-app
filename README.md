@@ -129,7 +129,7 @@ No modules.
 | <a name="input_app_settings"></a> [app\_settings](#input\_app\_settings) | A map of key-value pairs of App Settings. | `map(string)` | `{}` | no |
 | <a name="input_application"></a> [application](#input\_application) | The application to create the resources for. | `string` | n/a | yes |
 | <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | The ID of the Client to use to authenticate with Azure Active Directory. | `string` | n/a | yes |
-| <a name="input_azuread_client_secret"></a> [azuread\_client\_secret](#input\_azuread\_client\_secret) | The secret for the Client to use to authenticate with Azure Active Directory. | <pre>object({<br>    vault_name  = string<br>    secret_name = string<br>  })</pre> | n/a | yes |
+| <a name="input_azuread_client_secret"></a> [azuread\_client\_secret](#input\_azuread\_client\_secret) | The secret for the Client to use to authenticate with Azure Active Directory. | <pre>object({<br>    key_vault_name        = string<br>    key_vault_secret_name = string<br>  })</pre> | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Specifies the supported Azure location where the resources exist. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the resources. | `string` | n/a | yes |
