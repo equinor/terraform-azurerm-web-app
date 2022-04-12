@@ -38,6 +38,12 @@ module "vault" {
   log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
 }
 
+resource "azurerm_key_vault_secret" "example" {
+  name         = "ClientSecret"
+  value        = "my-client-secret"
+  key_vault_id = module.vault.key_vault_id
+}
+
 module "acr" {
   source = "github.com/equinor/terraform-azurerm-acr"
 
@@ -61,7 +67,7 @@ module "web_app" {
 
   azuread_client_secret = {
     key_vault_name        = module.vault.key_vault_name
-    key_vault_secret_name = "ClientSecret"
+    key_vault_secret_name = azurerm_key_vault_secret.example.name
   }
 
   acr_identity_client_id = module.acr.user_assigned_identity_client_id
