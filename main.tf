@@ -2,6 +2,8 @@ locals {
   app_settings = {
     ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.azuread_client_secret.key_vault_name};SecretName=${var.azuread_client_secret.key_vault_secret_name})"
   }
+
+  tags = merge({ application = var.application, environment = var.environment }, var.tags)
 }
 
 resource "azurerm_service_plan" "this" {
@@ -10,6 +12,8 @@ resource "azurerm_service_plan" "this" {
   resource_group_name = var.resource_group_name
   os_type             = "Linux"
   sku_name            = var.app_service_plan_sku_name
+
+  tags = local.tags
 }
 
 resource "azurerm_linux_web_app" "this" {
@@ -21,6 +25,8 @@ resource "azurerm_linux_web_app" "this" {
   https_only = true
 
   app_settings = merge(local.app_settings, var.app_settings)
+
+  tags = local.tags
 
   auth_settings {
     enabled             = true

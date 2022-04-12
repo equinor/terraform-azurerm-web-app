@@ -30,6 +30,12 @@ variable "app_service_plan_sku_name" {
   default     = "B1"
 }
 
+variable "tags" {
+  description = "A mapping of tags to assign to the resources."
+  type        = map(string)
+  default     = {}
+}
+
 variable "app_service_name" {
   description = "Specifies the name of the App Service."
   type        = string
