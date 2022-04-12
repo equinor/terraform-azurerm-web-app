@@ -27,7 +27,7 @@ resource "azurerm_log_analytics_workspace" "example" {
 }
 
 module "vault" {
-  source = "github.com/equinor/terraform-azurerm-vault"
+  source = "github.com/equinor/terraform-azurerm-vault?ref=4dc1ac5619bf309c452c336786aa6b0865ee99c3"
 
   application = local.application
   environment = local.environment
@@ -45,7 +45,7 @@ resource "azurerm_key_vault_secret" "example" {
 }
 
 module "acr" {
-  source = "github.com/equinor/terraform-azurerm-acr"
+  source = "github.com/equinor/terraform-azurerm-acr?ref=8dd9c36f93173f5ee19857f5f789e0b7f0a7aa44"
 
   application = local.application
   environment = local.environment
