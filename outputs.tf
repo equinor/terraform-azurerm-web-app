@@ -1,27 +1,29 @@
-output "app_service_plan_name" {
-  description = "Name of the created app service plan"
-  value       = azurerm_service_plan.this.name
-}
-
 output "app_service_plan_id" {
-  description = "ID of the created app service plan"
+  description = "The ID of the App Service Plan."
   value       = azurerm_service_plan.this.id
 }
 
-output "app_service_name" {
-  description = "Name of the created app service"
-  value       = azurerm_linux_web_app.this.name
+output "app_service_plan_name" {
+  description = "The name of the App Service Plan."
+  value       = azurerm_service_plan.this.name
 }
 
 output "app_service_id" {
-  description = "ID of the created app service"
+  description = "The ID of the App Service."
   value       = azurerm_linux_web_app.this.id
 }
 
-output "app_service_managed_identity" {
-  description = "Principal ID and tenant ID of the created app service"
-  value = {
-    principal_id = azurerm_linux_web_app.this.identity[0].principal_id
-    tenant_id    = azurerm_linux_web_app.this.identity[0].tenant_id
-  }
+output "app_service_name" {
+  description = "The name of the App Service."
+  value       = azurerm_linux_web_app.this.name
+}
+
+output "app_service_identity_principal_id" {
+  description = "The Principal ID associated with the System Assigned Identity of the App Service."
+  value       = azurerm_linux_web_app.this.identity[0].principal_id
+}
+
+output "app_service_identity_tenant_id" {
+  description = "The Tenant ID associated with the System Assigned Identity of the App Service."
+  value       = azurerm_linux_web_app.this.identity[0].tenant_id
 }

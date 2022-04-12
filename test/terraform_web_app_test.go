@@ -6,9 +6,9 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
-func TestWebAppWithContainerRegistry(t *testing.T) {
+func TestTerraformWebApp(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "../examples/webapp-with-container-registry",
+		TerraformDir: "./fixture",
 	})
 
 	defer terraform.Destroy(t, terraformOptions)
