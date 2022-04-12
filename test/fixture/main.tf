@@ -69,8 +69,8 @@ module "web_app" {
   azuread_client_id = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
 
   azuread_client_secret = {
-    vault_name  = module.vault.key_vault_name
-    secret_name = azurerm_key_vault_secret.this.name
+    key_vault_name        = module.vault.key_vault_name
+    key_vault_secret_name = azurerm_key_vault_secret.this.name
   }
 
   acr_identity_client_id = module.acr.user_assigned_identity_client_id

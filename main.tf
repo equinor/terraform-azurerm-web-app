@@ -1,6 +1,6 @@
 locals {
   app_settings = {
-    ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.azuread_client_secret.vault_name};SecretName=${var.azuread_client_secret.secret_name})"
+    ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.azuread_client_secret.key_vault_name};SecretName=${var.azuread_client_secret.key_vault_secret_name})"
   }
 }
 

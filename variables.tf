@@ -50,8 +50,8 @@ variable "azuread_client_id" {
 variable "azuread_client_secret" {
   description = "The secret for the Client to use to authenticate with Azure Active Directory."
   type = object({
-    vault_name  = string
-    secret_name = string
+    key_vault_name        = string
+    key_vault_secret_name = string
   })
 }
 
