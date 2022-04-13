@@ -53,12 +53,12 @@ variable "azuread_client_id" {
   type        = string
 }
 
-variable "azuread_client_key_vault_name" {
+variable "azuread_key_vault_name" {
   description = "The name of the Key Vault where the Client Secret is stored."
   type        = string
 }
 
-variable "azuread_client_secret_name" {
+variable "azuread_key_vault_secret_name" {
   description = "The name of the Key Vault Secret containing the Client Secret."
   type        = string
 }
