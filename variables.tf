@@ -53,8 +53,13 @@ variable "azuread_client_id" {
   type        = string
 }
 
-variable "azuread_client_secret_setting" {
-  description = "The value of the App Setting that contains the client secret of the Client."
+variable "azuread_client_key_vault_name" {
+  description = "The name of the Key Vault where the Client Secret is stored."
+  type        = string
+}
+
+variable "azuread_client_secret_name" {
+  description = "The name of the Key Vault Secret containing the Client Secret."
   type        = string
 }
 
