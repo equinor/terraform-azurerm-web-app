@@ -63,8 +63,9 @@ module "web_app" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
-  azuread_client_id             = "6b5fbe59-9c49-488f-959f-82cada7abf14"
-  azuread_client_secret_setting = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.example.id})"
+  azuread_client_id          = "6b5fbe59-9c49-488f-959f-82cada7abf14"
+  azuread_client_vault_name  = module.vault.key_vault_name
+  azuread_client_secret_name = azurerm_key_vault_secret.example.name
 
   acr_identity_client_id = module.acr.user_assigned_identity_client_id
   acr_identity_id        = module.acr.user_assigned_identity_id
@@ -131,7 +132,8 @@ No modules.
 | <a name="input_app_settings"></a> [app\_settings](#input\_app\_settings) | A map of key-value pairs of App Settings. | `map(string)` | `{}` | no |
 | <a name="input_application"></a> [application](#input\_application) | The application to create the resources for. | `string` | n/a | yes |
 | <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | The ID of the Client to use to authenticate with Azure Active Directory. | `string` | n/a | yes |
-| <a name="input_azuread_client_secret_setting"></a> [azuread\_client\_secret\_setting](#input\_azuread\_client\_secret\_setting) | The value of the App Setting that contains the client secret of the Client. | `string` | n/a | yes |
+| <a name="input_azuread_client_secret_name"></a> [azuread\_client\_secret\_name](#input\_azuread\_client\_secret\_name) | The name of the Key Vault Secret containing the Client Secret. | `string` | n/a | yes |
+| <a name="input_azuread_client_vault_name"></a> [azuread\_client\_vault\_name](#input\_azuread\_client\_vault\_name) | The name of the Key Vault where the Client Secret is stored. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Specifies the supported Azure location where the resources exist. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the resources. | `string` | n/a | yes |
