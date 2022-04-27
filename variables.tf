@@ -61,6 +61,7 @@ variable "azuread_client_vault_name" {
 variable "azuread_client_secret_name" {
   description = "The name of the Key Vault Secret containing the Client Secret."
   type        = string
+  default     = "ClientSecret"
 }
 
 variable "acr_identity_client_id" {
