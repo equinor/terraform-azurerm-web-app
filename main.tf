@@ -44,3 +44,28 @@ resource "azurerm_linux_web_app" "this" {
     identity_ids = [var.acr_identity_id]
   }
 }
+
+# Create a custom hostname binding for each custom hostname
+resource "azurerm_app_service_custom_hostname_binding" "this" {
+  for_each = toset(var.custom_hostnames)
+
+  hostname            = each.value
+  app_service_name    = azurerm_linux_web_app.this.name
+  resource_group_name = var.resource_group_name
+}
+
+# Create a managed certificate for each custom hostname binding
+resource "azurerm_app_service_managed_certificate" "this" {
+  for_each = azurerm_app_service_custom_hostname_binding.this
+
+  custom_hostname_binding_id = each.value.id
+}
+
+# Create a certificate binding for each managed certificate
+resource "azurerm_app_service_certificate_binding" "this" {
+  for_each = azurerm_app_service_managed_certificate.this
+
+  hostname_binding_id = each.value.custom_hostname_binding_id
+  certificate_id      = each.value.id
+  ssl_state           = "SniEnabled"
+}

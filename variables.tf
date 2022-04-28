@@ -73,3 +73,9 @@ variable "acr_identity_id" {
   description = "The ID of the User Assigned Identity to use for connections to the Azure Container Registry."
   type        = string
 }
+
+variable "custom_hostnames" {
+  description = "Specifies the Custom Hostnames to use for the App Service."
+  type        = list(string)
+  default     = null
+}
