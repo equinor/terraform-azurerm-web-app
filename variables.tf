@@ -77,5 +77,5 @@ variable "acr_identity_id" {
 variable "custom_hostnames" {
   description = "Specifies the Custom Hostnames to use for the App Service."
   type        = list(string)
-  default     = null
+  default     = []
 }
