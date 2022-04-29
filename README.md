@@ -116,6 +116,9 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_app_service_certificate_binding.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_certificate_binding) | resource |
+| [azurerm_app_service_custom_hostname_binding.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_custom_hostname_binding) | resource |
+| [azurerm_app_service_managed_certificate.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_managed_certificate) | resource |
 | [azurerm_linux_web_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_web_app) | resource |
 | [azurerm_service_plan.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/service_plan) | resource |
 
@@ -133,6 +136,7 @@ No modules.
 | <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | The ID of the Client to use to authenticate with Azure Active Directory. | `string` | n/a | yes |
 | <a name="input_azuread_client_secret_name"></a> [azuread\_client\_secret\_name](#input\_azuread\_client\_secret\_name) | The name of the Key Vault Secret containing the Client Secret. | `string` | `"ClientSecret"` | no |
 | <a name="input_azuread_client_vault_name"></a> [azuread\_client\_vault\_name](#input\_azuread\_client\_vault\_name) | The name of the Key Vault where the Client Secret is stored. | `string` | n/a | yes |
+| <a name="input_custom_hostnames"></a> [custom\_hostnames](#input\_custom\_hostnames) | Specifies the Custom Hostnames to use for the App Service. | `list(string)` | `[]` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Specifies the supported Azure location where the resources exist. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the resources. | `string` | n/a | yes |
