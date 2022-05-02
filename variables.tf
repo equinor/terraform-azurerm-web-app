@@ -9,7 +9,7 @@ variable "environment" {
 }
 
 variable "app_service_plan_name" {
-  description = "Specifies the name of the App Service Plan."
+  description = "A custom name for the App Service Plan."
   type        = string
   default     = null
 }
@@ -25,7 +25,7 @@ variable "resource_group_name" {
 }
 
 variable "app_service_plan_sku_name" {
-  description = "The SKU name of the App Service Plan."
+  description = "The SKU name for the App Service Plan."
   type        = string
   default     = "B1"
 }
@@ -37,13 +37,13 @@ variable "tags" {
 }
 
 variable "app_service_name" {
-  description = "Specifies the name of the App Service."
+  description = "A custom name for the App Service."
   type        = string
   default     = null
 }
 
 variable "app_settings" {
-  description = "A map of key-value pairs of App Settings."
+  description = "A mapping of settings for the App Service."
   type        = map(string)
   default     = {}
 }
@@ -75,7 +75,7 @@ variable "acr_identity_id" {
 }
 
 variable "custom_hostnames" {
-  description = "Specifies the Custom Hostnames to use for the App Service."
+  description = "A list of custom hostnames to use for the App Service."
   type        = list(string)
   default     = []
 }

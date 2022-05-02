@@ -19,11 +19,11 @@ output "app_service_name" {
 }
 
 output "app_service_identity_principal_id" {
-  description = "The Principal ID associated with the System Assigned Identity of the App Service."
+  description = "The principal ID of the App Service Identity."
   value       = azurerm_linux_web_app.this.identity[0].principal_id
 }
 
 output "app_service_identity_tenant_id" {
-  description = "The Tenant ID associated with the System Assigned Identity of the App Service."
+  description = "The tenant ID of the App Service Identity."
   value       = azurerm_linux_web_app.this.identity[0].tenant_id
 }
