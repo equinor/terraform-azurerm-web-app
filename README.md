@@ -38,12 +38,6 @@ module "vault" {
   log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
 }
 
-resource "azurerm_key_vault_secret" "example" {
-  name         = "ClientSecret"
-  value        = "my-secret"
-  key_vault_id = module.vault.key_vault_id
-}
-
 module "acr" {
   source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
 
