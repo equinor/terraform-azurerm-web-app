@@ -20,7 +20,7 @@ resource "azurerm_linux_web_app" "this" {
 
   https_only = true
 
-  app_settings = merge({ ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.azuread_client_vault_name};SecretName=${var.azuread_client_secret_name})" }, var.app_settings)
+  app_settings = merge({ ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.key_vault_name};SecretName=${var.key_vault_secret_name})" }, var.app_service_settings)
 
   tags = local.tags
 
@@ -36,18 +36,18 @@ resource "azurerm_linux_web_app" "this" {
 
   site_config {
     container_registry_use_managed_identity       = true
-    container_registry_managed_identity_client_id = var.acr_identity_client_id
+    container_registry_managed_identity_client_id = var.managed_identity_client_id
   }
 
   identity {
     type         = "SystemAssigned, UserAssigned"
-    identity_ids = [var.acr_identity_id]
+    identity_ids = [var.managed_identity_id]
   }
 }
 
 # Create a custom hostname binding for each custom hostname
 resource "azurerm_app_service_custom_hostname_binding" "this" {
-  for_each = toset(var.custom_hostnames)
+  for_each = toset(var.app_service_hostnames)
 
   hostname            = each.value
   app_service_name    = azurerm_linux_web_app.this.name

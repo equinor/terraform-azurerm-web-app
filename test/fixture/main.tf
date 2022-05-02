@@ -26,7 +26,7 @@ resource "azurerm_log_analytics_workspace" "this" {
 }
 
 module "vault" {
-  source = "github.com/equinor/terraform-azurerm-vault?ref=4dc1ac5619bf309c452c336786aa6b0865ee99c3"
+  source = "github.com/equinor/terraform-azurerm-vault?ref=v3.0.0"
 
   application = local.application
   environment = local.environment
@@ -46,7 +46,7 @@ resource "azurerm_key_vault_secret" "this" {
 }
 
 module "acr" {
-  source = "github.com/equinor/terraform-azurerm-acr?ref=8dd9c36f93173f5ee19857f5f789e0b7f0a7aa44"
+  source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
 
   application = local.application
   environment = local.environment
@@ -66,12 +66,12 @@ module "web_app" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 
-  azuread_client_id          = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
-  azuread_client_vault_name  = module.vault.key_vault_name
-  azuread_client_secret_name = azurerm_key_vault_secret.this.name
+  azuread_client_id     = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
+  key_vault_name        = module.vault.key_vault_name
+  key_vault_secret_name = azurerm_key_vault_secret.this.name
 
-  acr_identity_client_id = module.acr.user_assigned_identity_client_id
-  acr_identity_id        = module.acr.user_assigned_identity_id
+  managed_identity_client_id = module.acr.managed_identity_client_id
+  managed_identity_id        = module.acr.managed_identity_id
 }
 
 resource "azurerm_key_vault_access_policy" "this" {

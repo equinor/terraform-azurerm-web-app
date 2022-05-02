@@ -15,7 +15,7 @@ variable "app_service_plan_name" {
 }
 
 variable "location" {
-  description = "Specifies the supported Azure location where the resources exist."
+  description = "The supported Azure location where the resources exist."
   type        = string
 }
 
@@ -42,39 +42,39 @@ variable "app_service_name" {
   default     = null
 }
 
-variable "app_settings" {
+variable "app_service_settings" {
   description = "A mapping of settings for the App Service."
   type        = map(string)
   default     = {}
 }
 
 variable "azuread_client_id" {
-  description = "The ID of the Client to use to authenticate with Azure Active Directory."
+  description = "The client ID of the App Registration to use for Azure AD authentication."
   type        = string
 }
 
-variable "azuread_client_vault_name" {
-  description = "The name of the Key Vault where the Client Secret is stored."
+variable "key_vault_name" {
+  description = "The name of the Key Vault where the App Registration client secret is stored."
   type        = string
 }
 
-variable "azuread_client_secret_name" {
-  description = "The name of the Key Vault Secret containing the Client Secret."
+variable "key_vault_secret_name" {
+  description = "The name of the Key Vault Secret containing the App Registration client secret."
   type        = string
   default     = "ClientSecret"
 }
 
-variable "acr_identity_client_id" {
-  description = "The Client ID of the User Assigned Identity to use for connections to the Azure Container Registry."
+variable "managed_identity_client_id" {
+  description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
 }
 
-variable "acr_identity_id" {
-  description = "The ID of the User Assigned Identity to use for connections to the Azure Container Registry."
+variable "managed_identity_id" {
+  description = "The ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
 }
 
-variable "custom_hostnames" {
+variable "app_service_hostnames" {
   description = "A list of custom hostnames to use for the App Service."
   type        = list(string)
   default     = []
