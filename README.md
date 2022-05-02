@@ -38,12 +38,6 @@ module "vault" {
   log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
 }
 
-resource "azurerm_key_vault_secret" "example" {
-  name         = "ClientSecret"
-  value        = "my-secret"
-  key_vault_id = module.vault.key_vault_id
-}
-
 module "acr" {
   source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
 
@@ -63,11 +57,11 @@ module "web_app" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
-  azuread_client_id          = "6b5fbe59-9c49-488f-959f-82cada7abf14"
-  azuread_client_vault_name  = module.vault.key_vault_name
+  azuread_client_id = "6b5fbe59-9c49-488f-959f-82cada7abf14"
+  key_vault_name    = module.vault.key_vault_name
 
-  acr_identity_client_id = module.acr.managed_identity_client_id
-  acr_identity_id        = module.acr.managed_identity_id
+  managed_identity_client_id = module.acr.managed_identity_client_id
+  managed_identity_id        = module.acr.managed_identity_id
 }
 
 resource "azurerm_key_vault_access_policy" "example" {
@@ -126,19 +120,19 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_acr_identity_client_id"></a> [acr\_identity\_client\_id](#input\_acr\_identity\_client\_id) | The Client ID of the User Assigned Identity to use for connections to the Azure Container Registry. | `string` | n/a | yes |
-| <a name="input_acr_identity_id"></a> [acr\_identity\_id](#input\_acr\_identity\_id) | The ID of the User Assigned Identity to use for connections to the Azure Container Registry. | `string` | n/a | yes |
+| <a name="input_app_service_hostnames"></a> [app\_service\_hostnames](#input\_app\_service\_hostnames) | A list of custom hostnames to use for the App Service. | `list(string)` | `[]` | no |
 | <a name="input_app_service_name"></a> [app\_service\_name](#input\_app\_service\_name) | A custom name for the App Service. | `string` | `null` | no |
 | <a name="input_app_service_plan_name"></a> [app\_service\_plan\_name](#input\_app\_service\_plan\_name) | A custom name for the App Service Plan. | `string` | `null` | no |
 | <a name="input_app_service_plan_sku_name"></a> [app\_service\_plan\_sku\_name](#input\_app\_service\_plan\_sku\_name) | The SKU name for the App Service Plan. | `string` | `"B1"` | no |
-| <a name="input_app_settings"></a> [app\_settings](#input\_app\_settings) | A mapping of settings for the App Service. | `map(string)` | `{}` | no |
+| <a name="input_app_service_settings"></a> [app\_service\_settings](#input\_app\_service\_settings) | A mapping of settings for the App Service. | `map(string)` | `{}` | no |
 | <a name="input_application"></a> [application](#input\_application) | The application to create the resources for. | `string` | n/a | yes |
-| <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | The ID of the Client to use to authenticate with Azure Active Directory. | `string` | n/a | yes |
-| <a name="input_azuread_client_secret_name"></a> [azuread\_client\_secret\_name](#input\_azuread\_client\_secret\_name) | The name of the Key Vault Secret containing the Client Secret. | `string` | `"ClientSecret"` | no |
-| <a name="input_azuread_client_vault_name"></a> [azuread\_client\_vault\_name](#input\_azuread\_client\_vault\_name) | The name of the Key Vault where the Client Secret is stored. | `string` | n/a | yes |
-| <a name="input_custom_hostnames"></a> [custom\_hostnames](#input\_custom\_hostnames) | A list of custom hostnames to use for the App Service. | `list(string)` | `[]` | no |
+| <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
-| <a name="input_location"></a> [location](#input\_location) | Specifies the supported Azure location where the resources exist. | `string` | n/a | yes |
+| <a name="input_key_vault_name"></a> [key\_vault\_name](#input\_key\_vault\_name) | The name of the Key Vault where the App Registration client secret is stored. | `string` | n/a | yes |
+| <a name="input_key_vault_secret_name"></a> [key\_vault\_secret\_name](#input\_key\_vault\_secret\_name) | The name of the Key Vault Secret containing the App Registration client secret. | `string` | `"ClientSecret"` | no |
+| <a name="input_location"></a> [location](#input\_location) | The supported Azure location where the resources exist. | `string` | n/a | yes |
+| <a name="input_managed_identity_client_id"></a> [managed\_identity\_client\_id](#input\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
+| <a name="input_managed_identity_id"></a> [managed\_identity\_id](#input\_managed\_identity\_id) | The ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the resources. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resources. | `map(string)` | `{}` | no |
 
