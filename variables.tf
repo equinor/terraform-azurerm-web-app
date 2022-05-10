@@ -8,12 +8,6 @@ variable "environment" {
   type        = string
 }
 
-variable "app_service_plan_name" {
-  description = "A custom name for the App Service Plan."
-  type        = string
-  default     = null
-}
-
 variable "location" {
   description = "The supported Azure location where the resources exist."
   type        = string
@@ -24,10 +18,9 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "app_service_plan_sku_name" {
-  description = "The SKU name for the App Service Plan."
+variable "service_plan_id" {
+  description = "The ID of the App Service Plan that this App Service will be created in."
   type        = string
-  default     = "B1"
 }
 
 variable "tags" {

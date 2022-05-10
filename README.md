@@ -48,6 +48,14 @@ module "acr" {
   resource_group_name = azurerm_resource_group.example.name
 }
 
+resource "azurerm_service_plan" "example" {
+  name                = "plan-${local.application}-${local.environment}"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  os_type             = "Linux"
+  sku_name            = "B1"
+}
+
 module "web_app" {
   source = "github.com/equinor/terraform-azurerm-web-app"
 
@@ -56,6 +64,8 @@ module "web_app" {
 
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
+
+  service_plan_id = azurerm_service_plan.example.id
 
   azuread_client_id = "6b5fbe59-9c49-488f-959f-82cada7abf14"
   key_vault_name    = module.vault.key_vault_name
