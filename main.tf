@@ -33,6 +33,23 @@ resource "azurerm_linux_web_app" "this" {
     type         = "SystemAssigned, UserAssigned"
     identity_ids = [var.managed_identity_id]
   }
+
+  logs {
+
+    detailed_error_messages = true
+    failed_request_tracing  = true
+
+    application_logs {
+      file_system_level = "Verbose"
+    }
+
+    http_logs {
+      file_system {
+        retention_in_days = 7
+        retention_in_mb   = 10
+      }
+    }
+  }
 }
 
 # Create a custom hostname binding for each custom hostname
