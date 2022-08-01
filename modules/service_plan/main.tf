@@ -5,7 +5,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "this" {
-  name     = coalesce(var.account_name, "rgplan${local.suffix_alnum}")
+  name     = coalesce(var.application, "rgplan${local.suffix_alnum}")
   location = var.location
 }
 
@@ -13,6 +13,6 @@ resource "azurerm_service_plan" "this" {
   name                = "plan-${var.application}-${var.environment}"
   resource_group_name = azurerm_resource_group.this.name
   location            = var.location
-  os_type             = "Linux"
-  sku_name            = "B1"
+  os_type             = var.os_type
+  sku_name            = var.sku_name
 }
