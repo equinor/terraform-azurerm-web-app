@@ -57,24 +57,14 @@ module "acr" {
   managed_identity_operators = [data.azurerm_client_config.current.object_id]
 }
 
-# resource "azurerm_service_plan" "this" {
-#   name                = "plan-${local.application}-${local.environment}"
-#   location            = azurerm_resource_group.this.location
-#   resource_group_name = azurerm_resource_group.this.name
-#   os_type             = "Linux"
-#   sku_name            = "B1"
-# }
-
-module "service_plan" {
-  source = "../../modules/service_plan"
+module "app_service_plan" {
+  source = "../../modules/app-service-plan"
 
   application = local.application
   environment = local.environment
 
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
-
-
 }
 
 module "web_app" {
@@ -86,7 +76,7 @@ module "web_app" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 
-  service_plan_id = module.service_plan.id
+  service_plan_id = module.app_service_plan.app_service_plan_id
 
   azuread_client_id     = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
   key_vault_name        = module.vault.key_vault_name
