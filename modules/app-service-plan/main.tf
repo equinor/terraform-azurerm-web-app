@@ -1,9 +1,9 @@
 locals {
-  app_service_plan_name = substr(regex("^[a-zA-Z0-9-]+$", lower("plan-${var.application}-${var.environment}")), 0, 40)
+  name = substr(regex("^[a-zA-Z0-9-]+$", lower("plan-${var.application}-${var.environment}")), 0, 40)
 }
 
 resource "azurerm_service_plan" "this" {
-  name                = coalesce(var.app_service_plan_name, local.app_service_plan_name)
+  name                = coalesce(var.name, local.name)
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"

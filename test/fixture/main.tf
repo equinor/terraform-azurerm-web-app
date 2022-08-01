@@ -56,7 +56,7 @@ module "acr" {
   managed_identity_operators = [data.azurerm_client_config.current.object_id]
 }
 
-module "app_service_plan" {
+module "plan" {
   source = "../../modules/app-service-plan"
 
   application = local.application
@@ -75,7 +75,7 @@ module "web_app" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 
-  service_plan_id = module.app_service_plan.app_service_plan_id
+  service_plan_id = module.plan.app_service_plan_id
 
   azuread_client_id     = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
   key_vault_name        = module.vault.key_vault_name

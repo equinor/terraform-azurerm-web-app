@@ -8,7 +8,7 @@ variable "environment" {
   type        = string
 }
 
-variable "app_service_plan_name" {
+variable "name" {
   description = "A custom name for this App Service Plan."
   type        = string
   default     = null
