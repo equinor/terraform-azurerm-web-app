@@ -1,7 +1,7 @@
-output "service_plan_name" {
+output "name" {
   value = azurerm_service_plan.this.name
 }
 
-output "service_plan_id" {
+output "id" {
   value = azurerm_service_plan.this.id
 }
