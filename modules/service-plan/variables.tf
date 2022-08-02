@@ -18,12 +18,6 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "os_type" {
-  description = "The OS Type of this Service Plan."
-  type        = string
-  default     = "Linux"
-}
-
 variable "sku_name" {
   description = "The SKU name of this Service Plan."
   type        = string
