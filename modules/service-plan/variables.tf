@@ -8,6 +8,12 @@ variable "environment" {
   type        = string
 }
 
+variable "service_plan_name" {
+  description = "A custom name for this Service Plan."
+  type        = string
+  default     = null
+}
+
 variable "location" {
   description = "The supported Azure location where the resources exist."
   type        = string
@@ -16,12 +22,6 @@ variable "location" {
 variable "resource_group_name" {
   description = "The name of the resource group in which to create the resources."
   type        = string
-}
-
-variable "os_type" {
-  description = "The OS Type of this Service Plan."
-  type        = string
-  default     = "Linux"
 }
 
 variable "sku_name" {
