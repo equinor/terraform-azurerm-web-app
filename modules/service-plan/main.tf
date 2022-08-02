@@ -4,14 +4,9 @@ locals {
   tags         = merge({ application = var.application, environment = var.environment }, var.tags)
 }
 
-resource "azurerm_resource_group" "this" {
-  name     = coalesce(var.application, "rgplan${local.suffix_alnum}")
-  location = var.location
-}
-
 resource "azurerm_service_plan" "this" {
   name                = "plan-${var.application}-${var.environment}"
-  resource_group_name = azurerm_resource_group.this.name
+  resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = var.os_type
   sku_name            = var.sku_name
