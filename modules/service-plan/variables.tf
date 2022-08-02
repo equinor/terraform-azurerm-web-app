@@ -8,6 +8,12 @@ variable "environment" {
   type        = string
 }
 
+variable "service_plan_name" {
+  description = "A custom name for this Service Plan."
+  type        = string
+  default     = null
+}
+
 variable "location" {
   description = "The supported Azure location where the resources exist."
   type        = string

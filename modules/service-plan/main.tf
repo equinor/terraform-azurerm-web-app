@@ -4,7 +4,7 @@ locals {
 }
 
 resource "azurerm_service_plan" "this" {
-  name                = local.service_plan_name
+  name                = coalesce(var.service_plan_name, local.service_plan_name)
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"
