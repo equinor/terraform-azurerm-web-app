@@ -130,7 +130,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aad_client_id"></a> [aad\_client\_id](#input\_aad\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | n/a | yes |
-| <a name="input_aad_client_secret_setting_name"></a> [aad\_client\_secret\_setting\_name](#input\_aad\_client\_secret\_setting\_name) | The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication. | `string` | `"ACTIVE_DIRECTORY_AUTHENTICATION_SECRET"` | no |
+| <a name="input_aad_client_secret_setting_name"></a> [aad\_client\_secret\_setting\_name](#input\_aad\_client\_secret\_setting\_name) | The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication. | `string` | `"AAD_CLIENT_SECRET"` | no |
 | <a name="input_app_service_hostnames"></a> [app\_service\_hostnames](#input\_app\_service\_hostnames) | A list of custom hostnames to use for the App Service. | `list(string)` | `[]` | no |
 | <a name="input_app_service_name"></a> [app\_service\_name](#input\_app\_service\_name) | A custom name for the App Service. | `string` | `null` | no |
 | <a name="input_application"></a> [application](#input\_application) | The application to create the resources for. | `string` | n/a | yes |
