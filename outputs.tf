@@ -8,6 +8,11 @@ output "app_service_name" {
   value       = azurerm_linux_web_app.this.name
 }
 
+output "aad_client_secret_setting_name" {
+  description = "The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication."
+  value       = azurerm_linux_web_app.this.auth_settings[0].active_directory[0].client_secret_setting_name
+}
+
 output "app_service_identity_principal_id" {
   description = "The principal ID of the App Service Identity."
   value       = azurerm_linux_web_app.this.identity[0].principal_id
