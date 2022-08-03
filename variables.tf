@@ -35,12 +35,12 @@ variable "app_service_name" {
   default     = null
 }
 
-variable "azuread_client_id" {
+variable "aad_client_id" {
   description = "The client ID of the App Registration to use for Azure AD authentication."
   type        = string
 }
 
-variable "azuread_client_secret_setting_name" {
+variable "aad_client_secret_setting_name" {
   description = "The name of the app setting that contains the client secret of the App Registration."
   type        = string
   default     = "ACTIVE_DIRECTORY_AUTHENTICATION_SECRET"

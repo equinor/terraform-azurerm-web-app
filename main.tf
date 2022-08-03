@@ -20,8 +20,8 @@ resource "azurerm_linux_web_app" "this" {
     token_store_enabled = true
 
     active_directory {
-      client_id                  = var.azuread_client_id
-      client_secret_setting_name = var.azuread_client_secret_setting_name
+      client_id                  = var.aad_client_id
+      client_secret_setting_name = var.aad_client_secret_setting_name
     }
   }
 
