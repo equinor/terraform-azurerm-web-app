@@ -35,26 +35,15 @@ variable "app_service_name" {
   default     = null
 }
 
-variable "app_service_settings" {
-  description = "A mapping of settings for the App Service."
-  type        = map(string)
-  default     = {}
-}
-
-variable "azuread_client_id" {
+variable "aad_client_id" {
   description = "The client ID of the App Registration to use for Azure AD authentication."
   type        = string
 }
 
-variable "key_vault_name" {
-  description = "The name of the Key Vault where the App Registration client secret is stored."
+variable "aad_client_secret_setting_name" {
+  description = "The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication."
   type        = string
-}
-
-variable "key_vault_secret_name" {
-  description = "The name of the Key Vault Secret containing the App Registration client secret."
-  type        = string
-  default     = "ClientSecret"
+  default     = "AAD_CLIENT_SECRET"
 }
 
 variable "managed_identity_client_id" {

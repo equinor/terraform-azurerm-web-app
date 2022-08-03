@@ -10,7 +10,8 @@ resource "azurerm_linux_web_app" "this" {
 
   https_only = true
 
-  app_settings = merge({ ACTIVE_DIRECTORY_AUTHENTICATION_SECRET = "@Microsoft.KeyVault(VaultName=${var.key_vault_name};SecretName=${var.key_vault_secret_name})" }, var.app_service_settings)
+  # App settings should be configured during deployment
+  app_settings = null
 
   tags = local.tags
 
@@ -19,8 +20,8 @@ resource "azurerm_linux_web_app" "this" {
     token_store_enabled = true
 
     active_directory {
-      client_id                  = var.azuread_client_id
-      client_secret_setting_name = "ACTIVE_DIRECTORY_AUTHENTICATION_SECRET"
+      client_id                  = var.aad_client_id
+      client_secret_setting_name = var.aad_client_secret_setting_name
     }
   }
 

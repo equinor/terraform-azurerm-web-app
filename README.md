@@ -129,14 +129,12 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_aad_client_id"></a> [aad\_client\_id](#input\_aad\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | n/a | yes |
+| <a name="input_aad_client_secret_setting_name"></a> [aad\_client\_secret\_setting\_name](#input\_aad\_client\_secret\_setting\_name) | The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication. | `string` | `"AAD_CLIENT_SECRET"` | no |
 | <a name="input_app_service_hostnames"></a> [app\_service\_hostnames](#input\_app\_service\_hostnames) | A list of custom hostnames to use for the App Service. | `list(string)` | `[]` | no |
 | <a name="input_app_service_name"></a> [app\_service\_name](#input\_app\_service\_name) | A custom name for the App Service. | `string` | `null` | no |
-| <a name="input_app_service_settings"></a> [app\_service\_settings](#input\_app\_service\_settings) | A mapping of settings for the App Service. | `map(string)` | `{}` | no |
 | <a name="input_application"></a> [application](#input\_application) | The application to create the resources for. | `string` | n/a | yes |
-| <a name="input_azuread_client_id"></a> [azuread\_client\_id](#input\_azuread\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
-| <a name="input_key_vault_name"></a> [key\_vault\_name](#input\_key\_vault\_name) | The name of the Key Vault where the App Registration client secret is stored. | `string` | n/a | yes |
-| <a name="input_key_vault_secret_name"></a> [key\_vault\_secret\_name](#input\_key\_vault\_secret\_name) | The name of the Key Vault Secret containing the App Registration client secret. | `string` | `"ClientSecret"` | no |
 | <a name="input_location"></a> [location](#input\_location) | The supported Azure location where the resources exist. | `string` | n/a | yes |
 | <a name="input_managed_identity_client_id"></a> [managed\_identity\_client\_id](#input\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
 | <a name="input_managed_identity_id"></a> [managed\_identity\_id](#input\_managed\_identity\_id) | The ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
@@ -148,6 +146,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_aad_client_secret_setting_name"></a> [aad\_client\_secret\_setting\_name](#output\_aad\_client\_secret\_setting\_name) | The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication. |
 | <a name="output_app_service_id"></a> [app\_service\_id](#output\_app\_service\_id) | The ID of the App Service. |
 | <a name="output_app_service_identity_principal_id"></a> [app\_service\_identity\_principal\_id](#output\_app\_service\_identity\_principal\_id) | The principal ID of the App Service Identity. |
 | <a name="output_app_service_identity_tenant_id"></a> [app\_service\_identity\_tenant\_id](#output\_app\_service\_identity\_tenant\_id) | The tenant ID of the App Service Identity. |
