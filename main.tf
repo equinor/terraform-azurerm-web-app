@@ -34,6 +34,15 @@ resource "azurerm_linux_web_app" "this" {
     type         = "SystemAssigned, UserAssigned"
     identity_ids = [var.managed_identity_id]
   }
+
+  backup {
+    name = "app-${var.application}-${var.environment}-backup"
+    schedule {
+      frequency_interval = 7
+      frequency_unit     = "Day"
+    }
+    storage_account_url = "www.placeholder.com"
+  }
 }
 
 # Create a custom hostname binding for each custom hostname
