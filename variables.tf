@@ -38,6 +38,7 @@ variable "app_service_name" {
 variable "ip_restriction_allow" {
   description = "The action to allow or deny ip restrictions."
   type        = bool
+  default     = false
 }
 
 variable "aad_client_id" {

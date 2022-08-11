@@ -37,7 +37,7 @@ resource "azurerm_linux_web_app" "this" {
 
   ip_restriction {
     action     = var.ip_restriction_allow
-    ip_address = "10.0.0.0/24"
+    ip_address = "0.0.0.0/24"
   }
 }
 
