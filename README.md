@@ -135,7 +135,7 @@ No modules.
 | <a name="input_app_service_name"></a> [app\_service\_name](#input\_app\_service\_name) | A custom name for the App Service. | `string` | `null` | no |
 | <a name="input_application"></a> [application](#input\_application) | The application to create the resources for. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
-| <a name="input_ip_restriction_allow"></a> [ip\_restriction\_allow](#input\_ip\_restriction\_allow) | The action to allow or deny ip restrictions. | `bool` | n/a | yes |
+| <a name="input_ip_restriction_allow"></a> [ip\_restriction\_allow](#input\_ip\_restriction\_allow) | The action to allow or deny ip restrictions. | `bool` | `false` | no |
 | <a name="input_location"></a> [location](#input\_location) | The supported Azure location where the resources exist. | `string` | n/a | yes |
 | <a name="input_managed_identity_client_id"></a> [managed\_identity\_client\_id](#input\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
 | <a name="input_managed_identity_id"></a> [managed\_identity\_id](#input\_managed\_identity\_id) | The ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
