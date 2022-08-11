@@ -35,6 +35,12 @@ variable "app_service_name" {
   default     = null
 }
 
+variable "ip_restriction_allow" {
+  description = "The action to allow or deny ip restrictions."
+  type        = bool
+  default     = false
+}
+
 variable "aad_client_id" {
   description = "The client ID of the App Registration to use for Azure AD authentication."
   type        = string

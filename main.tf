@@ -34,6 +34,11 @@ resource "azurerm_linux_web_app" "this" {
     type         = "SystemAssigned, UserAssigned"
     identity_ids = [var.managed_identity_id]
   }
+
+  ip_restriction {
+    action     = var.ip_restriction_allow
+    ip_address = "0.0.0.0/24"
+  }
 }
 
 # Create a custom hostname binding for each custom hostname
