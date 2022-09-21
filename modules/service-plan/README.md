@@ -1,6 +1,6 @@
-# Azure App Service plan Terraform module
+# Azure App Service plan Terraform sub-module
 
-Terraform module which creates an Azure App Service plan.
+Terraform sub-module which creates an Azure App Service plan.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
