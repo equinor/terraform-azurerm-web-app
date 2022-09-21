@@ -8,6 +8,16 @@ output "app_name" {
   value       = azurerm_linux_web_app.this.name
 }
 
+output "service_plan_id" {
+  description = "The ID of this Web App service plan."
+  value       = module.service_plan.id
+}
+
+output "service_plan_name" {
+  description = "The name of this Web App service plan."
+  value       = module.service_plan.name
+}
+
 output "aad_client_secret_setting_name" {
   description = "The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication."
   value       = azurerm_linux_web_app.this.auth_settings[0].active_directory[0].client_secret_setting_name

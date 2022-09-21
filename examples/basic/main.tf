@@ -31,21 +31,13 @@ module "acr" {
   managed_identity_operators = [data.azurerm_client_config.current.object_id]
 }
 
-module "service_plan" {
-  source = "../../modules/service-plan"
-
-  name                = "plan-${random_id.this.hex}"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
-}
-
 module "web_app" {
   source = "../.."
 
   app_name                   = "app-${random_id.this.hex}"
   location                   = azurerm_resource_group.this.location
   resource_group_name        = azurerm_resource_group.this.name
-  service_plan_id            = module.service_plan.id
+  service_plan_name          = "plan-${random_id.this.hex}"
   aad_client_id              = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
   managed_identity_client_id = module.acr.managed_identity_client_id
   managed_identity_id        = module.acr.managed_identity_id

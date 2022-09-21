@@ -14,9 +14,15 @@ variable "location" {
   type        = string
 }
 
-variable "service_plan_id" {
-  description = "The ID of the App Service Plan that this Web App will be created in."
+variable "service_plan_name" {
+  description = "The name of this Web App service plan."
   type        = string
+}
+
+variable "sku_name" {
+  description = "The SKU name for this service plan."
+  type        = string
+  default     = "B1"
 }
 
 variable "aad_client_id" {
