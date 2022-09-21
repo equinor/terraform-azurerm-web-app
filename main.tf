@@ -38,8 +38,8 @@ resource "azurerm_linux_web_app" "this" {
   }
 
   identity {
-    type         = "SystemAssigned, UserAssigned"
-    identity_ids = [var.managed_identity_id]
+    type         = length(var.managed_identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
+    identity_ids = var.managed_identity_ids
   }
 }
 

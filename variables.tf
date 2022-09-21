@@ -42,9 +42,10 @@ variable "managed_identity_client_id" {
   default     = null
 }
 
-variable "managed_identity_id" {
-  description = "The ID of the Managed Identity that will be used to pull from the Container Registry."
-  type        = string
+variable "managed_identity_ids" {
+  description = "The IDs of the Managed Identities to assign to this Web App."
+  type        = list(string)
+  default     = []
 }
 
 variable "custom_hostnames" {
