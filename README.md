@@ -1,102 +1,6 @@
-# terraform-azurerm-web-app
+# Azure Web App Terraform module
 
 Terraform module which creates an Azure Web App for Containers.
-
-## Usage
-
-```terraform
-provider "azurerm" {
-  features {}
-}
-
-locals {
-  application = "my-app"
-  environment = "example"
-}
-
-resource "azurerm_resource_group" "example" {
-  name     = "rg-${local.application}-${local.environment}"
-  location = "northeurope"
-}
-
-resource "azurerm_log_analytics_workspace" "example" {
-  name                = "log-${local.application}-${local.environment}"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  sku                 = "Free"
-}
-
-module "vault" {
-  source = "github.com/equinor/terraform-azurerm-vault?ref=v3.0.0"
-
-  application = local.application
-  environment = local.environment
-
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
-}
-
-module "acr" {
-  source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
-
-  application = local.application
-  environment = local.environment
-
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-}
-
-resource "azurerm_service_plan" "example" {
-  name                = "plan-${local.application}-${local.environment}"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  os_type             = "Linux"
-  sku_name            = "B1"
-}
-
-module "web_app" {
-  source = "github.com/equinor/terraform-azurerm-web-app"
-
-  application = local.application
-  environment = local.environment
-
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-
-  service_plan_id = azurerm_service_plan.example.id
-
-  azuread_client_id = "6b5fbe59-9c49-488f-959f-82cada7abf14"
-  key_vault_name    = module.vault.key_vault_name
-
-  managed_identity_client_id = module.acr.managed_identity_client_id
-  managed_identity_id        = module.acr.managed_identity_id
-}
-
-resource "azurerm_key_vault_access_policy" "example" {
-  key_vault_id = module.vault.key_vault_id
-  tenant_id    = module.web_app.app_service_identity_tenant_id
-  object_id    = module.web_app.app_service_identity_principal_id
-
-  secret_permissions = ["Get"]
-}
-```
-
-## Test
-
-### Prerequisites
-
-- Install the latest version of [Go](https://go.dev/dl/).
-- Install [Terraform](https://www.terraform.io/downloads).
-- Configure your Azure credentials using one of the [options supported by the AzureRM provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure).
-
-### Run test
-
-```bash
-cd ./test/
-go test -v -timeout 60m
-```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -113,8 +17,6 @@ go test -v -timeout 60m
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.0.0 |
 
 ## Modules
-
-No modules.
 
 ## Resources
 
