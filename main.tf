@@ -33,7 +33,7 @@ resource "azurerm_linux_web_app" "this" {
   }
 
   site_config {
-    container_registry_use_managed_identity       = true
+    container_registry_use_managed_identity       = var.managed_identity_client_id != null ? true : false
     container_registry_managed_identity_client_id = var.managed_identity_client_id
   }
 

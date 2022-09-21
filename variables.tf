@@ -39,6 +39,7 @@ variable "aad_client_secret_setting_name" {
 variable "managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
+  default     = null
 }
 
 variable "managed_identity_id" {
