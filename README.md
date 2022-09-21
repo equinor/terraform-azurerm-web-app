@@ -18,6 +18,8 @@ Terraform module which creates an Azure Web App for Containers.
 
 ## Modules
 
+No modules.
+
 ## Resources
 
 | Name | Type |
