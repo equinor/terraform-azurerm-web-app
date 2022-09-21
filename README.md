@@ -1,6 +1,6 @@
 # Azure Web App Terraform module
 
-Terraform module which creates an Azure Web App for Containers.
+Terraform module which creates an Azure Web App.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -37,11 +37,11 @@ Terraform module which creates an Azure Web App for Containers.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aad_client_id"></a> [aad\_client\_id](#input\_aad\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | n/a | yes |
 | <a name="input_aad_client_secret_setting_name"></a> [aad\_client\_secret\_setting\_name](#input\_aad\_client\_secret\_setting\_name) | The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication. | `string` | `"AAD_CLIENT_SECRET"` | no |
+| <a name="input_acr_managed_identity_client_id"></a> [acr\_managed\_identity\_client\_id](#input\_acr\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | `null` | no |
 | <a name="input_app_name"></a> [app\_name](#input\_app\_name) | The name of this Web App. | `string` | `null` | no |
 | <a name="input_custom_hostnames"></a> [custom\_hostnames](#input\_custom\_hostnames) | A list of custom hostnames to bind to this Web App. | `list(string)` | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |
-| <a name="input_managed_identity_client_id"></a> [managed\_identity\_client\_id](#input\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
-| <a name="input_managed_identity_id"></a> [managed\_identity\_id](#input\_managed\_identity\_id) | The ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | n/a | yes |
+| <a name="input_managed_identity_ids"></a> [managed\_identity\_ids](#input\_managed\_identity\_ids) | The IDs of the Managed Identities to assign to this Web App. | `list(string)` | `[]` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to create the resources in. | `string` | n/a | yes |
 | <a name="input_service_plan_name"></a> [service\_plan\_name](#input\_service\_plan\_name) | The name of this Web App service plan. | `string` | n/a | yes |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | The SKU name for this service plan. | `string` | `"B1"` | no |

@@ -36,14 +36,16 @@ variable "aad_client_secret_setting_name" {
   default     = "AAD_CLIENT_SECRET"
 }
 
-variable "managed_identity_client_id" {
+variable "acr_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
+  default     = null
 }
 
-variable "managed_identity_id" {
-  description = "The ID of the Managed Identity that will be used to pull from the Container Registry."
-  type        = string
+variable "managed_identity_ids" {
+  description = "The IDs of the Managed Identities to assign to this Web App."
+  type        = list(string)
+  default     = []
 }
 
 variable "custom_hostnames" {
