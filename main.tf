@@ -1,9 +1,5 @@
-locals {
-  tags = merge({ application = var.application, environment = var.environment }, var.tags)
-}
-
 resource "azurerm_linux_web_app" "this" {
-  name                = coalesce(var.app_service_name, "app-${var.application}-${var.environment}")
+  name                = var.app_name
   location            = var.location
   resource_group_name = var.resource_group_name
   service_plan_id     = var.service_plan_id
@@ -13,7 +9,7 @@ resource "azurerm_linux_web_app" "this" {
   # App settings should be configured during deployment
   app_settings = null
 
-  tags = local.tags
+  tags = var.tags
 
   auth_settings {
     enabled             = true
@@ -38,7 +34,7 @@ resource "azurerm_linux_web_app" "this" {
 
 # Create a custom hostname binding for each custom hostname
 resource "azurerm_app_service_custom_hostname_binding" "this" {
-  for_each = toset(var.app_service_hostnames)
+  for_each = toset(var.custom_hostnames)
 
   hostname            = each.value
   app_service_name    = azurerm_linux_web_app.this.name

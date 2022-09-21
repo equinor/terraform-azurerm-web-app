@@ -1,37 +1,27 @@
-variable "application" {
-  description = "The application to create the resources for."
-  type        = string
-}
-
-variable "environment" {
-  description = "The environment to create the resources for."
-  type        = string
-}
-
-variable "service_plan_name" {
-  description = "A custom name for this Service Plan."
+variable "name" {
+  description = "The name of this service plan."
   type        = string
   default     = null
 }
 
-variable "location" {
-  description = "The supported Azure location where the resources exist."
+variable "resource_group_name" {
+  description = "The name of the resource group to create the resources in."
   type        = string
 }
 
-variable "resource_group_name" {
-  description = "The name of the resource group in which to create the resources."
+variable "location" {
+  description = "The location to create the resources in."
   type        = string
 }
 
 variable "sku_name" {
-  description = "The SKU name of this Service Plan."
+  description = "The SKU name for this service plan."
   type        = string
   default     = "B1"
 }
 
 variable "tags" {
-  description = "A mapping of tags to assign to the resources."
+  description = "A map of tags to assign to the resources."
   type        = map(string)
   default     = {}
 }

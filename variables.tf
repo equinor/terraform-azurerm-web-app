@@ -1,38 +1,22 @@
-variable "application" {
-  description = "The application to create the resources for."
+variable "app_name" {
+  description = "The name of this Web App."
   type        = string
+  default     = null
 }
 
-variable "environment" {
-  description = "The environment to create the resources for."
+variable "resource_group_name" {
+  description = "The name of the resource group to create the resources in."
   type        = string
 }
 
 variable "location" {
-  description = "The supported Azure location where the resources exist."
-  type        = string
-}
-
-variable "resource_group_name" {
-  description = "The name of the resource group in which to create the resources."
+  description = "The location to create the resources in."
   type        = string
 }
 
 variable "service_plan_id" {
-  description = "The ID of the App Service Plan that this App Service will be created in."
+  description = "The ID of the App Service Plan that this Web App will be created in."
   type        = string
-}
-
-variable "tags" {
-  description = "A mapping of tags to assign to the resources."
-  type        = map(string)
-  default     = {}
-}
-
-variable "app_service_name" {
-  description = "A custom name for the App Service."
-  type        = string
-  default     = null
 }
 
 variable "aad_client_id" {
@@ -56,8 +40,14 @@ variable "managed_identity_id" {
   type        = string
 }
 
-variable "app_service_hostnames" {
-  description = "A list of custom hostnames to use for the App Service."
+variable "custom_hostnames" {
+  description = "A list of custom hostnames to bind to this Web App."
   type        = list(string)
   default     = []
+}
+
+variable "tags" {
+  description = "A map of tags to assign to the resources."
+  type        = map(string)
+  default     = {}
 }
