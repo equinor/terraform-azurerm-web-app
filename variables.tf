@@ -36,7 +36,7 @@ variable "aad_client_secret_setting_name" {
   default     = "AAD_CLIENT_SECRET"
 }
 
-variable "managed_identity_client_id" {
+variable "acr_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
   default     = null
