@@ -1,7 +1,9 @@
-output "service_plan_name" {
-  value = azurerm_service_plan.this.name
+output "name" {
+  description = "The name of this service plan."
+  value       = azurerm_service_plan.this.name
 }
 
-output "service_plan_id" {
-  value = azurerm_service_plan.this.id
+output "id" {
+  description = "The ID of this service plan."
+  value       = azurerm_service_plan.this.id
 }
