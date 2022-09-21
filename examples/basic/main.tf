@@ -2,11 +2,6 @@ provider "azurerm" {
   features {}
 }
 
-locals {
-  application = random_id.this.hex
-  environment = "test"
-}
-
 resource "random_id" "this" {
   byte_length = 8
 }
@@ -14,31 +9,32 @@ resource "random_id" "this" {
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "this" {
-  name     = "rg-${local.application}-${local.environment}"
+  name     = "rg-${random_id.this.hex}"
   location = var.location
 }
 
-resource "azurerm_log_analytics_workspace" "this" {
-  name                = "log-${local.application}-${local.environment}"
-  location            = azurerm_resource_group.this.location
+module "log_analytics" {
+  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.1.0"
+
+  workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
 }
 
 module "acr" {
   source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
 
-  application                = local.application
-  environment                = local.environment
+  application                = random_id.this.hex
+  environment                = "test"
   location                   = azurerm_resource_group.this.location
   resource_group_name        = azurerm_resource_group.this.name
   managed_identity_operators = [data.azurerm_client_config.current.object_id]
 }
 
-module "app_service_plan" {
+module "service_plan" {
   source = "../../modules/service-plan"
 
-  application         = local.application
-  environment         = local.environment
+  name                = "plan-${random_id.this.hex}"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 }
@@ -46,11 +42,10 @@ module "app_service_plan" {
 module "web_app" {
   source = "../.."
 
-  application                = local.application
-  environment                = local.environment
+  app_name                   = "app-${random_id.this.hex}"
   location                   = azurerm_resource_group.this.location
   resource_group_name        = azurerm_resource_group.this.name
-  service_plan_id            = module.app_service_plan.service_plan_id
+  service_plan_id            = module.service_plan.id
   aad_client_id              = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
   managed_identity_client_id = module.acr.managed_identity_client_id
   managed_identity_id        = module.acr.managed_identity_id
