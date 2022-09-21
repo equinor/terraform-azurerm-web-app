@@ -1,6 +1,6 @@
 # Azure Web App Terraform module
 
-Terraform module which creates an Azure Web App for Containers.
+Terraform module which creates an Azure Web App.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
