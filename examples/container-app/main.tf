@@ -41,4 +41,5 @@ module "web_app" {
   aad_client_id                  = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
   acr_managed_identity_client_id = module.acr.managed_identity_client_id
   managed_identity_ids           = [module.acr.managed_identity_id]
+  log_analytics_workspace_id     = module.log_analytics.workspace_id
 }

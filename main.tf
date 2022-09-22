@@ -43,6 +43,33 @@ resource "azurerm_linux_web_app" "this" {
   }
 }
 
+# Add diagnostic setting to record audit logs for this Web App
+resource "azurerm_monitor_diagnostic_setting" "this" {
+  name                       = "audit-logs"
+  target_resource_id         = azurerm_linux_web_app.this.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  log {
+    category = "AppServiceAuditLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  metric {
+    category = "AllMetrics"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+}
+
 # Create a custom hostname binding for each custom hostname
 resource "azurerm_app_service_custom_hostname_binding" "this" {
   for_each = toset(var.custom_hostnames)

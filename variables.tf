@@ -54,6 +54,11 @@ variable "managed_identity_ids" {
   default     = []
 }
 
+variable "log_analytics_workspace_id" {
+  description = "The ID of this Log Analytics Workspace."
+  type        = string
+}
+
 variable "custom_hostnames" {
   description = "A list of custom hostnames to bind to this Web App."
   type        = list(string)
