@@ -23,7 +23,7 @@ resource "azurerm_linux_web_app" "this" {
   tags = var.tags
 
   auth_settings {
-    enabled             = true
+    enabled             = var.auth_settings_enabled
     token_store_enabled = true
 
     active_directory {

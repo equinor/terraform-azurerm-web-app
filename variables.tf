@@ -25,6 +25,12 @@ variable "sku_name" {
   default     = "B1"
 }
 
+variable "auth_settings_enabled" {
+  description = "Should authentication be enabled for this Web App?"
+  type        = bool
+  default     = true
+}
+
 variable "aad_client_id" {
   description = "The client ID of the App Registration to use for Azure AD authentication."
   type        = string
