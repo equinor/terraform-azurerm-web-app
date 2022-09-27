@@ -11,7 +11,7 @@ module "service_plan" {
 }
 
 module "linux_app" {
-  for_each = var.os_type == "Linux" ? var.apps : []
+  for_each = var.os_type == "Linux" ? var.apps : {}
 
   source = "./modules/linux-app"
 
@@ -28,7 +28,7 @@ module "linux_app" {
 }
 
 module "windows_app" {
-  for_each = var.os_type == "Windows" ? var.apps : []
+  for_each = var.os_type == "Windows" ? var.apps : {}
 
   source = "./modules/windows-app"
 
