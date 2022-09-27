@@ -37,7 +37,7 @@ resource "azurerm_app_service_custom_hostname_binding" "this" {
   for_each = toset(var.custom_hostnames)
 
   hostname            = each.value
-  app_service_name    = azurerm_linux_web_app.this.name
+  app_service_name    = azurerm_windows_web_app.this.name
   resource_group_name = var.resource_group_name
 }
 
