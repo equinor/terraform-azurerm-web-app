@@ -30,6 +30,7 @@ variable "apps" {
     managed_identity_ids           = optional(list(string), [])
     custom_hostnames               = optional(list(string), [])
   }))
+  default = {}
 }
 
 variable "tags" {
