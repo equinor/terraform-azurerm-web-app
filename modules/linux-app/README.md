@@ -1,3 +1,7 @@
+# Azure Linux Web App Terraform sub-module
+
+Terraform sub-module which creates an Azure Linux Web App.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
