@@ -1,6 +1,6 @@
 # Container application example
 
-Terraform configuration which creates an Azure Web App for Containers with the following features:
+Terraform configuration which creates two Azure Web Apps for Containers with the following features:
 
 - Basic SKU (B1)
 - HTTPS only

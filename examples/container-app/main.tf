@@ -34,11 +34,23 @@ module "acr" {
 module "web_app" {
   source = "../.."
 
-  app_name                       = "app-${random_id.this.hex}"
-  location                       = azurerm_resource_group.this.location
-  resource_group_name            = azurerm_resource_group.this.name
-  service_plan_name              = "plan-${random_id.this.hex}"
-  aad_client_id                  = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
-  acr_managed_identity_client_id = module.acr.managed_identity_client_id
-  managed_identity_ids           = [module.acr.managed_identity_id]
+  service_plan_name   = "plan-${random_id.this.hex}"
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+
+  apps = {
+    "api" = {
+      name                           = "app-${random_id.this.hex}-api"
+      aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
+      acr_managed_identity_client_id = module.acr.managed_identity_client_id
+      managed_identity_ids           = [module.acr.managed_identity_id]
+    }
+
+    "web" = {
+      name                           = "app-${random_id.this.hex}-web"
+      aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
+      acr_managed_identity_client_id = module.acr.managed_identity_client_id
+      managed_identity_ids           = [module.acr.managed_identity_id]
+    }
+  }
 }

@@ -1,6 +1,6 @@
 # Basic example
 
-Terraform configuration which creates an Azure Web App with the following features:
+Terraform configuration which creates two Azure Linux Web Apps with the following features:
 
 - Basic SKU (B1)
 - HTTPS only
