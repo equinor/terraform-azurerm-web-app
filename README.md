@@ -40,7 +40,7 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_aad_client_secret_setting_names"></a> [aad\_client\_secret\_setting\_names](#output\_aad\_client\_secret\_setting\_names) | n/a |
+| <a name="output_aad_client_secret_setting_names"></a> [aad\_client\_secret\_setting\_names](#output\_aad\_client\_secret\_setting\_names) | A mapping of the app setting name where the Azure AD client secret must be stored for each Web App. |
 | <a name="output_app_ids"></a> [app\_ids](#output\_app\_ids) | A mapping of Web App IDs for this service plan. |
 | <a name="output_app_names"></a> [app\_names](#output\_app\_names) | A mapping of Web App names for this service plan. |
 | <a name="output_identity_principal_ids"></a> [identity\_principal\_ids](#output\_identity\_principal\_ids) | A mapping of system-assigned identity IDs of the created Web Apps. |
