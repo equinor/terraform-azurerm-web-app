@@ -1,4 +1,4 @@
-# Basic example
+# Linux Application example
 
 Terraform configuration which creates two Azure Linux Web Apps with the following features:
 

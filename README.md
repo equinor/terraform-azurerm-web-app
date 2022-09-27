@@ -20,6 +20,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_linux_app"></a> [linux\_app](#module\_linux\_app) | ./modules/linux-app | n/a |
 | <a name="module_service_plan"></a> [service\_plan](#module\_service\_plan) | ./modules/service-plan | n/a |
+| <a name="module_windows_app"></a> [windows\_app](#module\_windows\_app) | ./modules/windows-app | n/a |
 
 ## Resources
 
@@ -31,6 +32,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_apps"></a> [apps](#input\_apps) | The apps to create for this Web App service plan. | <pre>map(object({<br>    name                           = string<br>    auth_settings_enabled          = optional(bool, true)<br>    aad_client_id                  = string<br>    aad_client_secret_setting_name = optional(string, "AAD_CLIENT_SECRET")<br>    acr_managed_identity_client_id = optional(string)<br>    managed_identity_ids           = optional(list(string), [])<br>    custom_hostnames               = optional(list(string), [])<br>  }))</pre> | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |
+| <a name="input_os_type"></a> [os\_type](#input\_os\_type) | The OS type for the apps to be hosted on this Web App service plan. | `string` | `"Linux"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to create the resources in. | `string` | n/a | yes |
 | <a name="input_service_plan_name"></a> [service\_plan\_name](#input\_service\_plan\_name) | The name of this Web App service plan. | `string` | n/a | yes |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | The SKU name for this service plan. | `string` | `"B1"` | no |

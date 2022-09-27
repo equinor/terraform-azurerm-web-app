@@ -14,6 +14,11 @@ variable "location" {
   type        = string
 }
 
+variable "os_type" {
+  description = "The OS type for the apps to be hosted on this Web App service plan."
+  type        = string
+}
+
 variable "sku_name" {
   description = "The SKU name for this service plan."
   type        = string
