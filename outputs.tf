@@ -22,7 +22,7 @@ output "app_names" {
   }
 }
 
-output "aad_client_secret_setting_name" {
+output "aad_client_secret_setting_names" {
   description = "" # TODO: Write a description.
   value = {
     for k, v in module.linux_app : k => v.aad_client_secret_setting_name
