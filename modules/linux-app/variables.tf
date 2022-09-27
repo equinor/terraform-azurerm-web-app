@@ -31,7 +31,7 @@ variable "aad_client_id" {
 }
 
 variable "aad_client_secret_setting_name" {
-  description = "The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication."
+  description = "The name of the app setting where the client secret of the App Registration to use for Azure AD authentication must be stored."
   type        = string
   default     = "AAD_CLIENT_SECRET"
 }

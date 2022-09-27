@@ -23,7 +23,7 @@ output "app_names" {
 }
 
 output "aad_client_secret_setting_names" {
-  description = "" # TODO: Write a description.
+  description = "A mapping of the app setting name where the Azure AD client secret must be stored for each Web App."
   value = {
     for k, v in module.linux_app : k => v.aad_client_secret_setting_name
   }
