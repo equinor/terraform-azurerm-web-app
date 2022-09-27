@@ -1,3 +1,7 @@
+locals {
+  apps = merge(module.windows_app, module.linux_app)
+}
+
 module "service_plan" {
   source = "./modules/service-plan"
 
