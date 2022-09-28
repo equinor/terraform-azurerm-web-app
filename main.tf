@@ -29,6 +29,7 @@ module "linux_app" {
   acr_managed_identity_client_id = each.value.acr_managed_identity_client_id
   managed_identity_ids           = each.value.managed_identity_ids
   custom_hostnames               = each.value.custom_hostnames
+  tags                           = var.tags
 }
 
 module "windows_app" {
@@ -46,4 +47,5 @@ module "windows_app" {
   acr_managed_identity_client_id = each.value.acr_managed_identity_client_id
   managed_identity_ids           = each.value.managed_identity_ids
   custom_hostnames               = each.value.custom_hostnames
+  tags                           = var.tags
 }
