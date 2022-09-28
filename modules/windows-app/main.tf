@@ -30,6 +30,13 @@ resource "azurerm_windows_web_app" "this" {
     type         = length(var.managed_identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
     identity_ids = var.managed_identity_ids
   }
+
+  lifecycle {
+    ignore_changes = [
+      # Allow app settings to be configured outside of Terraform.
+      app_settings
+    ]
+  }
 }
 
 # Create a custom hostname binding for each custom hostname
