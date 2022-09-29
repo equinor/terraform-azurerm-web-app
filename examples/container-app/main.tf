@@ -1,5 +1,11 @@
+# Set feature flag within the `features` block when configuring the provider
+# to enable Terraform to delete resource groups still containing resources. 
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
 }
 
 resource "random_id" "this" {
