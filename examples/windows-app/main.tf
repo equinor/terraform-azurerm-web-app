@@ -37,13 +37,11 @@ module "web_app" {
 
   apps = {
     "api" = {
-      name          = "app-${random_id.this.hex}-api"
-      aad_client_id = "1817f53f-93a7-475b-8a7f-94f0d3f94713"
+      name = "app-${random_id.this.hex}-api"
     }
 
     "web" = {
-      name          = "app-${random_id.this.hex}-web"
-      aad_client_id = "1817f53f-93a7-475b-8a7f-94f0d3f94713"
+      name = "app-${random_id.this.hex}-web"
     }
   }
 }

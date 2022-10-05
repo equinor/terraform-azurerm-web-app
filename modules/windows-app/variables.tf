@@ -28,6 +28,7 @@ variable "auth_settings_enabled" {
 variable "aad_client_id" {
   description = "The client ID of the App Registration to use for Azure AD authentication."
   type        = string
+  default     = null
 }
 
 variable "aad_client_secret_setting_name" {

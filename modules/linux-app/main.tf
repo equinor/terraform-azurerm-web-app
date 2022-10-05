@@ -15,9 +15,13 @@ resource "azurerm_linux_web_app" "this" {
     enabled             = var.auth_settings_enabled
     token_store_enabled = true
 
-    active_directory {
-      client_id                  = var.aad_client_id
-      client_secret_setting_name = var.aad_client_secret_setting_name
+    dynamic "active_directory" {
+      for_each = var.aad_client_id == null ? [] : [var.aad_client_id]
+
+      content {
+        client_id                  = active_directory.value
+        client_secret_setting_name = var.aad_client_secret_setting_name
+      }
     }
   }
 

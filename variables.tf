@@ -30,7 +30,7 @@ variable "apps" {
   type = map(object({
     name                           = string
     auth_settings_enabled          = optional(bool, true)
-    aad_client_id                  = string
+    aad_client_id                  = optional(string)
     aad_client_secret_setting_name = optional(string, "AAD_CLIENT_SECRET")
     acr_managed_identity_client_id = optional(string)
     managed_identity_ids           = optional(list(string), [])
