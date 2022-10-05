@@ -30,7 +30,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aad_client_id"></a> [aad\_client\_id](#input\_aad\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | n/a | yes |
+| <a name="input_aad_client_id"></a> [aad\_client\_id](#input\_aad\_client\_id) | The client ID of the App Registration to use for Azure AD authentication. | `string` | `null` | no |
 | <a name="input_aad_client_secret_setting_name"></a> [aad\_client\_secret\_setting\_name](#input\_aad\_client\_secret\_setting\_name) | The name of the app setting where the client secret of the App Registration to use for Azure AD authentication must be stored. | `string` | `"AAD_CLIENT_SECRET"` | no |
 | <a name="input_acr_managed_identity_client_id"></a> [acr\_managed\_identity\_client\_id](#input\_acr\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | `null` | no |
 | <a name="input_auth_settings_enabled"></a> [auth\_settings\_enabled](#input\_auth\_settings\_enabled) | Should authentication be enabled for this Linux Web App? | `bool` | `true` | no |
