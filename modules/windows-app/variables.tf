@@ -23,6 +23,7 @@ variable "auth_settings_enabled" {
   description = "Should authentication be enabled for this Windows Web App?"
   type        = bool
   default     = true
+  nullable    = false
 }
 
 variable "aad_client_id" {
@@ -34,6 +35,7 @@ variable "aad_client_secret_setting_name" {
   description = "The name of the app setting where the client secret of the App Registration to use for Azure AD authentication must be stored."
   type        = string
   default     = "AAD_CLIENT_SECRET"
+  nullable    = false
 }
 
 variable "acr_managed_identity_client_id" {
@@ -46,12 +48,14 @@ variable "managed_identity_ids" {
   description = "The IDs of the Managed Identities to assign to this Windows Web App."
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 variable "custom_hostnames" {
   description = "A list of custom hostnames to bind to this Windows Web App."
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 variable "tags" {

@@ -26,15 +26,15 @@ variable "sku_name" {
 }
 
 variable "apps" {
-  description = "The apps to create for this Web App service plan."
+  description = "A map of identifier => Linux/Windows Web App objects"
   type = map(object({
     name                           = string
-    auth_settings_enabled          = optional(bool, true)
+    auth_settings_enabled          = optional(bool)
     aad_client_id                  = string
-    aad_client_secret_setting_name = optional(string, "AAD_CLIENT_SECRET")
+    aad_client_secret_setting_name = optional(string)
     acr_managed_identity_client_id = optional(string)
-    managed_identity_ids           = optional(list(string), [])
-    custom_hostnames               = optional(list(string), [])
+    managed_identity_ids           = optional(list(string))
+    custom_hostnames               = optional(list(string))
   }))
   default = {}
 }
