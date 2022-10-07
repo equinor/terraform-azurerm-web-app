@@ -20,7 +20,7 @@ variable "service_plan_id" {
 }
 
 variable "auth_settings_enabled" {
-  description = "Should authentication be enabled for this Linux Web App?"
+  description = "Should the built-in authentication settings be enabled for this Linux Web App?"
   type        = bool
   default     = true
   nullable    = false
@@ -32,7 +32,7 @@ variable "aad_client_id" {
 }
 
 variable "aad_client_secret_setting_name" {
-  description = "The name of the app setting where the client secret of the App Registration to use for Azure AD authentication must be stored."
+  description = "The name of the app setting that should contain the client secret to use for Azure AD authentication."
   type        = string
   default     = "AAD_CLIENT_SECRET"
   nullable    = false
