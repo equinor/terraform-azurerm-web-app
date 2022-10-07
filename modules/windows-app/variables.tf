@@ -20,7 +20,7 @@ variable "service_plan_id" {
 }
 
 variable "auth_settings_enabled" {
-  description = "Should authentication be enabled for this Windows Web App?"
+  description = "Should the built-in authentication settings be enabled for this Windows Web App?"
   type        = bool
   default     = true
   nullable    = false
