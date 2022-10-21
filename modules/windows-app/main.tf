@@ -1,8 +1,9 @@
 resource "azurerm_windows_web_app" "this" {
-  name                = var.name
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  service_plan_id     = var.service_plan_id
+  name                            = var.name
+  location                        = var.location
+  resource_group_name             = var.resource_group_name
+  service_plan_id                 = var.service_plan_id
+  key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   https_only = true
 
