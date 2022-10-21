@@ -35,6 +35,7 @@ No modules.
 | <a name="input_acr_managed_identity_client_id"></a> [acr\_managed\_identity\_client\_id](#input\_acr\_managed\_identity\_client\_id) | The client ID of the Managed Identity that will be used to pull from the Container Registry. | `string` | `null` | no |
 | <a name="input_auth_settings_enabled"></a> [auth\_settings\_enabled](#input\_auth\_settings\_enabled) | Should the built-in authentication settings be enabled for this Linux Web App? | `bool` | `true` | no |
 | <a name="input_custom_hostnames"></a> [custom\_hostnames](#input\_custom\_hostnames) | A list of custom hostnames to bind to this Linux Web App. | `list(string)` | `[]` | no |
+| <a name="input_key_vault_reference_identity_id"></a> [key\_vault\_reference\_identity\_id](#input\_key\_vault\_reference\_identity\_id) | The ID of the Managed Identity that will be used to fetch app settings sourced from Key Vault. | `string` | `null` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |
 | <a name="input_managed_identity_ids"></a> [managed\_identity\_ids](#input\_managed\_identity\_ids) | The IDs of the Managed Identities to assign to this Linux Web App. | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of this Linux Web App. | `string` | `null` | no |

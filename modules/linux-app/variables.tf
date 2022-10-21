@@ -38,6 +38,12 @@ variable "aad_client_secret_setting_name" {
   nullable    = false
 }
 
+variable "key_vault_reference_identity_id" {
+  description = "The ID of the Managed Identity that will be used to fetch app settings sourced from Key Vault."
+  type        = string
+  default     = null
+}
+
 variable "acr_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
