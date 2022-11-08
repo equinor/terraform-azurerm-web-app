@@ -27,36 +27,23 @@ module "log_analytics" {
   location            = azurerm_resource_group.this.location
 }
 
-module "acr" {
-  source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
-
-  application                = random_id.this.hex
-  environment                = "test"
-  location                   = azurerm_resource_group.this.location
-  resource_group_name        = azurerm_resource_group.this.name
-  managed_identity_operators = [data.azurerm_client_config.current.object_id]
-}
-
 module "web_app" {
   source = "../.."
 
   service_plan_name   = "plan-${random_id.this.hex}"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
+  os_type             = "Windows"
 
   apps = {
     "api" = {
-      name                           = "app-${random_id.this.hex}-api"
-      aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
-      acr_managed_identity_client_id = module.acr.managed_identity_client_id
-      managed_identity_ids           = [module.acr.managed_identity_id]
+      name          = "app-${random_id.this.hex}-api"
+      aad_client_id = "1817f53f-93a7-475b-8a7f-94f0d3f94713"
     }
 
     "web" = {
-      name                           = "app-${random_id.this.hex}-web"
-      aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
-      acr_managed_identity_client_id = module.acr.managed_identity_client_id
-      managed_identity_ids           = [module.acr.managed_identity_id]
+      name          = "app-${random_id.this.hex}-web"
+      aad_client_id = "1817f53f-93a7-475b-8a7f-94f0d3f94713"
     }
   }
 }

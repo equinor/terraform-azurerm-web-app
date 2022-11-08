@@ -1,96 +1,51 @@
+locals {
+  apps = merge(module.windows_app, module.linux_app)
+}
+
 module "service_plan" {
   source = "./modules/service-plan"
 
   name                = var.service_plan_name
   resource_group_name = var.resource_group_name
   location            = var.location
+  os_type             = var.os_type
   sku_name            = var.sku_name
 
   tags = var.tags
 }
 
-resource "azurerm_linux_web_app" "this" {
-  name                = var.app_name
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  service_plan_id     = module.service_plan.id
+module "linux_app" {
+  for_each = var.os_type == "Linux" ? var.apps : {}
 
-  https_only = true
+  source = "./modules/linux-app"
 
-  # App settings should be configured during deployment
-  app_settings = null
-
-  tags = var.tags
-
-  auth_settings {
-    enabled             = var.auth_settings_enabled
-    token_store_enabled = true
-
-    active_directory {
-      client_id                  = var.aad_client_id
-      client_secret_setting_name = var.aad_client_secret_setting_name
-    }
-  }
-
-  site_config {
-    container_registry_use_managed_identity       = var.acr_managed_identity_client_id != null ? true : false
-    container_registry_managed_identity_client_id = var.acr_managed_identity_client_id
-  }
-
-  identity {
-    type         = length(var.managed_identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
-    identity_ids = var.managed_identity_ids
-  }
+  name                           = each.value.name
+  resource_group_name            = var.resource_group_name
+  location                       = var.location
+  service_plan_id                = module.service_plan.id
+  auth_settings_enabled          = each.value.auth_settings_enabled
+  aad_client_id                  = each.value.aad_client_id
+  aad_client_secret_setting_name = each.value.aad_client_secret_setting_name
+  acr_managed_identity_client_id = each.value.acr_managed_identity_client_id
+  managed_identity_ids           = each.value.managed_identity_ids
+  custom_hostnames               = each.value.custom_hostnames
+  tags                           = var.tags
 }
 
-# Add diagnostic setting to record audit logs for this Web App
-resource "azurerm_monitor_diagnostic_setting" "this" {
-  name                       = "audit-logs"
-  target_resource_id         = azurerm_linux_web_app.this.id
-  log_analytics_workspace_id = var.log_analytics_workspace_id
+module "windows_app" {
+  for_each = var.os_type == "Windows" ? var.apps : {}
 
-  log {
-    category = "AppServiceAuditLogs"
-    enabled  = true
+  source = "./modules/windows-app"
 
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
-  }
-
-  metric {
-    category = "AllMetrics"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
-  }
-}
-
-# Create a custom hostname binding for each custom hostname
-resource "azurerm_app_service_custom_hostname_binding" "this" {
-  for_each = toset(var.custom_hostnames)
-
-  hostname            = each.value
-  app_service_name    = azurerm_linux_web_app.this.name
-  resource_group_name = var.resource_group_name
-}
-
-# Create a managed certificate for each custom hostname binding
-resource "azurerm_app_service_managed_certificate" "this" {
-  for_each = azurerm_app_service_custom_hostname_binding.this
-
-  custom_hostname_binding_id = each.value.id
-}
-
-# Create a certificate binding for each managed certificate
-resource "azurerm_app_service_certificate_binding" "this" {
-  for_each = azurerm_app_service_managed_certificate.this
-
-  hostname_binding_id = each.value.custom_hostname_binding_id
-  certificate_id      = each.value.id
-  ssl_state           = "SniEnabled"
+  name                           = each.value.name
+  resource_group_name            = var.resource_group_name
+  location                       = var.location
+  service_plan_id                = module.service_plan.id
+  auth_settings_enabled          = each.value.auth_settings_enabled
+  aad_client_id                  = each.value.aad_client_id
+  aad_client_secret_setting_name = each.value.aad_client_secret_setting_name
+  acr_managed_identity_client_id = each.value.acr_managed_identity_client_id
+  managed_identity_ids           = each.value.managed_identity_ids
+  custom_hostnames               = each.value.custom_hostnames
+  tags                           = var.tags
 }

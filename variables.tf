@@ -1,7 +1,6 @@
-variable "app_name" {
-  description = "The name of this Web App."
+variable "service_plan_name" {
+  description = "The name of this Web App service plan."
   type        = string
-  default     = null
 }
 
 variable "resource_group_name" {
@@ -14,9 +13,10 @@ variable "location" {
   type        = string
 }
 
-variable "service_plan_name" {
-  description = "The name of this Web App service plan."
+variable "os_type" {
+  description = "The OS type for the apps to be hosted on this Web App service plan."
   type        = string
+  default     = "Linux"
 }
 
 variable "sku_name" {
@@ -25,44 +25,19 @@ variable "sku_name" {
   default     = "B1"
 }
 
-variable "auth_settings_enabled" {
-  description = "Should authentication be enabled for this Web App?"
-  type        = bool
-  default     = true
-}
-
-variable "aad_client_id" {
-  description = "The client ID of the App Registration to use for Azure AD authentication."
-  type        = string
-}
-
-variable "aad_client_secret_setting_name" {
-  description = "The name of the app setting that contains the client secret of the App Registration to use for Azure AD authentication."
-  type        = string
-  default     = "AAD_CLIENT_SECRET"
-}
-
-variable "acr_managed_identity_client_id" {
-  description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
-  type        = string
-  default     = null
-}
-
-variable "managed_identity_ids" {
-  description = "The IDs of the Managed Identities to assign to this Web App."
-  type        = list(string)
-  default     = []
-}
-
-variable "log_analytics_workspace_id" {
-  description = "The ID of this Log Analytics Workspace."
-  type        = string
-}
-
-variable "custom_hostnames" {
-  description = "A list of custom hostnames to bind to this Web App."
-  type        = list(string)
-  default     = []
+variable "apps" {
+  description = "A map of identifier => Linux/Windows Web App objects"
+  type = map(object({
+    name                            = string
+    auth_settings_enabled           = optional(bool)
+    aad_client_id                   = string
+    aad_client_secret_setting_name  = optional(string)
+    key_vault_reference_identity_id = optional(string)
+    acr_managed_identity_client_id  = optional(string)
+    managed_identity_ids            = optional(list(string))
+    custom_hostnames                = optional(list(string))
+  }))
+  default = {}
 }
 
 variable "tags" {
