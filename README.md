@@ -32,6 +32,7 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_apps"></a> [apps](#input\_apps) | A map of identifier => Linux/Windows Web App objects | <pre>map(object({<br>    name                            = string<br>    auth_settings_enabled           = optional(bool)<br>    aad_client_id                   = string<br>    aad_client_secret_setting_name  = optional(string)<br>    key_vault_reference_identity_id = optional(string)<br>    acr_managed_identity_client_id  = optional(string)<br>    managed_identity_ids            = optional(list(string))<br>    custom_hostnames                = optional(list(string))<br>  }))</pre> | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |
+| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics workspace to send diagnostics to. | `string` | n/a | yes |
 | <a name="input_os_type"></a> [os\_type](#input\_os\_type) | The OS type for the apps to be hosted on this Web App service plan. | `string` | `"Linux"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to create the resources in. | `string` | n/a | yes |
 | <a name="input_service_plan_name"></a> [service\_plan\_name](#input\_service\_plan\_name) | The name of this Web App service plan. | `string` | n/a | yes |
