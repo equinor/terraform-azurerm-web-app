@@ -64,6 +64,11 @@ variable "custom_hostnames" {
   nullable    = false
 }
 
+variable "log_analytics_workspace_id" {
+  description = "The ID of the Log Analytics workspace to send diagnostics to."
+  type        = string
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
