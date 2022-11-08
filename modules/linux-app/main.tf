@@ -36,10 +36,6 @@ resource "azurerm_linux_web_app" "this" {
     detailed_error_messages = false
     failed_request_tracing  = false
 
-    application_logs {
-      file_system_level = "Off"
-    }
-
     http_logs {
       file_system {
         retention_in_mb   = 35
