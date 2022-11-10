@@ -30,10 +30,11 @@ module "log_analytics" {
 module "web_app" {
   source = "../.."
 
-  service_plan_name   = "plan-${random_id.this.hex}"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
-  os_type             = "Windows"
+  service_plan_name          = "plan-${random_id.this.hex}"
+  location                   = azurerm_resource_group.this.location
+  resource_group_name        = azurerm_resource_group.this.name
+  os_type                    = "Windows"
+  log_analytics_workspace_id = module.log_analytics.workspace_id
 
   apps = {
     "api" = {

@@ -32,6 +32,18 @@ resource "azurerm_linux_web_app" "this" {
     identity_ids = var.managed_identity_ids
   }
 
+  logs {
+    detailed_error_messages = false
+    failed_request_tracing  = false
+
+    http_logs {
+      file_system {
+        retention_in_mb   = 35
+        retention_in_days = 0
+      }
+    }
+  }
+
   lifecycle {
     ignore_changes = [
       # Allow app settings to be configured outside of Terraform.
@@ -63,4 +75,80 @@ resource "azurerm_app_service_certificate_binding" "this" {
   hostname_binding_id = each.value.custom_hostname_binding_id
   certificate_id      = each.value.id
   ssl_state           = "SniEnabled"
+}
+
+resource "azurerm_monitor_diagnostic_setting" "this" {
+  name                       = "audit-logs"
+  target_resource_id         = azurerm_linux_web_app.this.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  log {
+    category = "AppServiceHTTPLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  log {
+    category = "AppServiceConsoleLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  log {
+    category = "AppServiceAppLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  log {
+    category = "AppServiceAuditLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  log {
+    category = "AppServiceIPSecAuditLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  log {
+    category = "AppServicePlatformLogs"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
+
+  metric {
+    category = "AllMetrics"
+    enabled  = true
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
 }
