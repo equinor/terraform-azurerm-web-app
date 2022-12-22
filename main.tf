@@ -26,6 +26,7 @@ module "linux_app" {
   auth_settings_enabled          = each.value.auth_settings_enabled
   aad_client_id                  = each.value.aad_client_id
   aad_client_secret_setting_name = each.value.aad_client_secret_setting_name
+  websockets_enabled             = each.value.websockets_enabled
   acr_managed_identity_client_id = each.value.acr_managed_identity_client_id
   managed_identity_ids           = each.value.managed_identity_ids
   custom_hostnames               = each.value.custom_hostnames
@@ -45,6 +46,7 @@ module "windows_app" {
   auth_settings_enabled          = each.value.auth_settings_enabled
   aad_client_id                  = each.value.aad_client_id
   aad_client_secret_setting_name = each.value.aad_client_secret_setting_name
+  websockets_enabled             = each.value.websockets_enabled
   acr_managed_identity_client_id = each.value.acr_managed_identity_client_id
   managed_identity_ids           = each.value.managed_identity_ids
   custom_hostnames               = each.value.custom_hostnames
