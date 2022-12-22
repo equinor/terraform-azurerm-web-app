@@ -45,7 +45,7 @@ variable "key_vault_reference_identity_id" {
 }
 
 variable "websockets_enabled" {
-  description = "Should web sockets be enabled for this Linux Web App?"
+  description = "Should web sockets be enabled for this Windows Web App?"
   type        = bool
   default     = false
   nullable    = false
