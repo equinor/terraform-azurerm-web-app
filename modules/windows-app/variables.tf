@@ -44,6 +44,13 @@ variable "key_vault_reference_identity_id" {
   default     = null
 }
 
+variable "websockets_enabled" {
+  description = "Should web sockets be enabled for this Windows Web App?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "acr_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string

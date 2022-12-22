@@ -23,6 +23,7 @@ resource "azurerm_windows_web_app" "this" {
   }
 
   site_config {
+    websockets_enabled                            = var.websockets_enabled
     container_registry_use_managed_identity       = var.acr_managed_identity_client_id != null ? true : false
     container_registry_managed_identity_client_id = var.acr_managed_identity_client_id
   }

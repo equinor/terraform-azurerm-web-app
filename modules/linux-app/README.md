@@ -44,6 +44,7 @@ No modules.
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group to create the resources in. | `string` | n/a | yes |
 | <a name="input_service_plan_id"></a> [service\_plan\_id](#input\_service\_plan\_id) | The ID of the service plan to create this Linux Web App for. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to assign to the resources. | `map(string)` | `{}` | no |
+| <a name="input_websockets_enabled"></a> [websockets\_enabled](#input\_websockets\_enabled) | Should web sockets be enabled for this Linux Web App? | `bool` | `false` | no |
 
 ## Outputs
 
