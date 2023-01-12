@@ -22,7 +22,7 @@ module "app" {
   auth_settings_active_directory                = var.auth_settings_active_directory
   websockets_enabled                            = var.websockets_enabled
   container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
-  identity_ids                                  = var.identity_ids
+  identity                                      = var.identity
   custom_hostnames                              = var.custom_hostnames
   log_analytics_workspace_id                    = var.log_analytics_workspace_id
   tags                                          = var.tags

@@ -70,10 +70,15 @@ variable "container_registry_managed_identity_client_id" {
   default     = null
 }
 
-variable "identity_ids" {
-  description = "The IDs of the Managed Identities to assign to this Web App."
-  type        = list(string)
-  default     = []
+variable "identity" {
+  description = "The identity or identities to configure for this Web App."
+
+  type = object({
+    type         = string
+    identity_ids = optional(list(string), [])
+  })
+
+  default = null
 }
 
 variable "custom_hostnames" {
