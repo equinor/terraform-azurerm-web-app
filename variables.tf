@@ -64,13 +64,13 @@ variable "websockets_enabled" {
   default     = false
 }
 
-variable "acr_managed_identity_client_id" {
+variable "container_registry_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
   default     = null
 }
 
-variable "managed_identity_ids" {
+variable "identity_ids" {
   description = "The IDs of the Managed Identities to assign to this Web App."
   type        = list(string)
   default     = []
