@@ -1,5 +1,5 @@
 variable "name" {
-  description = "The name of this Windows Web App."
+  description = "The name of this Web App."
   type        = string
   default     = null
 }
@@ -14,13 +14,24 @@ variable "location" {
   type        = string
 }
 
+variable "kind" {
+  description = "The kind of Web App to create."
+  type        = string
+  default     = "Linux"
+
+  validation {
+    condition     = contains(["Linux", "Windows"], var.kind)
+    error_message = "Kind must be \"Linux\" or \"Windows\"."
+  }
+}
+
 variable "service_plan_id" {
-  description = "The ID of the service plan to create this Windows Web App for."
+  description = "The ID of the service plan to create this Web App for."
   type        = string
 }
 
 variable "auth_settings_enabled" {
-  description = "Should the built-in authentication settings be enabled for this Windows Web App?"
+  description = "Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
   default     = true
   nullable    = false
@@ -45,7 +56,7 @@ variable "key_vault_reference_identity_id" {
 }
 
 variable "websockets_enabled" {
-  description = "Should web sockets be enabled for this Windows Web App?"
+  description = "Should web sockets be enabled for this Web App?"
   type        = bool
   default     = false
   nullable    = false
@@ -58,14 +69,14 @@ variable "acr_managed_identity_client_id" {
 }
 
 variable "managed_identity_ids" {
-  description = "The IDs of the Managed Identities to assign to this Windows Web App."
+  description = "The IDs of the Managed Identities to assign to this Web App."
   type        = list(string)
   default     = []
   nullable    = false
 }
 
 variable "custom_hostnames" {
-  description = "A list of custom hostnames to bind to this Windows Web App."
+  description = "A list of custom hostnames to bind to this Web App."
   type        = list(string)
   default     = []
   nullable    = false
