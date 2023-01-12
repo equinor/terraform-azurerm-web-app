@@ -35,15 +35,15 @@ variable "auth_settings_enabled" {
   default     = true
 }
 
-variable "aad_client_id" {
-  description = "The client ID of the App Registration to use for Azure AD authentication."
-  type        = string
-}
+variable "auth_settings_active_directory" {
+  description = "A list of authentication settings using the Active Directory provider to configure for this web app."
 
-variable "aad_client_secret_setting_name" {
-  description = "The name of the app setting that should contain the client secret to use for Azure AD authentication."
-  type        = string
-  default     = "AAD_CLIENT_SECRET"
+  type = list(object({
+    client_id                  = string
+    client_secret_setting_name = optional(string, "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET")
+  }))
+
+  default = []
 }
 
 variable "key_vault_reference_identity_id" {

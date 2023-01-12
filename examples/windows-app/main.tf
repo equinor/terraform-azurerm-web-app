@@ -36,6 +36,4 @@ module "web_app" {
   resource_group_name        = azurerm_resource_group.this.name
   kind                       = "Windows"
   log_analytics_workspace_id = module.log_analytics.workspace_id
-  aad_client_id              = "1817f53f-93a7-475b-8a7f-94f0d3f94713"
-
 }

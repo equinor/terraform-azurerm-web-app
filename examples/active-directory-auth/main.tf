@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "this" {
 }
 
 module "log_analytics" {
-  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.1.1"
+  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.2.0"
 
   workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
@@ -31,8 +31,14 @@ module "web_app" {
   source = "../.."
 
   app_name                   = "app-${random_id.this.hex}"
-  service_plan_name          = "plan-${random_id.this.hex}"
-  location                   = azurerm_resource_group.this.location
   resource_group_name        = azurerm_resource_group.this.name
+  location                   = azurerm_resource_group.this.location
+  service_plan_name          = "plan-${random_id.this.hex}"
   log_analytics_workspace_id = module.log_analytics.workspace_id
+
+  auth_settings_active_directory = [
+    {
+      client_id = "00000000-0000-0000-0000-000000000000"
+    }
+  ]
 }
