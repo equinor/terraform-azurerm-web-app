@@ -40,7 +40,7 @@ module "acr" {
 module "web_app" {
   source = "../.."
 
-  app_name                       = "app-${random_id.this.hex}-api"
+  app_name                       = "app-${random_id.this.hex}"
   service_plan_name              = "plan-${random_id.this.hex}"
   location                       = azurerm_resource_group.this.location
   resource_group_name            = azurerm_resource_group.this.name
