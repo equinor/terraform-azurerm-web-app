@@ -45,6 +45,7 @@ module "web_app" {
   location                                      = azurerm_resource_group.this.location
   resource_group_name                           = azurerm_resource_group.this.name
   log_analytics_workspace_id                    = module.log_analytics.workspace_id
+  container_registry_use_managed_identity       = true
   container_registry_managed_identity_client_id = module.acr.managed_identity_client_id
 
   identity = {

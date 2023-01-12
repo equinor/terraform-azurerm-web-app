@@ -21,6 +21,7 @@ module "app" {
   auth_settings_enabled                         = var.auth_settings_enabled
   auth_settings_active_directory                = var.auth_settings_active_directory
   websockets_enabled                            = var.websockets_enabled
+  container_registry_use_managed_identity       = var.container_registry_use_managed_identity
   container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
   identity                                      = var.identity
   custom_hostnames                              = var.custom_hostnames
