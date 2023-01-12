@@ -1,7 +1,6 @@
 variable "name" {
   description = "The name of this Web App."
   type        = string
-  default     = null
 }
 
 variable "resource_group_name" {
@@ -34,7 +33,6 @@ variable "auth_settings_enabled" {
   description = "Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
   default     = true
-  nullable    = false
 }
 
 variable "aad_client_id" {
@@ -46,7 +44,6 @@ variable "aad_client_secret_setting_name" {
   description = "The name of the app setting that should contain the client secret to use for Azure AD authentication."
   type        = string
   default     = "AAD_CLIENT_SECRET"
-  nullable    = false
 }
 
 variable "key_vault_reference_identity_id" {
@@ -59,7 +56,6 @@ variable "websockets_enabled" {
   description = "Should web sockets be enabled for this Web App?"
   type        = bool
   default     = false
-  nullable    = false
 }
 
 variable "acr_managed_identity_client_id" {
@@ -72,14 +68,12 @@ variable "managed_identity_ids" {
   description = "The IDs of the Managed Identities to assign to this Web App."
   type        = list(string)
   default     = []
-  nullable    = false
 }
 
 variable "custom_hostnames" {
   description = "A list of custom hostnames to bind to this Web App."
   type        = list(string)
   default     = []
-  nullable    = false
 }
 
 variable "log_analytics_workspace_id" {

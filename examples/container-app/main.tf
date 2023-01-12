@@ -40,24 +40,12 @@ module "acr" {
 module "web_app" {
   source = "../.."
 
-  service_plan_name          = "plan-${random_id.this.hex}"
-  location                   = azurerm_resource_group.this.location
-  resource_group_name        = azurerm_resource_group.this.name
-  log_analytics_workspace_id = module.log_analytics.workspace_id
-
-  apps = {
-    "api" = {
-      name                           = "app-${random_id.this.hex}-api"
-      aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
-      acr_managed_identity_client_id = module.acr.managed_identity_client_id
-      managed_identity_ids           = [module.acr.managed_identity_id]
-    }
-
-    "web" = {
-      name                           = "app-${random_id.this.hex}-web"
-      aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
-      acr_managed_identity_client_id = module.acr.managed_identity_client_id
-      managed_identity_ids           = [module.acr.managed_identity_id]
-    }
-  }
+  app_name                       = "app-${random_id.this.hex}"
+  service_plan_name              = "plan-${random_id.this.hex}"
+  location                       = azurerm_resource_group.this.location
+  resource_group_name            = azurerm_resource_group.this.name
+  log_analytics_workspace_id     = module.log_analytics.workspace_id
+  aad_client_id                  = "8487f986-ba7b-47df-bbd8-b657a6d737e5"
+  acr_managed_identity_client_id = module.acr.managed_identity_client_id
+  managed_identity_ids           = [module.acr.managed_identity_id]
 }

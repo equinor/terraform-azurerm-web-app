@@ -1,5 +1,5 @@
-variable "service_plan_name" {
-  description = "The name of this Web App service plan."
+variable "app_name" {
+  description = "The name of this Web App."
   type        = string
 }
 
@@ -13,10 +13,20 @@ variable "location" {
   type        = string
 }
 
-variable "os_type" {
-  description = "The OS type for the apps to be hosted on this Web App service plan."
+variable "kind" {
+  description = "The kind of Web App to create."
   type        = string
   default     = "Linux"
+
+  validation {
+    condition     = contains(["Linux", "Windows"], var.kind)
+    error_message = "Kind must be \"Linux\" or \"Windows\"."
+  }
+}
+
+variable "service_plan_name" {
+  description = "The name of this Web App service plan."
+  type        = string
 }
 
 variable "sku_name" {
@@ -25,20 +35,51 @@ variable "sku_name" {
   default     = "B1"
 }
 
-variable "apps" {
-  description = "A map of identifier => Linux/Windows Web App objects"
-  type = map(object({
-    name                            = string
-    auth_settings_enabled           = optional(bool)
-    aad_client_id                   = string
-    aad_client_secret_setting_name  = optional(string)
-    key_vault_reference_identity_id = optional(string)
-    websockets_enabled              = optional(bool)
-    acr_managed_identity_client_id  = optional(string)
-    managed_identity_ids            = optional(list(string))
-    custom_hostnames                = optional(list(string))
-  }))
-  default = {}
+variable "auth_settings_enabled" {
+  description = "Should the built-in authentication settings be enabled for this Web App?"
+  type        = bool
+  default     = true
+}
+
+variable "aad_client_id" {
+  description = "The client ID of the App Registration to use for Azure AD authentication."
+  type        = string
+}
+
+variable "aad_client_secret_setting_name" {
+  description = "The name of the app setting that should contain the client secret to use for Azure AD authentication."
+  type        = string
+  default     = "AAD_CLIENT_SECRET"
+}
+
+variable "key_vault_reference_identity_id" {
+  description = "The ID of the Managed Identity that will be used to fetch app settings sourced from Key Vault."
+  type        = string
+  default     = null
+}
+
+variable "websockets_enabled" {
+  description = "Should web sockets be enabled for this Web App?"
+  type        = bool
+  default     = false
+}
+
+variable "acr_managed_identity_client_id" {
+  description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
+  type        = string
+  default     = null
+}
+
+variable "managed_identity_ids" {
+  description = "The IDs of the Managed Identities to assign to this Web App."
+  type        = list(string)
+  default     = []
+}
+
+variable "custom_hostnames" {
+  description = "A list of custom hostnames to bind to this Web App."
+  type        = list(string)
+  default     = []
 }
 
 variable "log_analytics_workspace_id" {
