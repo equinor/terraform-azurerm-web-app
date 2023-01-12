@@ -19,8 +19,7 @@ module "app" {
   kind                           = var.kind
   service_plan_id                = module.service_plan.id
   auth_settings_enabled          = var.auth_settings_enabled
-  aad_client_id                  = var.aad_client_id
-  aad_client_secret_setting_name = var.aad_client_secret_setting_name
+  auth_settings_active_directory = var.auth_settings_active_directory
   websockets_enabled             = var.websockets_enabled
   acr_managed_identity_client_id = var.acr_managed_identity_client_id
   managed_identity_ids           = var.managed_identity_ids
