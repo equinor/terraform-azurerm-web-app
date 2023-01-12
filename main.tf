@@ -8,11 +8,6 @@ resource "azurerm_service_plan" "this" {
   tags = var.tags
 }
 
-moved {
-  from = module.service_plan.azurerm_service_plan.this
-  to   = azurerm_service_plan.this
-}
-
 module "app" {
   source = "./modules/app"
 
