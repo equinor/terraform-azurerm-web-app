@@ -58,6 +58,12 @@ variable "websockets_enabled" {
   default     = false
 }
 
+variable "container_registry_use_managed_identity" {
+  description = "Should connections to Container Registry use Managed Identity?"
+  type        = bool
+  default     = false
+}
+
 variable "container_registry_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string

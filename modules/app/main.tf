@@ -36,7 +36,7 @@ resource "azurerm_linux_web_app" "this" {
 
   site_config {
     websockets_enabled                            = var.websockets_enabled
-    container_registry_use_managed_identity       = var.container_registry_managed_identity_client_id != null ? true : false
+    container_registry_use_managed_identity       = var.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
   }
 
@@ -98,13 +98,13 @@ resource "azurerm_windows_web_app" "this" {
 
   site_config {
     websockets_enabled                            = var.websockets_enabled
-    container_registry_use_managed_identity       = var.acr_managed_identity_client_id != null ? true : false
-    container_registry_managed_identity_client_id = var.acr_managed_identity_client_id
+    container_registry_use_managed_identity       = var.container_registry_use_managed_identity
+    container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
   }
 
   identity {
-    type         = length(var.managed_identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
-    identity_ids = var.managed_identity_ids
+    type         = length(var.identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
+    identity_ids = var.identity_ids
   }
 
   logs {
