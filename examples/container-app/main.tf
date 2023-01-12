@@ -40,11 +40,16 @@ module "acr" {
 module "web_app" {
   source = "../.."
 
-  app_name                       = "app-${random_id.this.hex}"
-  service_plan_name              = "plan-${random_id.this.hex}"
-  location                       = azurerm_resource_group.this.location
-  resource_group_name            = azurerm_resource_group.this.name
-  log_analytics_workspace_id     = module.log_analytics.workspace_id
-  acr_managed_identity_client_id = module.acr.managed_identity_client_id
-  managed_identity_ids           = [module.acr.managed_identity_id]
+  app_name                                      = "app-${random_id.this.hex}"
+  service_plan_name                             = "plan-${random_id.this.hex}"
+  location                                      = azurerm_resource_group.this.location
+  resource_group_name                           = azurerm_resource_group.this.name
+  log_analytics_workspace_id                    = module.log_analytics.workspace_id
+  container_registry_use_managed_identity       = true
+  container_registry_managed_identity_client_id = module.acr.managed_identity_client_id
+
+  identity = {
+    type         = "UserAssigned"
+    identity_ids = [module.acr.managed_identity_id]
+  }
 }
