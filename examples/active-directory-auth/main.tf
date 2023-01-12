@@ -36,7 +36,9 @@ module "web_app" {
   service_plan_name          = "plan-${random_id.this.hex}"
   log_analytics_workspace_id = module.log_analytics.workspace_id
 
-  auth_settings_active_directory = [{
-    client_id = "00000000-0000-0000-0000-000000000000"
-  }]
+  auth_settings_active_directory = [
+    {
+      client_id = "00000000-0000-0000-0000-000000000000"
+    }
+  ]
 }
