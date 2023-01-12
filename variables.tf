@@ -64,16 +64,27 @@ variable "websockets_enabled" {
   default     = false
 }
 
-variable "acr_managed_identity_client_id" {
+variable "container_registry_use_managed_identity" {
+  description = "Should connections to Container Registry use Managed Identity?"
+  type        = bool
+  default     = false
+}
+
+variable "container_registry_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
   default     = null
 }
 
-variable "managed_identity_ids" {
-  description = "The IDs of the Managed Identities to assign to this Web App."
-  type        = list(string)
-  default     = []
+variable "identity" {
+  description = "The identity or identities to configure for this Web App."
+
+  type = object({
+    type         = string
+    identity_ids = optional(list(string), [])
+  })
+
+  default = null
 }
 
 variable "custom_hostnames" {
