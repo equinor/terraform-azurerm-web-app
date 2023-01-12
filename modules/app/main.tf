@@ -28,8 +28,8 @@ resource "azurerm_linux_web_app" "this" {
       for_each = var.auth_settings_active_directory
 
       content {
-        client_id                  = each.value["client_id"]
-        client_secret_setting_name = each.value["client_secret_setting_name"]
+        client_id                  = active_directory.value["client_id"]
+        client_secret_setting_name = active_directory.value["client_secret_setting_name"]
       }
     }
   }
@@ -90,8 +90,8 @@ resource "azurerm_windows_web_app" "this" {
       for_each = var.auth_settings_active_directory
 
       content {
-        client_id                  = each.value["client_id"]
-        client_secret_setting_name = each.value["client_secret_setting_name"]
+        client_id                  = active_directory.value["client_id"]
+        client_secret_setting_name = active_directory.value["client_secret_setting_name"]
       }
     }
   }
