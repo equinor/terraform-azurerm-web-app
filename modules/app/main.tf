@@ -9,7 +9,7 @@ resource "azurerm_linux_web_app" "this" {
   name                            = var.name
   location                        = var.location
   resource_group_name             = var.resource_group_name
-  service_plan_id                 = var.service_plan_id
+  service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   # HTTPS enforced by Equinor policy
@@ -71,7 +71,7 @@ resource "azurerm_windows_web_app" "this" {
   name                            = var.name
   location                        = var.location
   resource_group_name             = var.resource_group_name
-  service_plan_id                 = var.service_plan_id
+  service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   # HTTPS enforced by Equinor policy
