@@ -35,5 +35,4 @@ module "web_app" {
   location                   = azurerm_resource_group.this.location
   resource_group_name        = azurerm_resource_group.this.name
   log_analytics_workspace_id = module.log_analytics.workspace_id
-  aad_client_id              = "fe94e238-69a9-4633-94d0-c7f56dea76e8"
 }
