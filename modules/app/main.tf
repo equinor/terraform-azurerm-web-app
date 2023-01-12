@@ -40,9 +40,13 @@ resource "azurerm_linux_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
   }
 
-  identity {
-    type         = length(var.identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
-    identity_ids = var.identity_ids
+  dynamic "identity" {
+    for_each = var.identity != null ? [var.identity] : []
+
+    content {
+      type         = identity.value["type"]
+      identity_ids = identity.value["identity_ids"]
+    }
   }
 
   logs {
@@ -102,9 +106,13 @@ resource "azurerm_windows_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
   }
 
-  identity {
-    type         = length(var.identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
-    identity_ids = var.identity_ids
+  dynamic "identity" {
+    for_each = var.identity != null ? [var.identity] : []
+
+    content {
+      type         = identity.value["type"]
+      identity_ids = identity.value["identity_ids"]
+    }
   }
 
   logs {
