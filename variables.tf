@@ -29,6 +29,12 @@ variable "app_service_plan_name" {
   type        = string
 }
 
+variable "app_settings" {
+  description = "A map of app settings for this web app."
+  type        = map(string)
+  default     = {}
+}
+
 variable "sku_name" {
   description = "The SKU name for this service plan."
   type        = string
