@@ -22,6 +22,10 @@ module "app" {
   container_registry_use_managed_identity       = var.container_registry_use_managed_identity
   container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
   identity                                      = var.identity
+  logs_detailed_error_messages                  = var.logs_detailed_error_messages
+  logs_failed_request_tracing                   = var.logs_failed_request_tracing
+  http_logs_file_system_retention_in_mb         = var.http_logs_file_system_retention_in_mb
+  http_logs_file_system_retention_in_days       = var.http_logs_file_system_retention_in_days
   custom_hostnames                              = var.custom_hostnames
   log_analytics_workspace_id                    = var.log_analytics_workspace_id
   tags                                          = var.tags

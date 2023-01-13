@@ -50,13 +50,13 @@ resource "azurerm_linux_web_app" "this" {
   }
 
   logs {
-    detailed_error_messages = false
-    failed_request_tracing  = false
+    detailed_error_messages = var.logs_detailed_error_messages
+    failed_request_tracing  = var.logs_failed_request_tracing
 
     http_logs {
       file_system {
-        retention_in_mb   = 35
-        retention_in_days = 0
+        retention_in_mb   = var.http_logs_file_system_retention_in_mb
+        retention_in_days = var.http_logs_file_system_retention_in_days
       }
     }
   }
@@ -116,13 +116,13 @@ resource "azurerm_windows_web_app" "this" {
   }
 
   logs {
-    detailed_error_messages = false
-    failed_request_tracing  = false
+    detailed_error_messages = var.logs_detailed_error_messages
+    failed_request_tracing  = var.logs_failed_request_tracing
 
     http_logs {
       file_system {
-        retention_in_mb   = 35
-        retention_in_days = 0
+        retention_in_mb   = var.http_logs_file_system_retention_in_mb
+        retention_in_days = var.http_logs_file_system_retention_in_days
       }
     }
   }
