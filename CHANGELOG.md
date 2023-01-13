@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.0.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.0.1...v10.0.2) (2023-01-13)
+
+
+### Reverts
+
+* set app settings ([#70](https://github.com/equinor/terraform-azurerm-web-app/issues/70)) ([19dd357](https://github.com/equinor/terraform-azurerm-web-app/commit/19dd3579f1afce3f8b1548aec6a3c458ae4894ff))
+
 ## [10.0.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.0.0...v10.0.1) (2023-01-13)
 
 
