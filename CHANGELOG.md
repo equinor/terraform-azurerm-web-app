@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.0.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.0.0...v10.0.1) (2023-01-13)
+
+
+### Bug Fixes
+
+* disable auth settings by default ([#68](https://github.com/equinor/terraform-azurerm-web-app/issues/68)) ([7e41565](https://github.com/equinor/terraform-azurerm-web-app/commit/7e41565ffde940b1bb540882df96b7457ebe3adf))
+* output null if identity not configured ([#67](https://github.com/equinor/terraform-azurerm-web-app/issues/67)) ([f741a22](https://github.com/equinor/terraform-azurerm-web-app/commit/f741a220daac309ac522260127feca76a52c7374))
+
 ## [10.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v9.1.1...v10.0.0) (2023-01-13)
 
 
