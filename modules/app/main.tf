@@ -64,6 +64,7 @@ resource "azurerm_linux_web_app" "this" {
   lifecycle {
     ignore_changes = [
       # Allow app settings to be configured outside of Terraform.
+      app_settings
     ]
   }
 }
@@ -129,6 +130,7 @@ resource "azurerm_windows_web_app" "this" {
   lifecycle {
     ignore_changes = [
       # Allow app settings to be configured outside of Terraform.
+      app_settings
     ]
   }
 }
