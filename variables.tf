@@ -93,6 +93,30 @@ variable "identity" {
   default = null
 }
 
+variable "logs_detailed_error_messages" {
+  description = "Should detailed error messages be enabled for logs?"
+  type        = bool
+  default     = false
+}
+
+variable "logs_failed_request_tracing" {
+  description = "Should failed request tracing be enabled for logs?"
+  type        = bool
+  default     = false
+}
+
+variable "http_logs_file_system_retention_in_mb" {
+  description = "The maximum size in megabytes that HTTP logs can use before being deleted from the file system."
+  type        = number
+  default     = 35
+}
+
+variable "http_logs_file_system_retention_in_days" {
+  description = "The retention period in days before HTTP logs are deleted from the file system."
+  type        = number
+  default     = 0
+}
+
 variable "custom_hostnames" {
   description = "A list of custom hostnames to bind to this Web App."
   type        = list(string)
