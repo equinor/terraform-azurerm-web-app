@@ -10,8 +10,10 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = var.app_settings
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
+
+  # App settings should be configured during deployment.
+  app_settings = null
 
   # HTTPS enforced by Equinor policy
   https_only = true
@@ -57,6 +59,12 @@ resource "azurerm_linux_web_app" "this" {
         retention_in_days = 0
       }
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      # Allow app settings to be configured outside of Terraform.
+    ]
   }
 }
 
@@ -67,8 +75,10 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = var.app_settings
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
+
+  # App settings should be configured during deployment.
+  app_settings = null
 
   # HTTPS enforced by Equinor policy
   https_only = true
@@ -114,6 +124,12 @@ resource "azurerm_windows_web_app" "this" {
         retention_in_days = 0
       }
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      # Allow app settings to be configured outside of Terraform.
+    ]
   }
 }
 

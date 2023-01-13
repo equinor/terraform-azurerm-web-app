@@ -37,13 +37,11 @@ module "web_app" {
   auth_settings_enabled      = true
   log_analytics_workspace_id = module.log_analytics.workspace_id
 
-  app_settings = {
-    "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET" = "foobar" # Replace with client secret
-  }
-
   auth_settings_active_directory = [
     {
       client_id = "00000000-0000-0000-0000-000000000000"
     }
   ]
+
+  # Set client secret in app setting "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
 }

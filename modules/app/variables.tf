@@ -29,12 +29,6 @@ variable "app_service_plan_id" {
   type        = string
 }
 
-variable "app_settings" {
-  description = "A map of app settings for this web app."
-  type        = map(string)
-  default     = {}
-}
-
 variable "auth_settings_enabled" {
   description = "Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
