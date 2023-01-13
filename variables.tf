@@ -80,7 +80,7 @@ variable "identity" {
   description = "The identity or identities to configure for this Web App."
 
   type = object({
-    type         = string
+    type         = optional(string, "SystemAssigned")
     identity_ids = optional(list(string), [])
   })
 
