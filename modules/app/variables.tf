@@ -38,7 +38,7 @@ variable "app_settings" {
 variable "auth_settings_enabled" {
   description = "Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "auth_settings_active_directory" {
