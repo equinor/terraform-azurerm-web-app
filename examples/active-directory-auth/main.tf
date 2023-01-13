@@ -36,6 +36,10 @@ module "web_app" {
   app_service_plan_name      = "plan-${random_id.this.hex}"
   log_analytics_workspace_id = module.log_analytics.workspace_id
 
+  app_settings = {
+    "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET" = "foobar" # Replace with client secret
+  }
+
   auth_settings_active_directory = [
     {
       client_id = "00000000-0000-0000-0000-000000000000"

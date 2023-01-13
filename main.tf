@@ -16,6 +16,7 @@ module "app" {
   location                                      = var.location
   kind                                          = var.kind
   app_service_plan_id                           = azurerm_service_plan.this.id
+  app_settings                                  = var.app_settings
   auth_settings_enabled                         = var.auth_settings_enabled
   auth_settings_active_directory                = var.auth_settings_active_directory
   websockets_enabled                            = var.websockets_enabled
