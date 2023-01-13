@@ -1,7 +1,5 @@
-module "service_plan" {
-  source = "./modules/service-plan"
-
-  name                = var.service_plan_name
+resource "azurerm_service_plan" "this" {
+  name                = var.app_service_plan_name
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = var.kind
@@ -17,7 +15,7 @@ module "app" {
   resource_group_name                           = var.resource_group_name
   location                                      = var.location
   kind                                          = var.kind
-  service_plan_id                               = module.service_plan.id
+  app_service_plan_id                           = azurerm_service_plan.this.id
   auth_settings_enabled                         = var.auth_settings_enabled
   auth_settings_active_directory                = var.auth_settings_active_directory
   websockets_enabled                            = var.websockets_enabled

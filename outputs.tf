@@ -1,11 +1,11 @@
-output "service_plan_id" {
-  description = "The ID of this Web App service plan."
-  value       = module.service_plan.id
+output "app_service_plan_id" {
+  description = "The ID of this app service plan."
+  value       = azurerm_service_plan.this.id
 }
 
-output "service_plan_name" {
-  description = "The name of this Web App service plan."
-  value       = module.service_plan.name
+output "app_service_plan_name" {
+  description = "The name of this app service plan."
+  value       = azurerm_service_plan.this.id
 }
 
 output "app_id" {

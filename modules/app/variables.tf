@@ -24,8 +24,8 @@ variable "kind" {
   }
 }
 
-variable "service_plan_id" {
-  description = "The ID of the service plan to create this Web App for."
+variable "app_service_plan_id" {
+  description = "The ID of the app service plan to create this Web App for."
   type        = string
 }
 

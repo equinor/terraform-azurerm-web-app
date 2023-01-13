@@ -33,7 +33,7 @@ module "web_app" {
   app_name                   = "app-${random_id.this.hex}"
   resource_group_name        = azurerm_resource_group.this.name
   location                   = azurerm_resource_group.this.location
-  service_plan_name          = "plan-${random_id.this.hex}"
+  app_service_plan_name      = "plan-${random_id.this.hex}"
   log_analytics_workspace_id = module.log_analytics.workspace_id
 
   auth_settings_active_directory = [
