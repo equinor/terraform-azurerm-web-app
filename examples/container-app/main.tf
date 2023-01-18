@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "this" {
 }
 
 module "log_analytics" {
-  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.1.1"
+  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.2.0"
 
   workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
@@ -28,13 +28,24 @@ module "log_analytics" {
 }
 
 module "acr" {
-  source = "github.com/equinor/terraform-azurerm-acr?ref=v2.0.0"
+  source = "github.com/equinor/terraform-azurerm-acr?ref=v4.3.0"
 
-  application                = random_id.this.hex
-  environment                = "test"
+  registry_name              = "cr${random_id.this.hex}"
   location                   = azurerm_resource_group.this.location
   resource_group_name        = azurerm_resource_group.this.name
-  managed_identity_operators = [data.azurerm_client_config.current.object_id]
+  log_analytics_workspace_id = module.log_analytics.workspace_id
+}
+
+resource "azurerm_user_assigned_identity" "this" {
+  name                = "id-${random_id.this.hex}"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+}
+
+resource "azurerm_role_assignment" "acr_pull" {
+  scope                = module.acr.registry_id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_user_assigned_identity.this.principal_id
 }
 
 module "web_app" {
@@ -46,10 +57,10 @@ module "web_app" {
   resource_group_name                           = azurerm_resource_group.this.name
   log_analytics_workspace_id                    = module.log_analytics.workspace_id
   container_registry_use_managed_identity       = true
-  container_registry_managed_identity_client_id = module.acr.managed_identity_client_id
+  container_registry_managed_identity_client_id = azurerm_user_assigned_identity.this.client_id
 
   identity = {
     type         = "UserAssigned"
-    identity_ids = [module.acr.managed_identity_id]
+    identity_ids = [azurerm_user_assigned_identity.this.id]
   }
 }
