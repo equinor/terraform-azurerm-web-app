@@ -28,5 +28,6 @@ module "app" {
   http_logs_file_system_retention_in_days       = var.http_logs_file_system_retention_in_days
   custom_hostnames                              = var.custom_hostnames
   log_analytics_workspace_id                    = var.log_analytics_workspace_id
+  log_analytics_destination_type                = var.log_analytics_destination_type
   tags                                          = var.tags
 }

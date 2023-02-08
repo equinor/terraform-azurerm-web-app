@@ -165,64 +165,28 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   target_resource_id         = local.web_app.id
   log_analytics_workspace_id = var.log_analytics_workspace_id
 
-  log {
+  enabled_log {
     category = "AppServiceHTTPLogs"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceConsoleLogs"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAppLogs"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceAuditLogs"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServiceIPSecAuditLogs"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
   }
 
-  log {
+  enabled_log {
     category = "AppServicePlatformLogs"
-    enabled  = true
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
   }
 
   metric {
