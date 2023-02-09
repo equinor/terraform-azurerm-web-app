@@ -1,5 +1,18 @@
 # Changelog
 
+## [10.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.0.3...v10.1.0) (2023-02-09)
+
+
+### Features
+
+* set custom https logs values ([#73](https://github.com/equinor/terraform-azurerm-web-app/issues/73)) ([3d1e908](https://github.com/equinor/terraform-azurerm-web-app/commit/3d1e90803831cd2f85ab02677e70eb90403d16a0))
+* set log analytics destination type and update min. provider version ([#81](https://github.com/equinor/terraform-azurerm-web-app/issues/81)) ([de76170](https://github.com/equinor/terraform-azurerm-web-app/commit/de76170d60828dacfbfbf46c779e52aa7444d49c))
+
+
+### Bug Fixes
+
+* set log analytics destination type to null ([#82](https://github.com/equinor/terraform-azurerm-web-app/issues/82)) ([6df59c7](https://github.com/equinor/terraform-azurerm-web-app/commit/6df59c7b3d62c7fe3932179d6b1c9f8cc84807ad))
+
 ## [10.0.3](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.0.2...v10.0.3) (2023-01-13)
 
 
