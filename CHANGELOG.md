@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.1.0...v10.1.1) (2023-02-09)
+
+
+### Bug Fixes
+
+* explicitly disable diagnostic setting retention policy ([#84](https://github.com/equinor/terraform-azurerm-web-app/issues/84)) ([b167797](https://github.com/equinor/terraform-azurerm-web-app/commit/b16779793d27b40abf6254f2aa25c1743ded19b0))
+
 ## [10.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.0.3...v10.1.0) (2023-02-09)
 
 
