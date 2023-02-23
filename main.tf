@@ -29,5 +29,6 @@ module "app" {
   custom_hostnames                              = var.custom_hostnames
   log_analytics_workspace_id                    = var.log_analytics_workspace_id
   log_analytics_destination_type                = var.log_analytics_destination_type
+  diagnostic_setting_enabled_log_categories     = var.diagnostic_setting_enabled_log_categories
   tags                                          = var.tags
 }
