@@ -3,6 +3,8 @@ locals {
   web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_linux_web_app" "this" {
   count = local.is_windows ? 0 : 1
 
@@ -20,16 +22,26 @@ resource "azurerm_linux_web_app" "this" {
 
   tags = var.tags
 
-  auth_settings {
-    enabled             = var.auth_settings_enabled
-    token_store_enabled = true
+  dynamic "auth_settings_v2" {
+    # Only create this block if at least one auth provider is to be configured.
+    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
 
-    dynamic "active_directory" {
-      for_each = var.auth_settings_active_directory
+    content {
+      auth_enabled     = var.auth_settings_enabled
+      default_provider = "azureActiveDirectory"
 
-      content {
-        client_id                  = active_directory.value["client_id"]
-        client_secret_setting_name = active_directory.value["client_secret_setting_name"]
+      login {
+        token_store_enabled = true
+      }
+
+      dynamic "active_directory_v2" {
+        for_each = var.auth_settings_active_directory
+
+        content {
+          tenant_auth_endpoint       = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
+          client_id                  = active_directory_v2.value["client_id"]
+          client_secret_setting_name = active_directory_v2.value["client_secret_setting_name"]
+        }
       }
     }
   }
@@ -86,16 +98,26 @@ resource "azurerm_windows_web_app" "this" {
 
   tags = var.tags
 
-  auth_settings {
-    enabled             = var.auth_settings_enabled
-    token_store_enabled = true
+  dynamic "auth_settings_v2" {
+    # Only create this block if at least one auth provider is to be configured.
+    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
 
-    dynamic "active_directory" {
-      for_each = var.auth_settings_active_directory
+    content {
+      auth_enabled     = var.auth_settings_enabled
+      default_provider = "azureActiveDirectory"
 
-      content {
-        client_id                  = active_directory.value["client_id"]
-        client_secret_setting_name = active_directory.value["client_secret_setting_name"]
+      login {
+        token_store_enabled = true
+      }
+
+      dynamic "active_directory_v2" {
+        for_each = var.auth_settings_active_directory
+
+        content {
+          tenant_auth_endpoint       = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
+          client_id                  = active_directory_v2.value["client_id"]
+          client_secret_setting_name = active_directory_v2.value["client_secret_setting_name"]
+        }
       }
     }
   }
