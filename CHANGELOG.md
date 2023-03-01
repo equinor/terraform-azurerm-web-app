@@ -1,5 +1,18 @@
 # Changelog
 
+## [10.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.1.1...v10.2.0) (2023-03-01)
+
+
+### Features
+
+* migrate to auth settings v2 ([#91](https://github.com/equinor/terraform-azurerm-web-app/issues/91)) ([7760734](https://github.com/equinor/terraform-azurerm-web-app/commit/7760734f755f2dc46daf19cd38a3297d70aff672))
+* set diagnostic setting enabled log categories ([#87](https://github.com/equinor/terraform-azurerm-web-app/issues/87)) ([36d98bf](https://github.com/equinor/terraform-azurerm-web-app/commit/36d98bf386fe82d193dad9bde96995f57d03ed1e))
+
+
+### Bug Fixes
+
+* set diagnostic setting enabled log categories ([#89](https://github.com/equinor/terraform-azurerm-web-app/issues/89)) ([bed6174](https://github.com/equinor/terraform-azurerm-web-app/commit/bed61749e90e4609f373cfa707eba27d48617f77))
+
 ## [10.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.1.0...v10.1.1) (2023-02-09)
 
 
