@@ -36,7 +36,7 @@ variable "sku_name" {
 }
 
 variable "auth_settings_enabled" {
-  description = "Should the built-in authentication settings be enabled for this Web App?"
+  description = "(Deprecated) Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
   default     = false
 }

@@ -22,21 +22,26 @@ resource "azurerm_linux_web_app" "this" {
 
   tags = var.tags
 
-  auth_settings_v2 {
-    auth_enabled     = var.auth_settings_enabled
-    default_provider = "azureActiveDirectory"
+  dynamic "auth_settings_v2" {
+    # Only create this block if at least one auth provider is to be configured.
+    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
 
-    login {
-      token_store_enabled = true
-    }
+    content {
+      auth_enabled     = true
+      default_provider = "azureActiveDirectory"
 
-    dynamic "active_directory_v2" {
-      for_each = var.auth_settings_active_directory
+      login {
+        token_store_enabled = true
+      }
 
-      content {
-        tenant_auth_endpoint       = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
-        client_id                  = active_directory_v2.value["client_id"]
-        client_secret_setting_name = active_directory_v2.value["client_secret_setting_name"]
+      dynamic "active_directory_v2" {
+        for_each = var.auth_settings_active_directory
+
+        content {
+          tenant_auth_endpoint       = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
+          client_id                  = active_directory_v2.value["client_id"]
+          client_secret_setting_name = active_directory_v2.value["client_secret_setting_name"]
+        }
       }
     }
   }
