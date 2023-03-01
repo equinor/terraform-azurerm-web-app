@@ -30,7 +30,7 @@ variable "app_service_plan_id" {
 }
 
 variable "auth_settings_enabled" {
-  description = "(Deprecated) Should the built-in authentication settings be enabled for this Web App?"
+  description = "Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
   default     = false
 }
