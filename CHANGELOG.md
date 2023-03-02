@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.2.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.2.0...v10.2.1) (2023-03-02)
+
+
+### Bug Fixes
+
+* auth settings redirect to blank page ([#92](https://github.com/equinor/terraform-azurerm-web-app/issues/92)) ([1fbd747](https://github.com/equinor/terraform-azurerm-web-app/commit/1fbd74735f3f70725e4017522c5c975f139d38ca))
+
 ## [10.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.1.1...v10.2.0) (2023-03-01)
 
 
