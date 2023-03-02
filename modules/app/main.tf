@@ -22,28 +22,16 @@ resource "azurerm_linux_web_app" "this" {
 
   tags = var.tags
 
-  dynamic "auth_settings_v2" {
-    # Only create this block if at least one auth provider is to be configured.
-    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
+  auth_settings {
+    enabled             = var.auth_settings_enabled
+    token_store_enabled = true
 
-    content {
-      auth_enabled           = var.auth_settings_enabled
-      require_authentication = true
-      runtime_version        = "~2"
-      default_provider       = "azureactivedirectory"
+    dynamic "active_directory" {
+      for_each = var.auth_settings_active_directory
 
-      login {
-        token_store_enabled = false
-      }
-
-      dynamic "active_directory_v2" {
-        for_each = var.auth_settings_active_directory
-
-        content {
-          tenant_auth_endpoint       = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
-          client_id                  = active_directory_v2.value["client_id"]
-          client_secret_setting_name = active_directory_v2.value["client_secret_setting_name"]
-        }
+      content {
+        client_id                  = active_directory.value["client_id"]
+        client_secret_setting_name = active_directory.value["client_secret_setting_name"]
       }
     }
   }
@@ -103,28 +91,16 @@ resource "azurerm_windows_web_app" "this" {
 
   tags = var.tags
 
-  dynamic "auth_settings_v2" {
-    # Only create this block if at least one auth provider is to be configured.
-    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
+  auth_settings {
+    enabled             = var.auth_settings_enabled
+    token_store_enabled = true
 
-    content {
-      auth_enabled           = var.auth_settings_enabled
-      require_authentication = true
-      runtime_version        = "~2"
-      default_provider       = "azureactivedirectory"
+    dynamic "active_directory" {
+      for_each = var.auth_settings_active_directory
 
-      login {
-        token_store_enabled = false
-      }
-
-      dynamic "active_directory_v2" {
-        for_each = var.auth_settings_active_directory
-
-        content {
-          tenant_auth_endpoint       = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
-          client_id                  = active_directory_v2.value["client_id"]
-          client_secret_setting_name = active_directory_v2.value["client_secret_setting_name"]
-        }
+      content {
+        client_id                  = active_directory.value["client_id"]
+        client_secret_setting_name = active_directory.value["client_secret_setting_name"]
       }
     }
   }
