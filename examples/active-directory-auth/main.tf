@@ -43,5 +43,6 @@ module "web_app" {
     }
   ]
 
-  # Set client secret in app setting "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
+  # Store client secret as a slot-sticky app setting named "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET".
+  # Use Key Vault references to managed the secret in Azure Key Vault.
 }
