@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.2.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.2.1...v10.2.2) (2023-03-03)
+
+
+### Reverts
+
+* migrate to auth settings v2 ([#95](https://github.com/equinor/terraform-azurerm-web-app/issues/95)) ([48379cf](https://github.com/equinor/terraform-azurerm-web-app/commit/48379cf5d60035ec0d9caee5699214333b01f8c8))
+
 ## [10.2.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.2.0...v10.2.1) (2023-03-02)
 
 
