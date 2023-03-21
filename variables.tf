@@ -142,6 +142,30 @@ variable "diagnostic_setting_enabled_log_categories" {
   ]
 }
 
+variable "autoscale_enabled" {
+  description = "Specifies whether automatic scaling is enabled for the target resource."
+  type        = bool
+  default     = true
+}
+
+variable "autoscale_profile_capacity_default" {
+  description = "The number of instances that are available for scaling if metrics are not available for evaluation."
+  type        = number
+  default     = 1
+}
+
+variable "autoscale_profile_capacity_minimum" {
+  description = "The minimum number of instances for this resource."
+  type        = number
+  default     = 1
+}
+
+variable "autoscale_profile_capacity_maximum" {
+  description = "The maximum number of instances for this resource."
+  type        = number
+  default     = 10
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
