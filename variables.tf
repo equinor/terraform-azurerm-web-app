@@ -13,6 +13,11 @@ variable "location" {
   type        = string
 }
 
+variable "app_service_plan_id" {
+  description = "The ID of the App Service plan to host this Web App on."
+  type        = string
+}
+
 variable "kind" {
   description = "The kind of Web App to create."
   type        = string
@@ -22,11 +27,6 @@ variable "kind" {
     condition     = contains(["Linux", "Windows"], var.kind)
     error_message = "Kind must be \"Linux\" or \"Windows\"."
   }
-}
-
-variable "app_service_plan_name" {
-  description = "The name of this app service plan."
-  type        = string
 }
 
 variable "sku_name" {
