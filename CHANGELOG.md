@@ -1,5 +1,16 @@
 # Changelog
 
+## [11.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.2.2...v11.0.0) (2023-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* submodule `app` is now main module
+
+### Code Refactoring
+
+* 1-to-1 mapping of modules-to-resources ([#100](https://github.com/equinor/terraform-azurerm-web-app/issues/100)) ([280b731](https://github.com/equinor/terraform-azurerm-web-app/commit/280b73173b6e47b423987f6cecdd08134391519d))
+
 ## [10.2.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.2.1...v10.2.2) (2023-03-03)
 
 
