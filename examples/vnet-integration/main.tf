@@ -37,6 +37,7 @@ module "network" {
     "app" = {
       name             = "snet-app-${random_id.this.hex}"
       address_prefixes = ["10.0.0.0/26"]
+      # Microsoft recommends using a /26 subnet mask when creating a subnet for VNet integration, to avoid any issues with subnet capacity.
 
       delegation = [{
         service_delegation_name    = "Microsoft.Web/serverFarms"
