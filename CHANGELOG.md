@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.0.0...v11.1.0) (2023-04-27)
+
+
+### Features
+
+* configure vnet integration ([#103](https://github.com/equinor/terraform-azurerm-web-app/issues/103)) ([600f5b6](https://github.com/equinor/terraform-azurerm-web-app/commit/600f5b6817db4ab18586b808f6e7550074ece618))
+
 ## [11.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v10.2.2...v11.0.0) (2023-04-20)
 
 
