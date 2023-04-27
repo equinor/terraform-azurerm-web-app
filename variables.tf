@@ -58,6 +58,12 @@ variable "key_vault_reference_identity_id" {
   default     = null
 }
 
+variable "virtual_network_subnet_id" {
+  description = "The ID of the virtual network subnet to configure for this Web App."
+  type        = string
+  default     = null
+}
+
 variable "websockets_enabled" {
   description = "Should web sockets be enabled for this Web App?"
   type        = bool
