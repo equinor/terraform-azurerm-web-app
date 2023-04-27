@@ -13,6 +13,7 @@ resource "azurerm_linux_web_app" "this" {
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
+  virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   # App settings should be configured during deployment.
   app_settings = null
@@ -82,6 +83,7 @@ resource "azurerm_windows_web_app" "this" {
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
+  virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   # App settings should be configured during deployment.
   app_settings = null
