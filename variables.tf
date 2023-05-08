@@ -93,6 +93,12 @@ variable "identity" {
   default = null
 }
 
+variable "application_logs_file_system_level" {
+  description = "The level of application logs to be enabled. Possible values include \"Verbose\", \"Information\", \"Warning\" and \"Error\"."
+  type        = string
+  default     = "Error"
+}
+
 variable "logs_detailed_error_messages" {
   description = "Should detailed error messages be enabled for logs?"
   type        = bool

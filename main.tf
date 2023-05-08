@@ -53,6 +53,10 @@ resource "azurerm_linux_web_app" "this" {
   }
 
   logs {
+    application_logs {
+      file_system_level = var.application_logs_file_system_level
+    }
+
     detailed_error_messages = var.logs_detailed_error_messages
     failed_request_tracing  = var.logs_failed_request_tracing
 
@@ -123,6 +127,10 @@ resource "azurerm_windows_web_app" "this" {
   }
 
   logs {
+    application_logs {
+      file_system_level = var.application_logs_file_system_level
+    }
+
     detailed_error_messages = var.logs_detailed_error_messages
     failed_request_tracing  = var.logs_failed_request_tracing
 
