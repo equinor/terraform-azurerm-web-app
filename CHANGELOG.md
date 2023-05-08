@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.1.0...v11.2.0) (2023-05-08)
+
+
+### Features
+
+* enable application logs ([#105](https://github.com/equinor/terraform-azurerm-web-app/issues/105)) ([7dbe4c8](https://github.com/equinor/terraform-azurerm-web-app/commit/7dbe4c8fda878c2d294d59b47bfbd526a52c103d))
+
 ## [11.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.0.0...v11.1.0) (2023-04-27)
 
 
