@@ -64,6 +64,12 @@ variable "virtual_network_subnet_id" {
   default     = null
 }
 
+variable "vnet_route_all_enabled" {
+  description = "Should all outbound traffic have NAT Gateways, Network Security Groups and User Defined Routes applied?"
+  type        = bool
+  default     = false
+}
+
 variable "websockets_enabled" {
   description = "Should web sockets be enabled for this Web App?"
   type        = bool
