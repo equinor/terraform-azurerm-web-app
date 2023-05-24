@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.3.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.2.0...v11.3.0) (2023-05-24)
+
+
+### Features
+
+* add vnet route all enabled variable ([#107](https://github.com/equinor/terraform-azurerm-web-app/issues/107)) ([80e4de1](https://github.com/equinor/terraform-azurerm-web-app/commit/80e4de11d132cd6272029da5f6abe7221215d981))
+
 ## [11.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.1.0...v11.2.0) (2023-05-08)
 
 
