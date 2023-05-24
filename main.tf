@@ -14,7 +14,6 @@ resource "azurerm_linux_web_app" "this" {
   service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   virtual_network_subnet_id       = var.virtual_network_subnet_id
-  vnet_route_all_enabled          = var.vnet_route_all_enabled
 
   # App settings should be configured during deployment.
   app_settings = null
