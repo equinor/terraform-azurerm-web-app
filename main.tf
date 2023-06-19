@@ -79,7 +79,7 @@ resource "azurerm_linux_web_app" "this" {
 
       # This setting turns itself off after 12 hours.
       # Ignore changes to prevent cycle of turning on/off...
-      application_logs
+      logs[0].application_logs[0]
     ]
   }
 }
@@ -158,7 +158,7 @@ resource "azurerm_windows_web_app" "this" {
 
       # This setting turns itself off after 12 hours.
       # Ignore changes to prevent cycle of turning on/off...
-      application_logs
+      logs[0].application_logs[0]
     ]
   }
 }
