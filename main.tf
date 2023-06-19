@@ -75,7 +75,11 @@ resource "azurerm_linux_web_app" "this" {
       app_settings,
 
       # Allow sticky app settings and connection strings to be configured outside of Terraform.
-      sticky_settings
+      sticky_settings,
+
+      # This setting turns itself off after 12 hours.
+      # Ignore changes to prevent cycle of turning on/off...
+      logs[0].application_logs[0]
     ]
   }
 }
@@ -150,7 +154,11 @@ resource "azurerm_windows_web_app" "this" {
       app_settings,
 
       # Allow sticky app settings and connection strings to be configured outside of Terraform.
-      sticky_settings
+      sticky_settings,
+
+      # This setting turns itself off after 12 hours.
+      # Ignore changes to prevent cycle of turning on/off...
+      logs[0].application_logs[0]
     ]
   }
 }
