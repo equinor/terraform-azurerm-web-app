@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.3.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.3.0...v11.3.1) (2023-06-19)
+
+
+### Bug Fixes
+
+* ignore changes to application logs ([#109](https://github.com/equinor/terraform-azurerm-web-app/issues/109)) ([33bd0b2](https://github.com/equinor/terraform-azurerm-web-app/commit/33bd0b28e44ab6be5340d0a673a665d4c7bc9d39))
+
 ## [11.3.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.2.0...v11.3.0) (2023-05-24)
 
 
