@@ -1,5 +1,16 @@
 # Changelog
 
+## [12.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.3.1...v12.0.0) (2023-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* change variable `custom_hostnames` type
+
+### Features
+
+* specify custom hostname binding type ([#111](https://github.com/equinor/terraform-azurerm-web-app/issues/111)) ([2468472](https://github.com/equinor/terraform-azurerm-web-app/commit/2468472b20a3e8cf0fb21bafbb0240192627716e))
+
 ## [11.3.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.3.0...v11.3.1) (2023-06-19)
 
 
