@@ -1,6 +1,10 @@
 locals {
   is_windows = var.kind == "Windows"
   web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
+
+  custom_hostnames = {
+    for v in var.custom_hostnames : v["hostname"] => v
+  }
 }
 
 data "azurerm_client_config" "current" {}
@@ -163,29 +167,26 @@ resource "azurerm_windows_web_app" "this" {
   }
 }
 
-# Create a custom hostname binding for each custom hostname
 resource "azurerm_app_service_custom_hostname_binding" "this" {
-  for_each = toset(var.custom_hostnames)
+  for_each = local.custom_hostnames
 
-  hostname            = each.value
+  hostname            = each.value["hostname"]
   app_service_name    = local.web_app.name
   resource_group_name = var.resource_group_name
 }
 
-# Create a managed certificate for each custom hostname binding
 resource "azurerm_app_service_managed_certificate" "this" {
-  for_each = azurerm_app_service_custom_hostname_binding.this
+  for_each = local.custom_hostnames
 
-  custom_hostname_binding_id = each.value.id
+  custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.this[each.key].id
 }
 
-# Create a certificate binding for each managed certificate
 resource "azurerm_app_service_certificate_binding" "this" {
-  for_each = azurerm_app_service_managed_certificate.this
+  for_each = local.custom_hostnames
 
-  hostname_binding_id = each.value.custom_hostname_binding_id
-  certificate_id      = each.value.id
-  ssl_state           = "SniEnabled"
+  hostname_binding_id = azurerm_app_service_custom_hostname_binding.this[each.key].id
+  certificate_id      = azurerm_app_service_managed_certificate.this[each.key].id
+  ssl_state           = each.value["ssl_state"]
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
