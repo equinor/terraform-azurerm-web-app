@@ -170,3 +170,8 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "test_var" {
+  type    = string
+  default = null
+}
