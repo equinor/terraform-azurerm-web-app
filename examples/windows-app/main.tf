@@ -38,10 +38,15 @@ module "app_service" {
 module "web_app" {
   source = "../.."
 
-  app_name                   = "app-${random_id.this.hex}"
-  resource_group_name        = azurerm_resource_group.this.name
-  location                   = azurerm_resource_group.this.location
-  app_service_plan_id        = module.app_service.plan_id
-  log_analytics_workspace_id = module.log_analytics.workspace_id
-  kind                       = "Windows"
+  app_name            = "app-${random_id.this.hex}"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  app_service_plan_id = module.app_service.plan_id
+  kind                = "Windows"
+
+  diagnostic_settings = {
+    "audit" = {
+      log_analytics_workspace_id = module.log_analytics.workspace_id
+    }
+  }
 }

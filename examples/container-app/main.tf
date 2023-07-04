@@ -63,9 +63,14 @@ module "web_app" {
   resource_group_name                           = azurerm_resource_group.this.name
   location                                      = azurerm_resource_group.this.location
   app_service_plan_id                           = module.app_service.plan_id
-  log_analytics_workspace_id                    = module.log_analytics.workspace_id
   container_registry_use_managed_identity       = true
   container_registry_managed_identity_client_id = azurerm_user_assigned_identity.this.client_id
+
+  diagnostic_settings = {
+    "audit" = {
+      log_analytics_workspace_id = module.log_analytics.workspace_id
+    }
+  }
 
   identity = {
     type         = "UserAssigned"

@@ -140,29 +140,25 @@ variable "custom_hostname_bindings" {
   default = {}
 }
 
-variable "log_analytics_workspace_id" {
-  description = "The ID of the Log Analytics workspace to send diagnostics to."
-  type        = string
-}
+variable "diagnostic_settings" {
+  description = "A map of diagnostic settings to create for this Web App."
 
-variable "log_analytics_destination_type" {
-  description = "The type of log analytics destination to use for this Log Analytics Workspace."
-  type        = string
-  default     = null
-}
+  type = map(object({
+    # Required properties
+    log_analytics_workspace_id = string
 
-variable "diagnostic_setting_enabled_log_categories" {
-  description = "A list of log categories to be enabled for this diagnostic setting."
-  type        = list(string)
+    # Optional properties
+    name                   = optional(string, "audit-logs")
+    enabled_log_categories = optional(list(string), ["AppServiceHTTPLogs", "AppServiceConsoleLogs", "AppServiceAppLogs", "AppServiceAuditLogs", "AppServiceIPSecAuditLogs", "AppServicePlatformLogs"])
+  }))
 
-  default = [
-    "AppServiceHTTPLogs",
-    "AppServiceConsoleLogs",
-    "AppServiceAppLogs",
-    "AppServiceAuditLogs",
-    "AppServiceIPSecAuditLogs",
-    "AppServicePlatformLogs"
-  ]
+  nullable = false
+
+  # Ensure at least one diagnostic setting is created
+  validation {
+    condition     = length(var.diagnostic_settings) > 0
+    error_message = "At least one diagnostic setting must be created!"
+  }
 }
 
 variable "tags" {
