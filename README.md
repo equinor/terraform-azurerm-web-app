@@ -5,6 +5,10 @@
 
 Terraform module which creates an Azure Web App.
 
+## Usage
+
+See [usage examples](./examples/).
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
