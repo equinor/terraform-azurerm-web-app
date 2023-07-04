@@ -11,4 +11,3 @@ jobs:
     - uses: terraform-docs/gh-actions@v1
       with:
         git-push: true
-        recursive: true
