@@ -16,7 +16,7 @@ resource "azurerm_linux_web_app" "this" {
   virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   # App settings should be configured during deployment.
-  app_settings = null
+  app_settings = {}
 
   # HTTPS enforced by Equinor policy
   https_only = true
@@ -95,7 +95,7 @@ resource "azurerm_windows_web_app" "this" {
   virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   # App settings should be configured during deployment.
-  app_settings = null
+  app_settings = {}
 
   # HTTPS enforced by Equinor policy
   https_only = true
