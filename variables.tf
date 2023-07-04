@@ -129,15 +129,15 @@ variable "http_logs_file_system_retention_in_days" {
   default     = 0
 }
 
-variable "custom_hostnames" {
+variable "custom_hostname_bindings" {
   description = "A list of custom hostnames to bind to this Web App."
 
-  type = list(object({
+  type = map(object({
     hostname  = string
     ssl_state = optional(string, "SniEnabled")
   }))
 
-  default = []
+  default = {}
 }
 
 variable "log_analytics_workspace_id" {

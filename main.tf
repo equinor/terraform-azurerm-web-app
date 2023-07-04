@@ -1,10 +1,6 @@
 locals {
   is_windows = var.kind == "Windows"
   web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
-
-  custom_hostnames = {
-    for v in var.custom_hostnames : v["hostname"] => v
-  }
 }
 
 data "azurerm_client_config" "current" {}
@@ -168,7 +164,7 @@ resource "azurerm_windows_web_app" "this" {
 }
 
 resource "azurerm_app_service_custom_hostname_binding" "this" {
-  for_each = local.custom_hostnames
+  for_each = var.custom_hostname_bindings
 
   hostname            = each.value["hostname"]
   app_service_name    = local.web_app.name
@@ -176,13 +172,13 @@ resource "azurerm_app_service_custom_hostname_binding" "this" {
 }
 
 resource "azurerm_app_service_managed_certificate" "this" {
-  for_each = local.custom_hostnames
+  for_each = var.custom_hostname_bindings
 
   custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.this[each.key].id
 }
 
 resource "azurerm_app_service_certificate_binding" "this" {
-  for_each = local.custom_hostnames
+  for_each = var.custom_hostname_bindings
 
   hostname_binding_id = azurerm_app_service_custom_hostname_binding.this[each.key].id
   certificate_id      = azurerm_app_service_managed_certificate.this[each.key].id
