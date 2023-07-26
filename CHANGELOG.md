@@ -1,5 +1,25 @@
 # Changelog
 
+## [13.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v12.0.0...v13.0.0) (2023-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove variable `identity`, add variables `system_assigned_identity_enabled` and `identity_ids`.
+* variable `custom_hostnames` renamed to `custom_hostname_bindings` and type changed from `list` to `map`.
+
+### Bug Fixes
+
+* don't specify Log Analytics destination type ([#121](https://github.com/equinor/terraform-azurerm-web-app/issues/121)) ([2d5614c](https://github.com/equinor/terraform-azurerm-web-app/commit/2d5614c4c5d9a8b9fd6a2957fe3d7c658bef66d7))
+* ignore changes to application logs ([#114](https://github.com/equinor/terraform-azurerm-web-app/issues/114)) ([e848a8a](https://github.com/equinor/terraform-azurerm-web-app/commit/e848a8a2a2a42f8541ac8d86e51a6b31bfbf5f2e))
+* only configure auth settings when enabled ([#113](https://github.com/equinor/terraform-azurerm-web-app/issues/113)) ([168701d](https://github.com/equinor/terraform-azurerm-web-app/commit/168701d230373d7cea74a4c6352f5d9c6ab6e74d))
+
+
+### Code Refactoring
+
+* follow variable best practices ([#115](https://github.com/equinor/terraform-azurerm-web-app/issues/115)) ([a2039a1](https://github.com/equinor/terraform-azurerm-web-app/commit/a2039a1c11c972ab7ea99c25699db93309733cdc))
+* simplify identity configuration ([#122](https://github.com/equinor/terraform-azurerm-web-app/issues/122)) ([6f379d2](https://github.com/equinor/terraform-azurerm-web-app/commit/6f379d23d764735de297591272e585d0685531f2))
+
 ## [12.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v11.3.1...v12.0.0) (2023-06-30)
 
 
