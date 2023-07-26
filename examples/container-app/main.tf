@@ -66,9 +66,5 @@ module "web_app" {
   log_analytics_workspace_id                    = module.log_analytics.workspace_id
   container_registry_use_managed_identity       = true
   container_registry_managed_identity_client_id = azurerm_user_assigned_identity.this.client_id
-
-  identity = {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.this.id]
-  }
+  identity_ids                                  = [azurerm_user_assigned_identity.this.id]
 }

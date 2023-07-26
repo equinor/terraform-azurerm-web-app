@@ -88,17 +88,6 @@ variable "container_registry_managed_identity_client_id" {
   default     = null
 }
 
-variable "identity" {
-  description = "The identity or identities to configure for this Web App."
-
-  type = object({
-    type         = optional(string, "SystemAssigned")
-    identity_ids = optional(list(string), [])
-  })
-
-  default = null
-}
-
 variable "application_logs_file_system_level" {
   description = "The level of application logs to be enabled. Possible values include \"Verbose\", \"Information\", \"Warning\" and \"Error\"."
   type        = string
@@ -138,6 +127,18 @@ variable "custom_hostname_bindings" {
   }))
 
   default = {}
+}
+
+variable "system_assigned_identity_enabled" {
+  description = "Should the system-assigned identity be enabled for this Web App?"
+  type        = bool
+  default     = false
+}
+
+variable "identity_ids" {
+  description = "A list of IDs of managed identities to be assigned to this Web App."
+  type        = list(string)
+  default     = []
 }
 
 variable "log_analytics_workspace_id" {
