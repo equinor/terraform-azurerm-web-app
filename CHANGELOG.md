@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.0.0...v13.1.0) (2023-09-08)
+
+
+### Features
+
+* auto assign Key Vault reference identity ID ([#124](https://github.com/equinor/terraform-azurerm-web-app/issues/124)) ([4675b7a](https://github.com/equinor/terraform-azurerm-web-app/commit/4675b7a39d6e6d03ac4bf9746f522247ea823657))
+
 ## [13.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v12.0.0...v13.0.0) (2023-07-26)
 
 
