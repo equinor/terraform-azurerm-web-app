@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.1.0...v13.1.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* user-assigned identities not being assigned ([#127](https://github.com/equinor/terraform-azurerm-web-app/issues/127)) ([62c053f](https://github.com/equinor/terraform-azurerm-web-app/commit/62c053f2b580f18328c065ad2500add5b0babc74))
+
 ## [13.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.0.0...v13.1.0) (2023-09-08)
 
 
