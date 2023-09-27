@@ -2,11 +2,13 @@ locals {
   is_windows = var.kind == "Windows"
   web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
 
+  # Auto assign Key Vault reference identity
+  identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
+
   # If system_assigned_identity_enabled is true, value is "SystemAssigned".
   # If identity_ids is non-empty, value is "UserAssigned".
   # If system_assigned_identity_enabled is true and identity_ids is non-empty, value is "SystemAssigned, UserAssigned".
-  identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(var.identity_ids) > 0 ? "UserAssigned" : ""]))
-  identity_ids  = compact([var.key_vault_reference_identity_id])
+  identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
 }
 
 data "azurerm_client_config" "current" {}
@@ -59,7 +61,7 @@ resource "azurerm_linux_web_app" "this" {
 
     content {
       type         = local.identity_type
-      identity_ids = concat(local.identity_ids, var.identity_ids)
+      identity_ids = local.identity_ids
     }
   }
 
@@ -142,7 +144,7 @@ resource "azurerm_windows_web_app" "this" {
 
     content {
       type         = local.identity_type
-      identity_ids = concat(local.identity_ids, var.identity_ids)
+      identity_ids = local.identity_ids
     }
   }
 
