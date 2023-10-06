@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.1.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.1.1...v13.1.2) (2023-10-06)
+
+
+### Bug Fixes
+
+* remove unused variable ([#130](https://github.com/equinor/terraform-azurerm-web-app/issues/130)) ([afa84be](https://github.com/equinor/terraform-azurerm-web-app/commit/afa84be083bdff2be4dea06cd0b6a79030cf844a))
+
 ## [13.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.1.0...v13.1.1) (2023-09-27)
 
 
