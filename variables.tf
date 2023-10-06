@@ -29,12 +29,6 @@ variable "kind" {
   }
 }
 
-variable "sku_name" {
-  description = "The SKU name for this service plan."
-  type        = string
-  default     = "B1"
-}
-
 variable "auth_settings_enabled" {
   description = "Should the built-in authentication settings be enabled for this Web App?"
   type        = bool
