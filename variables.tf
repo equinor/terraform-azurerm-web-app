@@ -46,6 +46,12 @@ variable "auth_settings_active_directory" {
   default = []
 }
 
+variable "client_affinity_enabled" {
+  description = "Should Client Affinity be enabled?"
+  type        = bool
+  default     = false
+}
+
 variable "key_vault_reference_identity_id" {
   description = "The ID of the Managed Identity that will be used to fetch app settings sourced from Key Vault."
   type        = string
@@ -80,6 +86,12 @@ variable "container_registry_managed_identity_client_id" {
   description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
   type        = string
   default     = null
+}
+
+variable "ftps_state" {
+  description = "The State of FTP / FTPS service. Possible values include \"AllAllowed\", \"FtpsOnly\", and \"Disabled\"."
+  type        = string
+  default     = "Disabled"
 }
 
 variable "application_logs_file_system_level" {

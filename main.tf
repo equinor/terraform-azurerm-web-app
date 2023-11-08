@@ -22,6 +22,7 @@ resource "azurerm_linux_web_app" "this" {
   service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   virtual_network_subnet_id       = var.virtual_network_subnet_id
+  client_affinity_enabled         = var.client_affinity_enabled
 
   # App settings should be configured during deployment.
   app_settings = null
@@ -54,6 +55,7 @@ resource "azurerm_linux_web_app" "this" {
     websockets_enabled                            = var.websockets_enabled
     container_registry_use_managed_identity       = var.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
+    ftps_state                                    = var.ftps_state
   }
 
   dynamic "identity" {
@@ -105,6 +107,7 @@ resource "azurerm_windows_web_app" "this" {
   service_plan_id                 = var.app_service_plan_id
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   virtual_network_subnet_id       = var.virtual_network_subnet_id
+  client_affinity_enabled         = var.client_affinity_enabled
 
   # App settings should be configured during deployment.
   app_settings = null
@@ -137,6 +140,7 @@ resource "azurerm_windows_web_app" "this" {
     websockets_enabled                            = var.websockets_enabled
     container_registry_use_managed_identity       = var.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
+    ftps_state                                    = var.ftps_state
   }
 
   dynamic "identity" {
