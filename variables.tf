@@ -88,7 +88,7 @@ variable "container_registry_managed_identity_client_id" {
   default     = null
 }
 
-variable "fpts_state" {
+variable "ftps_state" {
   description = "The State of FTP / FTPS service. Possible values include \"AllAllowed\", \"FtpsOnly\", and \"Disabled\"."
   type        = string
   default     = "Disabled"
