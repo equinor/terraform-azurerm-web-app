@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.1.2...v13.2.0) (2023-11-08)
+
+
+### Features
+
+* add variables ([#132](https://github.com/equinor/terraform-azurerm-web-app/issues/132)) ([c622629](https://github.com/equinor/terraform-azurerm-web-app/commit/c6226293baff020736ee69f73c8febb7a59fa398))
+
 ## [13.1.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.1.1...v13.1.2) (2023-10-06)
 
 
