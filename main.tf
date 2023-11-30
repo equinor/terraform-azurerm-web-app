@@ -32,20 +32,21 @@ resource "azurerm_linux_web_app" "this" {
 
   tags = var.tags
 
-  dynamic "auth_settings" {
-    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
+  dynamic "auth_settings_v2" {
+    for_each = var.active_directory_client_id == null ? [] : [1]
 
     content {
-      enabled             = var.auth_settings_enabled
-      token_store_enabled = true
+      auth_enabled = true
 
-      dynamic "active_directory" {
-        for_each = var.auth_settings_active_directory
+      login {
+        token_store_enabled = true
+      }
 
-        content {
-          client_id                  = active_directory.value["client_id"]
-          client_secret_setting_name = active_directory.value["client_secret_setting_name"]
-        }
+      # TODO: use "microsoft_v2" instead? What's the difference?
+      active_directory_v2 {
+        tenant_auth_endpoint       = "https://login.microsoftonline.com/v2.0/${data.azurerm_client_config.current.tenant_id}/"
+        client_id                  = var.active_directory_client_id
+        client_secret_setting_name = var.active_directory_client_secret_setting_name
       }
     }
   }
@@ -117,20 +118,21 @@ resource "azurerm_windows_web_app" "this" {
 
   tags = var.tags
 
-  dynamic "auth_settings" {
-    for_each = length(var.auth_settings_active_directory) > 0 ? [1] : []
+  dynamic "auth_settings_v2" {
+    for_each = var.active_directory_client_id == null ? [] : [1]
 
     content {
-      enabled             = var.auth_settings_enabled
-      token_store_enabled = true
+      auth_enabled = true
 
-      dynamic "active_directory" {
-        for_each = var.auth_settings_active_directory
+      login {
+        token_store_enabled = true
+      }
 
-        content {
-          client_id                  = active_directory.value["client_id"]
-          client_secret_setting_name = active_directory.value["client_secret_setting_name"]
-        }
+      # TODO: use "microsoft_v2" instead? What's the difference?
+      active_directory_v2 {
+        tenant_auth_endpoint       = "https://login.microsoftonline.com/v2.0/${data.azurerm_client_config.current.tenant_id}/"
+        client_id                  = var.active_directory_client_id
+        client_secret_setting_name = var.active_directory_client_secret_setting_name
       }
     }
   }

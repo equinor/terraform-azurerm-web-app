@@ -29,22 +29,28 @@ variable "kind" {
   }
 }
 
-variable "auth_settings_enabled" {
-  description = "Should the built-in authentication settings be enabled for this Web App?"
-  type        = bool
-  default     = false
+variable "active_directory_client_id" {
+  description = "The client ID of the Azure AD app registration to use for authentication."
+  type        = string
+  default     = null
 }
 
-variable "auth_settings_active_directory" {
-  description = "A list of authentication settings using the Active Directory provider to configure for this web app."
-
-  type = list(object({
-    client_id                  = string
-    client_secret_setting_name = optional(string, "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET")
-  }))
-
-  default = []
+variable "active_directory_client_secret_setting_name" {
+  description = "The name of the app setting to get the Azure AD app registration client secret from."
+  type        = string
+  default     = "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
 }
+
+# variable "auth_settings_active_directory" {
+#   description = "The authentication settings using the Active Directory provider to configure for this web app."
+
+#   type = object({
+#     client_id                  = string
+#     client_secret_setting_name = optional(string, "")
+#   })
+
+#   default = null
+# }
 
 variable "client_affinity_enabled" {
   description = "Should Client Affinity be enabled?"
