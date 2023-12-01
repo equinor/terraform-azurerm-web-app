@@ -41,17 +41,6 @@ variable "active_directory_client_secret_setting_name" {
   default     = "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
 }
 
-# variable "auth_settings_active_directory" {
-#   description = "The authentication settings using the Active Directory provider to configure for this web app."
-
-#   type = object({
-#     client_id                  = string
-#     client_secret_setting_name = optional(string, "")
-#   })
-
-#   default = null
-# }
-
 variable "client_affinity_enabled" {
   description = "Should Client Affinity be enabled?"
   type        = bool
