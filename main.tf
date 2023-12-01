@@ -56,7 +56,7 @@ resource "azurerm_linux_web_app" "this" {
         client_id                  = var.active_directory_client_id
         client_secret_setting_name = var.active_directory_client_secret_setting_name
 
-        tenant_auth_endpoint = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
+        tenant_auth_endpoint = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
         allowed_audiences    = ["api://${var.active_directory_client_id}"]
 
         # The following values are set automatically by Azure.
@@ -162,7 +162,7 @@ resource "azurerm_windows_web_app" "this" {
         client_id                  = var.active_directory_client_id
         client_secret_setting_name = var.active_directory_client_secret_setting_name
 
-        tenant_auth_endpoint = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
+        tenant_auth_endpoint = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
         allowed_audiences    = ["api://${var.active_directory_client_id}"]
 
         # The following values are set automatically by Azure.
