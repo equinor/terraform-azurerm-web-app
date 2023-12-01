@@ -1,5 +1,21 @@
 # Changelog
 
+## [14.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.2.0...v14.0.0) (2023-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove variables `auth_settings_enabled` and `auth_settings_active_directory`, add variables `active_directory_client_id` and `active_directory_client_secret_setting_name`.
+
+### Features
+
+* migrate to auth settings V2 ([#136](https://github.com/equinor/terraform-azurerm-web-app/issues/136)) ([5772e14](https://github.com/equinor/terraform-azurerm-web-app/commit/5772e145dbdfe35d1865dca3945e7c2ee6f9c3d1))
+
+
+### Bug Fixes
+
+* enabling auth settings breaks website ([#138](https://github.com/equinor/terraform-azurerm-web-app/issues/138)) ([97620eb](https://github.com/equinor/terraform-azurerm-web-app/commit/97620eb1b5b034cad46b7b33b8a6f79c607a114d))
+
 ## [13.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.1.2...v13.2.0) (2023-11-08)
 
 
