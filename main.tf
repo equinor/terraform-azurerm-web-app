@@ -36,15 +36,16 @@ resource "azurerm_linux_web_app" "this" {
     for_each = var.active_directory_client_id == null ? [] : [1]
 
     content {
-      auth_enabled = true
+      auth_enabled           = true
+      require_authentication = true
+      default_provider       = "azureactivedirectory"
 
       login {
         token_store_enabled = true
       }
 
-      # TODO: use "microsoft_v2" instead? What's the difference?
       active_directory_v2 {
-        tenant_auth_endpoint       = "https://login.microsoftonline.com/v2.0/${data.azurerm_client_config.current.tenant_id}/"
+        tenant_auth_endpoint       = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
         client_id                  = var.active_directory_client_id
         client_secret_setting_name = var.active_directory_client_secret_setting_name
       }
