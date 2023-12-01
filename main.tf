@@ -40,14 +40,33 @@ resource "azurerm_linux_web_app" "this" {
       require_authentication = true
       default_provider       = "azureactivedirectory"
 
+      # The following values are set automatically by Azure.
+      # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+      excluded_paths = []
+
       login {
         token_store_enabled = true
+
+        # The following values are set automatically by Azure.
+        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+        allowed_external_redirect_urls = []
       }
 
       active_directory_v2 {
-        tenant_auth_endpoint       = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
         client_id                  = var.active_directory_client_id
         client_secret_setting_name = var.active_directory_client_secret_setting_name
+
+        tenant_auth_endpoint = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
+        allowed_audiences    = ["api://${var.active_directory_client_id}"]
+
+        # The following values are set automatically by Azure.
+        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+        allowed_groups                  = []
+        allowed_applications            = []
+        allowed_identities              = []
+        jwt_allowed_client_applications = []
+        jwt_allowed_groups              = []
+        login_parameters                = {}
       }
     }
   }
@@ -127,14 +146,33 @@ resource "azurerm_windows_web_app" "this" {
       require_authentication = true
       default_provider       = "azureactivedirectory"
 
+      # The following values are set automatically by Azure.
+      # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+      excluded_paths = []
+
       login {
         token_store_enabled = true
+
+        # The following values are set automatically by Azure.
+        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+        allowed_external_redirect_urls = []
       }
 
       active_directory_v2 {
-        tenant_auth_endpoint       = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
         client_id                  = var.active_directory_client_id
         client_secret_setting_name = var.active_directory_client_secret_setting_name
+
+        tenant_auth_endpoint = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/v2.0"
+        allowed_audiences    = ["api://${var.active_directory_client_id}"]
+
+        # The following values are set automatically by Azure.
+        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+        allowed_groups                  = []
+        allowed_applications            = []
+        allowed_identities              = []
+        jwt_allowed_client_applications = []
+        jwt_allowed_groups              = []
+        login_parameters                = {}
       }
     }
   }
