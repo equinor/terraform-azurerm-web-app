@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.0.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.0.0...v14.0.1) (2023-12-01)
+
+
+### Bug Fixes
+
+* correct tenant auth endpoint ([#139](https://github.com/equinor/terraform-azurerm-web-app/issues/139)) ([956f9f5](https://github.com/equinor/terraform-azurerm-web-app/commit/956f9f5fe0dfcc9b6cde14185e9c264a2f9acd80))
+
 ## [14.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v13.2.0...v14.0.0) (2023-12-01)
 
 
