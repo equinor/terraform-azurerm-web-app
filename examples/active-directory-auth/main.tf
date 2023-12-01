@@ -43,14 +43,8 @@ module "web_app" {
   location                   = azurerm_resource_group.this.location
   app_service_plan_id        = module.app_service.plan_id
   log_analytics_workspace_id = module.log_analytics.workspace_id
-  auth_settings_enabled      = true
 
-  auth_settings_active_directory = [
-    {
-      client_id = "00000000-0000-0000-0000-000000000000"
-    }
-  ]
-
+  active_directory_client_id = "00000000-0000-0000-0000-000000000000"
   # Store client secret as a slot-sticky app setting named "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET".
   # Use Key Vault references to managed the secret in Azure Key Vault.
 }
