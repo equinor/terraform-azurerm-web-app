@@ -13,6 +13,9 @@
     },
     "ghcr.io/devcontainers/features/azure-cli:1.2.2": {
       "version": "2.53.0"
+    },
+    "ghcr.io/devcontainers/features/go:1.2.2": {
+      "version": "1.21.4"
     }
   },
   "customizations": {
