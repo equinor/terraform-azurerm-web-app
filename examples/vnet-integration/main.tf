@@ -1,11 +1,5 @@
 provider "azurerm" {
-  features {
-    resource_group {
-      # Azure sometimes automatically creates a "default" app service plan that is not managed by Terraform,
-      # preventing Terraform from destroying the resource group.
-      prevent_deletion_if_contains_resources = false
-    }
-  }
+  features {}
 }
 
 resource "random_id" "this" {
