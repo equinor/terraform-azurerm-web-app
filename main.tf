@@ -2,6 +2,8 @@ locals {
   is_windows = var.kind == "Windows"
   web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
 
+  container_registry_use_managed_identity = coalesce(var.container_registry_use_managed_identity, var.container_registry_managed_identity_client_id != null)
+
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
 
@@ -74,7 +76,7 @@ resource "azurerm_linux_web_app" "this" {
   site_config {
     vnet_route_all_enabled                        = var.vnet_route_all_enabled
     websockets_enabled                            = var.websockets_enabled
-    container_registry_use_managed_identity       = var.container_registry_use_managed_identity
+    container_registry_use_managed_identity       = local.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     ftps_state                                    = var.ftps_state
   }
@@ -180,7 +182,7 @@ resource "azurerm_windows_web_app" "this" {
   site_config {
     vnet_route_all_enabled                        = var.vnet_route_all_enabled
     websockets_enabled                            = var.websockets_enabled
-    container_registry_use_managed_identity       = var.container_registry_use_managed_identity
+    container_registry_use_managed_identity       = local.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     ftps_state                                    = var.ftps_state
   }
