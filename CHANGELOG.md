@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.0.1...v14.1.0) (2023-12-05)
+
+
+### Features
+
+* auto use managed identity for container registry ([#141](https://github.com/equinor/terraform-azurerm-web-app/issues/141)) ([cd2d203](https://github.com/equinor/terraform-azurerm-web-app/commit/cd2d20302ce11d8aa95029ae2130574143212e3d))
+
 ## [14.0.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.0.0...v14.0.1) (2023-12-01)
 
 
