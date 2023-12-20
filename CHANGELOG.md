@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.1.0...v14.1.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* remove diagnostic setting retention policies ([#146](https://github.com/equinor/terraform-azurerm-web-app/issues/146)) ([aee0f62](https://github.com/equinor/terraform-azurerm-web-app/commit/aee0f628156f24c126dd20b39bc6decd00e6ecb8))
+
 ## [14.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.0.1...v14.1.0) (2023-12-05)
 
 
