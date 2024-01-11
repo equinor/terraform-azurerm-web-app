@@ -1,6 +1,5 @@
 locals {
   is_windows = var.kind == "Windows"
-  web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
 
   container_registry_use_managed_identity = coalesce(var.container_registry_use_managed_identity, var.container_registry_managed_identity_client_id != null)
 
@@ -11,6 +10,8 @@ locals {
   # If identity_ids is non-empty, value is "UserAssigned".
   # If system_assigned_identity_enabled is true and identity_ids is non-empty, value is "SystemAssigned, UserAssigned".
   identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
+
+  web_app = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
 }
 
 data "azurerm_client_config" "current" {}
