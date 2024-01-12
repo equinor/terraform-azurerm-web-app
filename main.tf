@@ -1,8 +1,27 @@
 locals {
   is_windows = var.kind == "Windows"
-  web_app    = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
+
+  app_settings = null # App settings should be configured during deployment.
+  https_only   = true
 
   container_registry_use_managed_identity = coalesce(var.container_registry_use_managed_identity, var.container_registry_managed_identity_client_id != null)
+
+  # The following values are set automatically by Azure.
+  # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
+  auth_settings_enabled                            = true
+  auth_settings_require_authentication             = true
+  auth_settings_default_provider                   = "azureactivedirectory"
+  auth_settings_excluded_paths                     = []
+  auth_settings_token_store_enabled                = true
+  auth_settings_allowed_external_redirect_urls     = []
+  active_directory_tenant_auth_endpoint            = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
+  active_directory_allowed_audiences               = var.active_directory_client_id != null ? ["api://${var.active_directory_client_id}"] : []
+  active_directory_allowed_groups                  = []
+  active_directory_allowed_applications            = []
+  active_directory_allowed_identities              = []
+  active_directory_jwt_allowed_client_applications = []
+  active_directory_jwt_allowed_groups              = []
+  active_directory_login_parameters                = {}
 
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
@@ -11,6 +30,8 @@ locals {
   # If identity_ids is non-empty, value is "UserAssigned".
   # If system_assigned_identity_enabled is true and identity_ids is non-empty, value is "SystemAssigned, UserAssigned".
   identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
+
+  web_app = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
 }
 
 data "azurerm_client_config" "current" {}
@@ -22,15 +43,11 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
+  app_settings                    = local.app_settings
+  https_only                      = local.https_only
+  client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   virtual_network_subnet_id       = var.virtual_network_subnet_id
-  client_affinity_enabled         = var.client_affinity_enabled
-
-  # App settings should be configured during deployment.
-  app_settings = null
-
-  # HTTPS enforced by Equinor policy
-  https_only = true
 
   tags = var.tags
 
@@ -38,37 +55,27 @@ resource "azurerm_linux_web_app" "this" {
     for_each = var.active_directory_client_id == null ? [] : [1]
 
     content {
-      auth_enabled           = true
-      require_authentication = true
-      default_provider       = "azureactivedirectory"
-
-      # The following values are set automatically by Azure.
-      # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
-      excluded_paths = []
+      auth_enabled           = local.auth_settings_enabled
+      require_authentication = local.auth_settings_require_authentication
+      default_provider       = local.auth_settings_default_provider
+      excluded_paths         = local.auth_settings_excluded_paths
 
       login {
-        token_store_enabled = true
-
-        # The following values are set automatically by Azure.
-        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
-        allowed_external_redirect_urls = []
+        token_store_enabled            = local.auth_settings_token_store_enabled
+        allowed_external_redirect_urls = local.auth_settings_allowed_external_redirect_urls
       }
 
       active_directory_v2 {
-        client_id                  = var.active_directory_client_id
-        client_secret_setting_name = var.active_directory_client_secret_setting_name
-
-        tenant_auth_endpoint = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
-        allowed_audiences    = ["api://${var.active_directory_client_id}"]
-
-        # The following values are set automatically by Azure.
-        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
-        allowed_groups                  = []
-        allowed_applications            = []
-        allowed_identities              = []
-        jwt_allowed_client_applications = []
-        jwt_allowed_groups              = []
-        login_parameters                = {}
+        client_id                       = var.active_directory_client_id
+        client_secret_setting_name      = var.active_directory_client_secret_setting_name
+        tenant_auth_endpoint            = local.active_directory_tenant_auth_endpoint
+        allowed_audiences               = local.active_directory_allowed_audiences
+        allowed_groups                  = local.active_directory_allowed_groups
+        allowed_applications            = local.active_directory_allowed_applications
+        allowed_identities              = local.active_directory_allowed_identities
+        jwt_allowed_client_applications = local.active_directory_jwt_allowed_client_applications
+        jwt_allowed_groups              = local.active_directory_jwt_allowed_groups
+        login_parameters                = local.active_directory_login_parameters
       }
     }
   }
@@ -128,15 +135,11 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
+  app_settings                    = local.app_settings
+  https_only                      = local.https_only
+  client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   virtual_network_subnet_id       = var.virtual_network_subnet_id
-  client_affinity_enabled         = var.client_affinity_enabled
-
-  # App settings should be configured during deployment.
-  app_settings = null
-
-  # HTTPS enforced by Equinor policy
-  https_only = true
 
   tags = var.tags
 
@@ -144,37 +147,27 @@ resource "azurerm_windows_web_app" "this" {
     for_each = var.active_directory_client_id == null ? [] : [1]
 
     content {
-      auth_enabled           = true
-      require_authentication = true
-      default_provider       = "azureactivedirectory"
-
-      # The following values are set automatically by Azure.
-      # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
-      excluded_paths = []
+      auth_enabled           = local.auth_settings_enabled
+      require_authentication = local.auth_settings_require_authentication
+      default_provider       = local.auth_settings_default_provider
+      excluded_paths         = local.auth_settings_excluded_paths
 
       login {
-        token_store_enabled = true
-
-        # The following values are set automatically by Azure.
-        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
-        allowed_external_redirect_urls = []
+        token_store_enabled            = local.auth_settings_token_store_enabled
+        allowed_external_redirect_urls = local.auth_settings_allowed_external_redirect_urls
       }
 
       active_directory_v2 {
-        client_id                  = var.active_directory_client_id
-        client_secret_setting_name = var.active_directory_client_secret_setting_name
-
-        tenant_auth_endpoint = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
-        allowed_audiences    = ["api://${var.active_directory_client_id}"]
-
-        # The following values are set automatically by Azure.
-        # Set explicitly to prevent Terraform from detecting them as "changes made outside of Terraform".
-        allowed_groups                  = []
-        allowed_applications            = []
-        allowed_identities              = []
-        jwt_allowed_client_applications = []
-        jwt_allowed_groups              = []
-        login_parameters                = {}
+        client_id                       = var.active_directory_client_id
+        client_secret_setting_name      = var.active_directory_client_secret_setting_name
+        tenant_auth_endpoint            = local.active_directory_tenant_auth_endpoint
+        allowed_audiences               = local.active_directory_allowed_audiences
+        allowed_groups                  = local.active_directory_allowed_groups
+        allowed_applications            = local.active_directory_allowed_applications
+        allowed_identities              = local.active_directory_allowed_identities
+        jwt_allowed_client_applications = local.active_directory_jwt_allowed_client_applications
+        jwt_allowed_groups              = local.active_directory_jwt_allowed_groups
+        login_parameters                = local.active_directory_login_parameters
       }
     }
   }
