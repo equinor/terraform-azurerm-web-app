@@ -30,7 +30,7 @@ variable "kind" {
 }
 
 variable "app_settings" {
-  description = "App settings must be defined as an object"
+  description = "App settings must be defined as an object or not at all."
   type        = any
   default     = null
   validation {
