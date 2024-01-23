@@ -29,6 +29,12 @@ variable "kind" {
   }
 }
 
+variable "active_directory_tenant_auth_endpoint" {
+  description = ""
+  type        = string
+  default     = null
+}
+
 variable "active_directory_client_id" {
   description = "The client ID of the Azure AD app registration to use for authentication."
   type        = string
