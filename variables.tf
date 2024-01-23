@@ -30,7 +30,7 @@ variable "kind" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = ""
+  description = "Endpoint for the Entra ID authentication endpoint"
   type        = string
   default     = null
 }
