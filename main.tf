@@ -178,6 +178,7 @@ resource "azurerm_windows_web_app" "this" {
     websockets_enabled                            = var.websockets_enabled
     container_registry_use_managed_identity       = local.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
+    always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
   }
 
