@@ -90,7 +90,7 @@ variable "ftps_state" {
 }
 
 variable "ip_restriction" {
-  description = ""
+  description = "A list of objects for IP restrictions"
   type = list(object({
     action     = optional(string, "Allow")
     headers    = optional(list(any), [])
