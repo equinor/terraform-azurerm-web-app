@@ -84,7 +84,7 @@ variable "container_registry_managed_identity_client_id" {
 }
 
 variable "always_on" {
-  description = ""
+  description = "Defines the always_on parameter in site_config"
   type        = bool
   default     = true
 }
