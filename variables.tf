@@ -29,12 +29,6 @@ variable "kind" {
   }
 }
 
-variable "active_directory_client_id" {
-  description = "The client ID of the Azure AD app registration to use for authentication."
-  type        = string
-  default     = null
-}
-
 variable "app_settings" {
   description = "App settings must be defined as an object"
   type        = any
@@ -43,6 +37,12 @@ variable "app_settings" {
     condition     = can(var.app_settings) && length(keys(var.app_settings)) > 0
     error_message = "app_settings must be either an object or null"
   }
+}
+
+variable "active_directory_client_id" {
+  description = "The client ID of the Azure AD app registration to use for authentication."
+  type        = string
+  default     = null
 }
 
 variable "active_directory_client_secret_setting_name" {
