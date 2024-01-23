@@ -89,6 +89,18 @@ variable "ftps_state" {
   default     = "Disabled"
 }
 
+variable "ip_restriction" {
+  description = ""
+  type = list(object({
+    action     = optional(string, "Allow")
+    headers    = optional(list(any), [])
+    ip_address = string
+    name       = string
+    priority   = number
+  }))
+  default = []
+}
+
 variable "application_logs_file_system_level" {
   description = "The level of application logs to be enabled. Possible values include \"Verbose\", \"Information\", \"Warning\" and \"Error\"."
   type        = string

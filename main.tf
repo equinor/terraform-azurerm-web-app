@@ -86,6 +86,18 @@ resource "azurerm_linux_web_app" "this" {
     container_registry_use_managed_identity       = local.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     ftps_state                                    = var.ftps_state
+
+    dynamic "ip_restriction" {
+      for_each = var.ip_restriction
+
+      content {
+        action     = ip_restriction.value.action
+        headers    = ip_restriction.value.headers
+        ip_address = ip_restriction.value.ip_address
+        name       = ip_restriction.value.name
+        priority   = ip_restriction.value.priority
+      }
+    }
   }
 
   dynamic "identity" {
