@@ -14,7 +14,7 @@ locals {
   auth_settings_excluded_paths                     = []
   auth_settings_token_store_enabled                = true
   auth_settings_allowed_external_redirect_urls     = []
-  active_directory_tenant_auth_endpoint            = var.active_directory_tenant_auth_endpoint != null ? var.active_directory_tenant_auth_endpoint : "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
+  active_directory_tenant_auth_endpoint            = coalesce(var.active_directory_tenant_auth_endpoint, "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0"
   active_directory_allowed_audiences               = var.active_directory_client_id != null ? ["api://${var.active_directory_client_id}"] : []
   active_directory_allowed_groups                  = []
   active_directory_allowed_applications            = []
