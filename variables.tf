@@ -84,7 +84,7 @@ variable "container_registry_managed_identity_client_id" {
 }
 
 variable "always_on" {
-  description = "Defines the always_on parameter in site_config"
+  description = "Should this Web App be loaded even when there is no traffic?"
   type        = bool
   default     = true
 }
