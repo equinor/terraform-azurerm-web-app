@@ -30,7 +30,7 @@ variable "kind" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = "Endpoint for the Entra ID authentication endpoint"
+  description = "The endpoint of the Azure AD tenant use for authentication."
   type        = string
   default     = null
 }
