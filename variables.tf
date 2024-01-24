@@ -30,13 +30,9 @@ variable "kind" {
 }
 
 variable "app_settings" {
-  description = "App settings must be defined as an object or not at all."
-  type        = any
+  description = "A map of app settings to be configured for this Web App. Note that app settings should be configured outside of Terraform, thus any changes will be ignored."
+  type        = map(string)
   default     = null
-  validation {
-    condition     = can(var.app_settings) && length(keys(var.app_settings)) > 0
-    error_message = "app_settings must be either an object or null"
-  }
 }
 
 variable "active_directory_client_id" {
