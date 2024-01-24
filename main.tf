@@ -1,7 +1,6 @@
 locals {
   is_windows = var.kind == "Windows"
 
-  app_settings = var.app_settings # App settings should be configured during deployment.
   https_only   = true
 
   container_registry_use_managed_identity = coalesce(var.container_registry_use_managed_identity, var.container_registry_managed_identity_client_id != null)
