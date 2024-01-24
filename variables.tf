@@ -30,7 +30,7 @@ variable "kind" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = "The endpoint of the Azure AD tenant use for authentication."
+  description = "The endpoint of the Azure AD tenant to use for authentication."
   type        = string
   default     = null
 }
