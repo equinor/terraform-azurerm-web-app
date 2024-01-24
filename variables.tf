@@ -83,6 +83,12 @@ variable "container_registry_managed_identity_client_id" {
   default     = null
 }
 
+variable "always_on" {
+  description = "Should this Web App be loaded even when there is no traffic?"
+  type        = bool
+  default     = true
+}
+
 variable "ftps_state" {
   description = "The State of FTP / FTPS service. Possible values include \"AllAllowed\", \"FtpsOnly\", and \"Disabled\"."
   type        = string
