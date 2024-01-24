@@ -192,11 +192,11 @@ resource "azurerm_windows_web_app" "this" {
     ftps_state                                    = var.ftps_state
 
     dynamic "ip_restriction" {
-      for_each = var.ip_restriction
+      for_each = var.ip_restrictions
 
       content {
         action     = ip_restriction.value.action
-        headers    = ip_restriction.value.headers
+        headers    = ip_restriction.value.headers != null ? [ip_restriction.value.headers] : []
         ip_address = ip_restriction.value.ip_address
         name       = ip_restriction.value.name
         priority   = ip_restriction.value.priority
