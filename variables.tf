@@ -89,6 +89,26 @@ variable "ftps_state" {
   default     = "Disabled"
 }
 
+variable "ip_restrictions" {
+  description = "A list of IP restrictions to be configured for this Web App."
+
+  type = list(object({
+    action     = optional(string, "Allow")
+    ip_address = string
+    name       = string
+    priority   = number
+
+    headers = optional(object({
+      x_forwarded_for   = optional(list(string))
+      x_forwarded_host  = optional(list(string))
+      x_azure_fdid      = optional(list(string))
+      x_fd_health_probe = optional(list(string))
+    }))
+  }))
+
+  default = []
+}
+
 variable "application_logs_file_system_level" {
   description = "The level of application logs to be enabled. Possible values include \"Verbose\", \"Information\", \"Warning\" and \"Error\"."
   type        = string
