@@ -199,6 +199,12 @@ variable "diagnostic_setting_enabled_log_categories" {
   ]
 }
 
+variable "diagnostic_setting_name" {
+  description = "The name of the diagnostic setting."
+  type        = string
+  default     = "audit-logs"
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
