@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.3.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.2.0...v14.3.0) (2024-01-25)
+
+
+### Features
+
+* add variable `diagnostic_setting_name` ([#154](https://github.com/equinor/terraform-azurerm-web-app/issues/154)) ([6642c12](https://github.com/equinor/terraform-azurerm-web-app/commit/6642c12d319b7cc60f71c6f729d604ebd35670fa))
+
 ## [14.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.1.1...v14.2.0) (2024-01-25)
 
 
