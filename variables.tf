@@ -29,6 +29,12 @@ variable "kind" {
   }
 }
 
+variable "app_settings" {
+  description = "A map of app settings to be configured for this Web App. Note that app settings should be configured outside of Terraform, thus any changes will be ignored."
+  type        = map(string)
+  default     = null
+}
+
 variable "active_directory_client_id" {
   description = "The client ID of the Azure AD app registration to use for authentication."
   type        = string

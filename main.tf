@@ -1,8 +1,7 @@
 locals {
   is_windows = var.kind == "Windows"
 
-  app_settings = null # App settings should be configured during deployment.
-  https_only   = true
+  https_only = true
 
   container_registry_use_managed_identity = coalesce(var.container_registry_use_managed_identity, var.container_registry_managed_identity_client_id != null)
 
@@ -43,7 +42,7 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = local.app_settings
+  app_settings                    = var.app_settings
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -148,7 +147,7 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = local.app_settings
+  app_settings                    = var.app_settings
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
