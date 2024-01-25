@@ -1,8 +1,7 @@
 locals {
   is_windows = var.kind == "Windows"
 
-  app_settings = null # App settings should be configured during deployment.
-  https_only   = true
+  https_only = true
 
   container_registry_use_managed_identity = coalesce(var.container_registry_use_managed_identity, var.container_registry_managed_identity_client_id != null)
 
@@ -43,7 +42,7 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = local.app_settings
+  app_settings                    = var.app_settings
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -85,7 +84,20 @@ resource "azurerm_linux_web_app" "this" {
     websockets_enabled                            = var.websockets_enabled
     container_registry_use_managed_identity       = local.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
+    always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+
+    dynamic "ip_restriction" {
+      for_each = var.ip_restrictions
+
+      content {
+        action     = ip_restriction.value.action
+        headers    = ip_restriction.value.headers != null ? [ip_restriction.value.headers] : []
+        ip_address = ip_restriction.value.ip_address
+        name       = ip_restriction.value.name
+        priority   = ip_restriction.value.priority
+      }
+    }
   }
 
   dynamic "identity" {
@@ -135,7 +147,7 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = local.app_settings
+  app_settings                    = var.app_settings
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -177,7 +189,20 @@ resource "azurerm_windows_web_app" "this" {
     websockets_enabled                            = var.websockets_enabled
     container_registry_use_managed_identity       = local.container_registry_use_managed_identity
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
+    always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+
+    dynamic "ip_restriction" {
+      for_each = var.ip_restrictions
+
+      content {
+        action     = ip_restriction.value.action
+        headers    = ip_restriction.value.headers != null ? [ip_restriction.value.headers] : []
+        ip_address = ip_restriction.value.ip_address
+        name       = ip_restriction.value.name
+        priority   = ip_restriction.value.priority
+      }
+    }
   }
 
   dynamic "identity" {

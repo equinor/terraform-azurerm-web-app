@@ -29,6 +29,12 @@ variable "kind" {
   }
 }
 
+variable "app_settings" {
+  description = "A map of app settings to be configured for this Web App. Note that app settings should be configured outside of Terraform, thus any changes will be ignored."
+  type        = map(string)
+  default     = null
+}
+
 variable "active_directory_tenant_auth_endpoint" {
   description = "The endpoint of the Azure AD tenant to use for authentication."
   type        = string
@@ -89,10 +95,36 @@ variable "container_registry_managed_identity_client_id" {
   default     = null
 }
 
+variable "always_on" {
+  description = "Should this Web App be loaded even when there is no traffic?"
+  type        = bool
+  default     = true
+}
+
 variable "ftps_state" {
   description = "The State of FTP / FTPS service. Possible values include \"AllAllowed\", \"FtpsOnly\", and \"Disabled\"."
   type        = string
   default     = "Disabled"
+}
+
+variable "ip_restrictions" {
+  description = "A list of IP restrictions to be configured for this Web App."
+
+  type = list(object({
+    action     = optional(string, "Allow")
+    ip_address = string
+    name       = string
+    priority   = number
+
+    headers = optional(object({
+      x_forwarded_for   = optional(list(string))
+      x_forwarded_host  = optional(list(string))
+      x_azure_fdid      = optional(list(string))
+      x_fd_health_probe = optional(list(string))
+    }))
+  }))
+
+  default = []
 }
 
 variable "application_logs_file_system_level" {
