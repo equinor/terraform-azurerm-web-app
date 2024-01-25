@@ -1,5 +1,15 @@
 # Changelog
 
+## [14.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.1.1...v14.2.0) (2024-01-25)
+
+
+### Features
+
+* add variable `active_directory_tenant_auth_endpoint` ([#149](https://github.com/equinor/terraform-azurerm-web-app/issues/149)) ([e7177c1](https://github.com/equinor/terraform-azurerm-web-app/commit/e7177c1fdc3d0c0aa25df1595df37d164915020d))
+* add variable `always_on` ([#150](https://github.com/equinor/terraform-azurerm-web-app/issues/150)) ([3f4dfd0](https://github.com/equinor/terraform-azurerm-web-app/commit/3f4dfd080a79763b1f8f347d554af269b60b02a7))
+* add variable `app_settings` ([#151](https://github.com/equinor/terraform-azurerm-web-app/issues/151)) ([8d43ad9](https://github.com/equinor/terraform-azurerm-web-app/commit/8d43ad9182d8f6d0ba286cc085fc046df18b2746))
+* add variable `ip_restrictions` ([#152](https://github.com/equinor/terraform-azurerm-web-app/issues/152)) ([17d9837](https://github.com/equinor/terraform-azurerm-web-app/commit/17d983700bada210420f9a7e60b0ed78b1df2dff))
+
 ## [14.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.1.0...v14.1.1) (2023-12-20)
 
 
