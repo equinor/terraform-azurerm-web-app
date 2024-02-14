@@ -98,6 +98,17 @@ resource "azurerm_linux_web_app" "this" {
         priority   = ip_restriction.value.priority
       }
     }
+
+    dynamic "application_stack" {
+      for_each = var.application_stack
+
+      content {
+        dotnet_version = application_stack.value.dotnet_version
+        java_version   = application_stack.value.java_version
+        node_version   = application_stack.value.node_version
+        php_version    = application_stack.value.php_version
+      }
+    }
   }
 
   dynamic "identity" {
@@ -201,6 +212,19 @@ resource "azurerm_windows_web_app" "this" {
         ip_address = ip_restriction.value.ip_address
         name       = ip_restriction.value.name
         priority   = ip_restriction.value.priority
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = var.application_stack
+
+      content {
+        current_stack       = application_stack.value.current_stack
+        dotnet_version      = application_stack.value.dotnet_version
+        dotnet_core_version = application_stack.value.dotnet_core_version
+        java_version        = application_stack.value.java_version
+        node_version        = application_stack.value.node_version
+        php_version         = application_stack.value.php_version
       }
     }
   }
