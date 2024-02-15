@@ -127,34 +127,6 @@ variable "ip_restrictions" {
   default = []
 }
 
-# variable "application_stack_current_stack" {
-#   description = "The application stack for this Web App. Only available for Windows Web App."
-#   type        = string
-#   default     = null
-# }
-
-variable "application_stack" {
-  description = ""
-
-  type = list(object({
-    current_stack       = optional(string)
-    dotnet_version      = optional(string)
-    dotnet_core_version = optional(string)
-    java_version        = optional(string)
-    node_version        = optional(string)
-    php_version         = optional(string)
-  }))
-
-  default = []
-}
-
-
-# variable "application_stack_dotnet_version" {
-#   description = "The .NET version to use for this Web App."
-#   type        = string
-#   default     = "value"
-# }
-
 variable "application_logs_file_system_level" {
   description = "The level of application logs to be enabled. Possible values include \"Verbose\", \"Information\", \"Warning\" and \"Error\"."
   type        = string
