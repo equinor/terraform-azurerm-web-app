@@ -273,6 +273,11 @@ resource "azapi_update_resource" "app_settings" {
       }
     }
   })
+
+  depends_on = [
+    # Ensure existing Web App operations are complete before trying to update it.
+    local.web_app
+  ]
 }
 
 resource "azurerm_app_service_custom_hostname_binding" "this" {
