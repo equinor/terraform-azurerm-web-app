@@ -40,6 +40,7 @@ variable "application_stack" {
   type = object({
     docker_image_name        = string
     docker_registry_url      = string
+    current_stack            = optional(string, null)
     docker_registry_username = optional(string, null)
     docker_registry_password = optional(string, null)
   })
