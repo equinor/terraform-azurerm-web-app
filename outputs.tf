@@ -17,3 +17,8 @@ output "identity_tenant_id" {
   description = "The tenant ID of the system-assigned identity of this Web App."
   value       = try(local.web_app.identity[0].tenant_id, null)
 }
+
+output "default_hostname" {
+  description = "The default hostname of this Web App"
+  value       = local.web_app.default_hostname
+}
