@@ -30,7 +30,7 @@ variable "kind" {
 }
 
 variable "app_settings" {
-  description = "A map of app settings to be configured for this Web App. Note that app settings should be configured outside of Terraform, thus any changes will be ignored."
+  description = "A map of app settings to be configured for this Web App. Note that app settings are often configured outside of Terraform, so configuring app settings in Terraform may cause conflicts."
   type        = map(string)
   default     = null
 }
