@@ -199,6 +199,12 @@ variable "diagnostic_setting_enabled_log_categories" {
   ]
 }
 
+variable "diagnostic_setting_enabled_metric_categories" {
+  description = "A list of metric categories to be enabled for this diagnostic setting."
+  type        = list(string)
+  default     = []
+}
+
 variable "diagnostic_setting_name" {
   description = "The name of the diagnostic setting."
   type        = string
