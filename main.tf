@@ -253,6 +253,10 @@ resource "azurerm_windows_web_app" "this" {
   }
 }
 
+# Manage app settings using AzAPI provider instead of AzureRM.
+# This enables the possibility of manages app settings either in Terraform or outside Terraform.
+# - If you want to manage app settings in Terraform, this resource will be created.
+# - If you want to manage app settings outside of Terraform, this resource won't be created.
 resource "azapi_update_resource" "app_settings" {
   count = var.app_settings != null ? 1 : 0
 
