@@ -99,8 +99,7 @@ resource "azurerm_linux_web_app" "this" {
       }
     }
 
-    # application_stack {}
-    # The arguments in this block is being set outside of Terraform during deployment.
+    application_stack = var.application_stack
   }
 
   dynamic "identity" {

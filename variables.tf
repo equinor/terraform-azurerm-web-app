@@ -35,6 +35,17 @@ variable "app_settings" {
   default     = null
 }
 
+variable "application_stack" {
+  description = "A map of application stack settings for this Web App."
+  type = object({
+    docker_image_name        = string
+    docker_registry_url      = string
+    docker_registry_username = optional(string, null)
+    docker_registry_password = optional(string, null)
+  })
+  default = null
+}
+
 variable "active_directory_tenant_auth_endpoint" {
   description = "The endpoint of the Azure AD tenant to use for authentication."
   type        = string
