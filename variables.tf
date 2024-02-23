@@ -39,11 +39,8 @@ variable "application_stack" {
   description = "An object of application stack settings for this Web App. Note that application stack settings are often configured outside of Terraform (for example when deploying code), so configuring application stack settings in Terraform may cause conflicts."
 
   type = object({
-    docker_image_name        = string
-    docker_registry_url      = string
-    current_stack            = optional(string, null)
-    docker_registry_username = optional(string, null)
-    docker_registry_password = optional(string, null)
+    docker_image_name = string
+    current_stack     = optional(string, null)
   })
   default = null
 }
