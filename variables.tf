@@ -30,7 +30,7 @@ variable "kind" {
 }
 
 variable "app_settings" {
-  description = "A map of app settings to be configured for this Web App. Note that app settings should be configured outside of Terraform, thus any changes will be ignored."
+  description = "A map of app settings to be configured for this Web App. Set to `null` to manage app settings outside of Terraform."
   type        = map(string)
   default     = null
 }
@@ -210,6 +210,12 @@ variable "diagnostic_setting_enabled_log_categories" {
     "AppServiceIPSecAuditLogs",
     "AppServicePlatformLogs"
   ]
+}
+
+variable "diagnostic_setting_enabled_metric_categories" {
+  description = "A list of metric categories to be enabled for this diagnostic setting."
+  type        = list(string)
+  default     = []
 }
 
 variable "diagnostic_setting_name" {
