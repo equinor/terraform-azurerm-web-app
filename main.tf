@@ -44,7 +44,7 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = var.app_settings
+  app_settings                    = null # Configure using "azapi_update_resource.app_settings" instead
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -152,7 +152,7 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = var.app_settings
+  app_settings                    = null # Configure using "azapi_update_resource.app_settings" instead
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -251,6 +251,33 @@ resource "azurerm_windows_web_app" "this" {
       logs[0].application_logs
     ]
   }
+}
+
+# Manage app settings using AzAPI provider instead of AzureRM.
+# This enables the possibility of managing app settings either in Terraform or outside Terraform.
+# - If you want to manage app settings in Terraform, this resource will be created.
+# - If you want to manage app settings outside of Terraform, this resource won't be created.
+resource "azapi_update_resource" "app_settings" {
+  count = var.app_settings != null ? 1 : 0
+
+  type        = "Microsoft.Web/sites@2022-09-01"
+  resource_id = local.web_app.id
+
+  body = jsonencode({
+    properties = {
+      siteConfig = {
+        appSettings = [for name, value in var.app_settings : {
+          name  = name
+          value = value
+        }]
+      }
+    }
+  })
+
+  depends_on = [
+    # Ensure existing Web App operations are complete before trying to update it.
+    local.web_app
+  ]
 }
 
 resource "azurerm_app_service_custom_hostname_binding" "this" {
