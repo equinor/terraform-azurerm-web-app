@@ -101,16 +101,8 @@ resource "azurerm_linux_web_app" "this" {
       }
     }
 
-    dynamic "application_stack" {
-      for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
-
-      content {
-        docker_image_name        = application_stack.value.docker_image_name
-        docker_registry_url      = application_stack.value.docker_registry_url
-        docker_registry_username = application_stack.value.docker_registry_username
-        docker_registry_password = application_stack.value.docker_registry_password
-      }
-    }
+    # application_stack {}
+    # The arguments in this block is being set outside of Terraform during deployment.
   }
 
   dynamic "identity" {
@@ -217,16 +209,8 @@ resource "azurerm_windows_web_app" "this" {
       }
     }
 
-    dynamic "application_stack" {
-      for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
-
-      content {
-        docker_image_name        = application_stack.value.docker_image_name
-        docker_registry_url      = application_stack.value.docker_registry_url
-        docker_registry_username = application_stack.value.docker_registry_username
-        docker_registry_password = application_stack.value.docker_registry_password
-      }
-    }
+    # application_stack {}
+    # The arguments in this block is being set outside of Terraform during deployment.
   }
 
   dynamic "identity" {
