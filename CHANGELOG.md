@@ -1,5 +1,16 @@
 # Changelog
 
+## [14.4.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.3.0...v14.4.0) (2024-02-26)
+
+
+### Features
+
+* add application stack variable ([#160](https://github.com/equinor/terraform-azurerm-web-app/issues/160)) ([30b85b5](https://github.com/equinor/terraform-azurerm-web-app/commit/30b85b5050936680a11ba105b96e4527df760473))
+* add custom domain verification ID output ([8d48b60](https://github.com/equinor/terraform-azurerm-web-app/commit/8d48b60260de42f1d4cbc67b93e518d620fd6ad7))
+* added default hostname to outputs ([#163](https://github.com/equinor/terraform-azurerm-web-app/issues/163)) ([27522f9](https://github.com/equinor/terraform-azurerm-web-app/commit/27522f93c7708344aa4b409e6c9d10c6259b701e))
+* manage app settings ([#164](https://github.com/equinor/terraform-azurerm-web-app/issues/164)) ([0df5c30](https://github.com/equinor/terraform-azurerm-web-app/commit/0df5c3050135db2c3b5783206cc78144df21f47d))
+* variable for diagnostic setting metric ([#161](https://github.com/equinor/terraform-azurerm-web-app/issues/161)) ([4c52611](https://github.com/equinor/terraform-azurerm-web-app/commit/4c52611443b409b1148d833b90344575e86b599c))
+
 ## [14.3.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.2.0...v14.3.0) (2024-01-25)
 
 
