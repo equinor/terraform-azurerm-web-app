@@ -22,3 +22,8 @@ output "default_hostname" {
   description = "The default hostname of this Web App"
   value       = local.web_app.default_hostname
 }
+
+output "custom_domain_verification_id" {
+  description = "The identifier used by App Service to perform domain ownership verification via DNS TXT record."
+  value       = local.web_app.custom_domain_verification_id
+}
