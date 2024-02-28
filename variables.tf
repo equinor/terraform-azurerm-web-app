@@ -33,15 +33,22 @@ variable "app_settings" {
   description = "A map of app settings to be configured for this Web App. Set to `null` to manage app settings outside of Terraform."
   type        = map(string)
   default     = null
+
+  # validation {
+  #   condition     = anytrue([for setting in var.app_settings : contains(["DOCKER_REGISTRY_SERVER_URL", setting])])
+  #   error_message = "App setting \"DOCKER_REGISTRY_SERVER_URL\" must be configured using 'application_stack' instead."
+  # }
 }
 
 variable "application_stack" {
   description = "An object of application stack settings for this Web App. Note that application stack settings are often configured outside of Terraform (for example when deploying code), so configuring application stack settings in Terraform may cause conflicts."
 
   type = object({
-    docker_image_name = string
-    current_stack     = optional(string, null)
+    docker_image_name   = string
+    docker_registry_url = string
+    current_stack       = optional(string, null)
   })
+
   default = null
 }
 
