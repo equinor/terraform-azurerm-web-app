@@ -36,13 +36,7 @@ variable "app_settings" {
   nullable    = false
 
   validation {
-    condition = !anytrue([
-      for key in keys(var.app_settings) : contains([
-        "DOCKER_REGISTRY_SERVER_URL",
-        "DOCKER_REGISTRY_SERVER_USERNAME",
-        "DOCKER_REGISTRY_SERVER_PASSWORD"
-    ], key)])
-
+    condition     = length(setintersection(["DOCKER_REGISTRY_SERVER_URL", "DOCKER_REGISTRY_SERVER_USERNAME", "DOCKER_REGISTRY_SERVER_PASSWORD"], keys(var.app_settings))) == 0
     error_message = "Docker settings must be configured using \"application_stack\"."
   }
 }
