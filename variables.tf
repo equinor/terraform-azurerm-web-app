@@ -30,23 +30,20 @@ variable "kind" {
 }
 
 variable "app_settings" {
-  description = "A map of app settings to be configured for this Web App. Set to `null` to manage app settings outside of Terraform."
+  description = "A map of app settings to be configured for this Web App."
   type        = map(string)
   default     = {}
+  nullable    = false
 
   validation {
-    condition     = !contains(keys(coalesce(var.app_settings, {})), "DOCKER_REGISTRY_SERVER_URL")
-    error_message = "App setting \"DOCKER_REGISTRY_SERVER_URL\" should not be specified. Configure Docker registry server URL using \"application_stack\" instead."
-  }
+    condition = !anytrue([
+      for key in keys(var.app_settings) : contains([
+        "DOCKER_REGISTRY_SERVER_URL",
+        "DOCKER_REGISTRY_SERVER_USERNAME",
+        "DOCKER_REGISTRY_SERVER_PASSWORD"
+    ], key)])
 
-  validation {
-    condition     = !contains(keys(coalesce(var.app_settings, {})), "DOCKER_REGISTRY_SERVER_USERNAME")
-    error_message = "App setting \"DOCKER_REGISTRY_SERVER_USERNAME\" should not be specified. Configure Docker registry server username using \"application_stack\" instead."
-  }
-
-  validation {
-    condition     = !contains(keys(coalesce(var.app_settings, {})), "DOCKER_REGISTRY_SERVER_PASSWORD")
-    error_message = "App setting \"DOCKER_REGISTRY_SERVER_PASSWORD\" should not be specified. Configure Docker registry server password using \"application_stack\" instead."
+    error_message = "Docker settings must be configured using \"application_stack\"."
   }
 }
 
