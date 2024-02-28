@@ -32,7 +32,7 @@ variable "kind" {
 variable "app_settings" {
   description = "A map of app settings to be configured for this Web App. Set to `null` to manage app settings outside of Terraform."
   type        = map(string)
-  default     = null
+  default     = {}
 
   validation {
     condition     = !contains(keys(coalesce(var.app_settings, {})), "DOCKER_REGISTRY_SERVER_URL")
