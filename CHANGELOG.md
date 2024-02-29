@@ -1,5 +1,21 @@
 # Changelog
 
+## [15.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.4.0...v15.0.0) (2024-02-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove `lifecycle.ignore_changes` for `azurerm_linux_web_app.this.app_settings` and `azurerm_windows_web_app.this.app_settings`. To migrate your project, configure app settings for your web app using the `app_settings` variable. Consider using App Configuration references and Key Vault references to continue manage settings outside of Terraform.
+
+### Features
+
+* configure Docker registry settings ([#166](https://github.com/equinor/terraform-azurerm-web-app/issues/166)) ([4e75f0f](https://github.com/equinor/terraform-azurerm-web-app/commit/4e75f0f209bff57a293898ef214e117f747b6559))
+
+
+### Code Refactoring
+
+* strict configuration of app settings ([#167](https://github.com/equinor/terraform-azurerm-web-app/issues/167)) ([f682c78](https://github.com/equinor/terraform-azurerm-web-app/commit/f682c7872da15afa02451ada39fa4b2e4bd2e847))
+
 ## [14.4.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.3.0...v14.4.0) (2024-02-26)
 
 
