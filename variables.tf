@@ -30,9 +30,10 @@ variable "kind" {
 }
 
 variable "app_settings" {
-  description = "A map of app settings to be configured for this Web App. Set to `null` to manage app settings outside of Terraform."
+  description = "A map of app settings to be configured for this Web App."
   type        = map(string)
-  default     = null
+  default     = {}
+  nullable    = false
 }
 
 variable "application_stack" {
