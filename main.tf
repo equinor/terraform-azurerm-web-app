@@ -105,12 +105,10 @@ resource "azurerm_linux_web_app" "this" {
       for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
 
       content {
-        docker_image_name = application_stack.value.docker_image_name
-
-        # The following arguments should be configured as app settings instead:
-        # - docker_registry_url
-        # - docker_registry_username
-        # - docker_registry_password
+        docker_image_name        = application_stack.value.docker_image_name
+        docker_registry_url      = application_stack.value.docker_registry_url
+        docker_registry_username = application_stack.value.docker_registry_username
+        docker_registry_password = application_stack.value.docker_registry_password
       }
     }
   }
@@ -217,13 +215,11 @@ resource "azurerm_windows_web_app" "this" {
       for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
 
       content {
-        docker_image_name = application_stack.value.docker_image_name
-        current_stack     = application_stack.value.current_stack
-
-        # The following arguments should be configured as app settings instead:
-        # - docker_registry_url
-        # - docker_registry_username
-        # - docker_registry_password
+        docker_image_name        = application_stack.value.docker_image_name
+        docker_registry_url      = application_stack.value.docker_registry_url
+        docker_registry_username = application_stack.value.docker_registry_username
+        docker_registry_password = application_stack.value.docker_registry_password
+        current_stack            = application_stack.value.current_stack
       }
     }
   }

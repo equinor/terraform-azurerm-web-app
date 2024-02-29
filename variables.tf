@@ -34,15 +34,24 @@ variable "app_settings" {
   type        = map(string)
   default     = {}
   nullable    = false
+
+  validation {
+    condition     = length(setintersection(["DOCKER_REGISTRY_SERVER_URL", "DOCKER_REGISTRY_SERVER_USERNAME", "DOCKER_REGISTRY_SERVER_PASSWORD"], keys(var.app_settings))) == 0
+    error_message = "Docker settings must be configured using \"application_stack\"."
+  }
 }
 
 variable "application_stack" {
   description = "An object of application stack settings for this Web App. Note that application stack settings are often configured outside of Terraform (for example when deploying code), so configuring application stack settings in Terraform may cause conflicts."
 
   type = object({
-    docker_image_name = string
-    current_stack     = optional(string, null)
+    docker_image_name        = string
+    docker_registry_url      = string
+    docker_registry_username = optional(string)
+    docker_registry_password = optional(string)
+    current_stack            = optional(string)
   })
+
   default = null
 }
 
