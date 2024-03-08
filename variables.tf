@@ -132,10 +132,10 @@ variable "ip_restrictions" {
 
   type = list(object({
     action      = optional(string, "Allow")
-    ip_address  = string
+    ip_address  = optional(string)
     name        = string
     priority    = number
-    service_tag = string
+    service_tag = optional(string)
 
     headers = optional(object({
       x_forwarded_for   = optional(list(string))
