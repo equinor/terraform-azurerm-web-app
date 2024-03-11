@@ -131,10 +131,11 @@ variable "ip_restrictions" {
   description = "A list of IP restrictions to be configured for this Web App."
 
   type = list(object({
-    action     = optional(string, "Allow")
-    ip_address = string
-    name       = string
-    priority   = number
+    action      = optional(string, "Allow")
+    ip_address  = optional(string)
+    name        = string
+    priority    = number
+    service_tag = optional(string)
 
     headers = optional(object({
       x_forwarded_for   = optional(list(string))
