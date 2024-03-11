@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.1.0...v15.1.1) (2024-03-11)
+
+
+### Bug Fixes
+
+* prevent configuration of HTTP logging using app settings ([#172](https://github.com/equinor/terraform-azurerm-web-app/issues/172)) ([4884652](https://github.com/equinor/terraform-azurerm-web-app/commit/4884652b6232c08d115e482d26f7ac35201bbc19))
+
 ## [15.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.0.0...v15.1.0) (2024-03-11)
 
 
