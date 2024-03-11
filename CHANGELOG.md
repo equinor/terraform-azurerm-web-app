@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.1.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.0.0...v15.1.0) (2024-03-11)
+
+
+### Features
+
+* add service tag possibility ([#169](https://github.com/equinor/terraform-azurerm-web-app/issues/169)) ([25d02c4](https://github.com/equinor/terraform-azurerm-web-app/commit/25d02c4aa4305c95a5be749e59dceaead0b74218))
+
 ## [15.0.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v14.4.0...v15.0.0) (2024-02-29)
 
 
