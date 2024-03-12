@@ -9,12 +9,12 @@ output "app_name" {
 }
 
 output "identity_principal_id" {
-  description = "The principal ID of the system-assigned identity of this Web App."
+  description = "The principal ID of the system-assigned identity of this Web App. This value will be null if no identity is assigned."
   value       = try(local.web_app.identity[0].principal_id, null)
 }
 
 output "identity_tenant_id" {
-  description = "The tenant ID of the system-assigned identity of this Web App."
+  description = "The tenant ID of the system-assigned identity of this Web App. This value will be null if no identity is assigned."
   value       = try(local.web_app.identity[0].tenant_id, null)
 }
 
