@@ -60,6 +60,12 @@ variable "application_stack" {
   default = null
 }
 
+variable "app_command_line" {
+  description = "The App command line to launch."
+  type        = string
+  default     = null
+}
+
 variable "active_directory_tenant_auth_endpoint" {
   description = "The endpoint of the Azure AD tenant to use for authentication."
   type        = string
