@@ -49,6 +49,7 @@ resource "azurerm_linux_web_app" "this" {
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   virtual_network_subnet_id       = var.virtual_network_subnet_id
+  use_manual_integration          = var.use_manual_integration
 
   tags = var.tags
 

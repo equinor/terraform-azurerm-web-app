@@ -18,6 +18,12 @@ variable "app_service_plan_id" {
   type        = string
 }
 
+variable "use_manual_integration" {
+  description = "(Optional) Set to false to enable continuous integration, such as webhooks into online repos such as GitHub."
+  type        = string
+  default     = true
+}
+
 variable "kind" {
   description = "The kind of Web App to create."
   type        = string
