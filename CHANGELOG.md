@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.1.1...v15.2.0) (2024-03-20)
+
+
+### Features
+
+* add ip restriction default value variables ([#177](https://github.com/equinor/terraform-azurerm-web-app/issues/177)) ([2117454](https://github.com/equinor/terraform-azurerm-web-app/commit/2117454a2d26bc57c35f274494b1d5931beface9))
+
 ## [15.1.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.1.0...v15.1.1) (2024-03-11)
 
 
