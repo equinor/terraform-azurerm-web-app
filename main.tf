@@ -88,6 +88,8 @@ resource "azurerm_linux_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+    ip_restriction_default_action                 = var.ip_restriction_default_action
+    scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -199,6 +201,8 @@ resource "azurerm_windows_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+    ip_restriction_default_action                 = var.ip_restriction_default_action
+    scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions

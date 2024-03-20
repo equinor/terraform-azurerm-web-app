@@ -153,6 +153,18 @@ variable "ip_restrictions" {
   default = []
 }
 
+variable "ip_restriction_default_action" {
+  description = "The Default action for traffic that does not match any ip_restriction rule"
+  type        = string
+  default     = "Allow"
+}
+
+variable "scm_ip_restriction_default_action" {
+  description = "The Default action for traffic to the Source Control Manager that does not match any ip_restriction rule"
+  type        = string
+  default     = "Allow"
+}
+
 variable "application_logs_file_system_level" {
   description = "The level of application logs to be enabled. Possible values include \"Verbose\", \"Information\", \"Warning\" and \"Error\"."
   type        = string
