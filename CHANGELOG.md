@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.2.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.2.1...v15.2.2) (2024-03-26)
+
+
+### Bug Fixes
+
+* correct required provider version ([#181](https://github.com/equinor/terraform-azurerm-web-app/issues/181)) ([315a565](https://github.com/equinor/terraform-azurerm-web-app/commit/315a565589ebfa9d1e65767b345b11c0968bee4d))
+
 ## [15.2.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.2.0...v15.2.1) (2024-03-26)
 
 
