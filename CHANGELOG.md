@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.2.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.2.0...v15.2.1) (2024-03-26)
+
+
+### Miscellaneous Chores
+
+* update variable and output descriptions ([#179](https://github.com/equinor/terraform-azurerm-web-app/issues/179)) ([255cd31](https://github.com/equinor/terraform-azurerm-web-app/commit/255cd3185e43a83fb67b8ee59c6e87008f0e409c))
+
 ## [15.2.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.1.1...v15.2.0) (2024-03-20)
 
 
