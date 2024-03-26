@@ -19,7 +19,7 @@ variable "app_service_plan_id" {
 }
 
 variable "kind" {
-  description = "The kind of Web App to create."
+  description = "The kind of Web App to create. Allowed values are \"Linux\" and \"Windows\"."
   type        = string
   default     = "Linux"
 
@@ -61,43 +61,43 @@ variable "application_stack" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = "The endpoint of the Azure AD tenant to use for authentication."
+  description = "The endpoint of the Microsoft Entra tenant to use for authentication."
   type        = string
   default     = null
 }
 
 variable "active_directory_client_id" {
-  description = "The client ID of the Azure AD app registration to use for authentication."
+  description = "The client ID of the Microsoft Entra app registration to use for authentication."
   type        = string
   default     = null
 }
 
 variable "active_directory_client_secret_setting_name" {
-  description = "The name of the app setting to get the Azure AD app registration client secret from."
+  description = "The name of the app setting to get the client secret of the Microsoft Entra app registration from."
   type        = string
   default     = "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
 }
 
 variable "client_affinity_enabled" {
-  description = "Should Client Affinity be enabled?"
+  description = "Should client affinity be enabled for this Web App?"
   type        = bool
   default     = false
 }
 
 variable "key_vault_reference_identity_id" {
-  description = "The ID of the Managed Identity that will be used to fetch app settings sourced from Key Vault."
+  description = "The ID of the managed identity that will be used to fetch app settings sourced from Key Vault."
   type        = string
   default     = null
 }
 
 variable "virtual_network_subnet_id" {
-  description = "The ID of the virtual network subnet to configure for this Web App."
+  description = "The ID of a virtual network subnet to integrate this Web App with."
   type        = string
   default     = null
 }
 
 variable "vnet_route_all_enabled" {
-  description = "Should all outbound traffic have NAT Gateways, Network Security Groups and User Defined Routes applied?"
+  description = "Should all outbound traffic have NAT Gateways, network security groups and user-defined routes applied?"
   type        = bool
   default     = false
 }
@@ -109,13 +109,13 @@ variable "websockets_enabled" {
 }
 
 variable "container_registry_use_managed_identity" {
-  description = "Should connections to Container Registry use Managed Identity?"
+  description = "Should connections to Container Registry use managed identity?"
   type        = bool
   default     = null
 }
 
 variable "container_registry_managed_identity_client_id" {
-  description = "The client ID of the Managed Identity that will be used to pull from the Container Registry."
+  description = "The client ID of the managed identity that will be used to pull from the Container Registry."
   type        = string
   default     = null
 }
@@ -127,7 +127,7 @@ variable "always_on" {
 }
 
 variable "ftps_state" {
-  description = "The State of FTP / FTPS service. Possible values include \"AllAllowed\", \"FtpsOnly\", and \"Disabled\"."
+  description = "The state of FTP/FTPS service. Possible values include \"AllAllowed\", \"FtpsOnly\", and \"Disabled\"."
   type        = string
   default     = "Disabled"
 }
@@ -154,13 +154,13 @@ variable "ip_restrictions" {
 }
 
 variable "ip_restriction_default_action" {
-  description = "The Default action for traffic that does not match any ip_restriction rule"
+  description = "The default action for traffic that does not match any IP restriction rule."
   type        = string
   default     = "Allow"
 }
 
 variable "scm_ip_restriction_default_action" {
-  description = "The Default action for traffic to the Source Control Manager that does not match any ip_restriction rule"
+  description = "The default action for traffic to the Source Control Manager (SCM) that does not match any IP restriction rule."
   type        = string
   default     = "Allow"
 }
