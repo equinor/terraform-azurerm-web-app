@@ -20,7 +20,6 @@ locals {
   active_directory_allowed_identities              = []
   active_directory_jwt_allowed_client_applications = []
   active_directory_jwt_allowed_groups              = []
-  active_directory_login_parameters                = {}
 
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
@@ -76,7 +75,7 @@ resource "azurerm_linux_web_app" "this" {
         allowed_identities              = local.active_directory_allowed_identities
         jwt_allowed_client_applications = local.active_directory_jwt_allowed_client_applications
         jwt_allowed_groups              = local.active_directory_jwt_allowed_groups
-        login_parameters                = local.active_directory_login_parameters
+        login_parameters                = var.active_directory_login_parameters
       }
     }
   }
@@ -189,7 +188,7 @@ resource "azurerm_windows_web_app" "this" {
         allowed_identities              = local.active_directory_allowed_identities
         jwt_allowed_client_applications = local.active_directory_jwt_allowed_client_applications
         jwt_allowed_groups              = local.active_directory_jwt_allowed_groups
-        login_parameters                = local.active_directory_login_parameters
+        login_parameters                = var.active_directory_login_parameters
       }
     }
   }
