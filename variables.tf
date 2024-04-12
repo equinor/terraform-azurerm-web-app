@@ -78,6 +78,12 @@ variable "active_directory_client_secret_setting_name" {
   default     = "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
 }
 
+variable "active_directory_login_parameters" {
+  description = "A map of key-value pairs to send to the authorization endpoint when a user logs in."
+  type        = map(string)
+  default     = {}
+}
+
 variable "client_affinity_enabled" {
   description = "Should client affinity be enabled for this Web App?"
   type        = bool
