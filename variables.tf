@@ -79,8 +79,8 @@ variable "active_directory_client_secret_setting_name" {
 }
 
 variable "active_directory_login_parameters" {
-  description = "A map of key-value pairs to send to the Authorisation Endpoint when a user logs in."
-  type = map(string)
+  description = "A map of key-value pairs to send to the authorization endpoint when a user logs in."
+  type        = map(string)
   default     = {}
 }
 
