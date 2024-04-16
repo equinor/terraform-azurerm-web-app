@@ -144,7 +144,13 @@ resource "azurerm_linux_web_app" "this" {
     ignore_changes = [
       # This setting turns itself off after 12 hours.
       # Ignore changes to prevent cycle of turning on/off...
-      logs[0].application_logs
+      logs[0].application_logs,
+
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"]
     ]
   }
 }
@@ -258,7 +264,13 @@ resource "azurerm_windows_web_app" "this" {
     ignore_changes = [
       # This setting turns itself off after 12 hours.
       # Ignore changes to prevent cycle of turning on/off...
-      logs[0].application_logs
+      logs[0].application_logs,
+
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"]
     ]
   }
 }
