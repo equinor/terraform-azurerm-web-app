@@ -1,5 +1,17 @@
 # Changelog
 
+## [15.3.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.2.2...v15.3.0) (2024-04-16)
+
+
+### Features
+
+* add custom login parameters variable ([#185](https://github.com/equinor/terraform-azurerm-web-app/issues/185)) ([b677abb](https://github.com/equinor/terraform-azurerm-web-app/commit/b677abb6f636f30cda5bdbb4e1916e54ccbec893))
+
+
+### Bug Fixes
+
+* ignore changes to common build settings ([#187](https://github.com/equinor/terraform-azurerm-web-app/issues/187)) ([7894e1e](https://github.com/equinor/terraform-azurerm-web-app/commit/7894e1e5166205cbde7d49bb84850b216e7c90b6))
+
 ## [15.2.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.2.1...v15.2.2) (2024-03-26)
 
 
