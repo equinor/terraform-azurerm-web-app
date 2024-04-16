@@ -46,7 +46,7 @@ variable "app_settings" {
   }
 
   validation {
-    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], [for key in keys(var.app_settings) : upper(key)])) == 0
+    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
     error_message = "Build settings must be configured outside of Terraform, commonly in a CI/CD pipeline."
   }
 }
