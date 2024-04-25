@@ -56,7 +56,7 @@ variable "application_stack" {
 
   type = object({
     docker_image_name        = string
-    docker_registry_url      = string
+    docker_registry_url      = optional(string, "https://index.docker.io")
     docker_registry_username = optional(string)
     docker_registry_password = optional(string)
     current_stack            = optional(string)
