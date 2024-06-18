@@ -37,17 +37,17 @@ variable "app_settings" {
 
   validation {
     condition     = length(setintersection(["DOCKER_REGISTRY_SERVER_URL", "DOCKER_REGISTRY_SERVER_USERNAME", "DOCKER_REGISTRY_SERVER_PASSWORD"], keys(var.app_settings))) == 0
-    error_message = "Docker settings must be configured using \"application_stack\"."
+    error_message = "Docker settings (\"DOCKER_*\") must be configured using \"application_stack\"."
   }
 
   validation {
     condition     = length(setintersection(["WEBSITE_HTTPLOGGING_ENABLED", "WEBSITE_HTTPLOGGING_RETENTION_DAYS", "WEBSITE_HTTPLOGGING_CONTAINER_URL"], keys(var.app_settings))) == 0
-    error_message = "HTTP logging settings must be configured using \"http_logs_file_system_retention_in_mb\" and \"http_logs_file_system_retention_in_days\"."
+    error_message = "HTTP logging settings (\"WEBSITE_HTTPLOGGING_*\") must be configured using \"http_logs_file_system_retention_in_mb\" and \"http_logs_file_system_retention_in_days\"."
   }
 
   validation {
     condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
-    error_message = "Build settings must be configured outside of Terraform, commonly in a CI/CD pipeline."
+    error_message = "Build settings (\"BUILD_*\") must be configured outside of Terraform, commonly in a CI/CD pipeline."
   }
 }
 
