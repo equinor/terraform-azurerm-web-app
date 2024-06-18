@@ -1,5 +1,17 @@
 # Changelog
 
+## [15.4.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.3.0...v15.4.0) (2024-06-18)
+
+
+### Features
+
+* pull Docker image from Docker Registry by default ([#188](https://github.com/equinor/terraform-azurerm-web-app/issues/188)) ([5d85fa9](https://github.com/equinor/terraform-azurerm-web-app/commit/5d85fa918a1269cacdbe7cc483e3b6c01bae594d))
+
+
+### Bug Fixes
+
+* clarify app settings exceptions ([#191](https://github.com/equinor/terraform-azurerm-web-app/issues/191)) ([45ed52e](https://github.com/equinor/terraform-azurerm-web-app/commit/45ed52e5b88e4656922278d9a67db677fdbe71ad))
+
 ## [15.3.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.2.2...v15.3.0) (2024-04-16)
 
 
