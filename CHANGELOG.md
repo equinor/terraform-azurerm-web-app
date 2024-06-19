@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.4.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.0...v15.4.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* case-insensitive validation of `BUILD*` app settings ([#193](https://github.com/equinor/terraform-azurerm-web-app/issues/193)) ([6b37ceb](https://github.com/equinor/terraform-azurerm-web-app/commit/6b37cebbe2b4c58372536803ca0411633d8e93cc))
+
 ## [15.4.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.3.0...v15.4.0) (2024-06-18)
 
 
