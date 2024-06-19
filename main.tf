@@ -275,6 +275,13 @@ resource "azurerm_windows_web_app" "this" {
   }
 }
 
+check "build_settings_check" {
+  assert {
+    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
+    error_message = "App settings \"BUILD\", \"BUILD_NUMBER\" and \"BUILD_ID\" should be configured outside of Terraform, commonly in a CI/CD pipeline. Any changes made to these app settings will be ignored."
+  }
+}
+
 resource "azurerm_app_service_custom_hostname_binding" "this" {
   for_each = var.custom_hostname_bindings
 

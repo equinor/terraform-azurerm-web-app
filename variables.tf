@@ -44,11 +44,6 @@ variable "app_settings" {
     condition     = length(setintersection(["WEBSITE_HTTPLOGGING_ENABLED", "WEBSITE_HTTPLOGGING_RETENTION_DAYS", "WEBSITE_HTTPLOGGING_CONTAINER_URL"], keys(var.app_settings))) == 0
     error_message = "HTTP logging settings (\"WEBSITE_HTTPLOGGING_*\") must be configured using \"http_logs_file_system_retention_in_mb\" and \"http_logs_file_system_retention_in_days\"."
   }
-
-  validation {
-    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], [for key in keys(var.app_settings) : upper(key)])) == 0
-    error_message = "Build settings (\"BUILD*\") must be configured outside of Terraform, commonly in a CI/CD pipeline."
-  }
 }
 
 variable "application_stack" {
