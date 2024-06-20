@@ -6,6 +6,10 @@
 
 Terraform module which creates an Azure Web App.
 
+## Features
+
+- Ignore changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID`, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
+
 ## Development
 
 1. Read [this document](https://code.visualstudio.com/docs/devcontainers/containers).
