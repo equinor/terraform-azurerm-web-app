@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.4.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.1...v15.4.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* throw warning instead of error when trying to configure build related app settings ([#195](https://github.com/equinor/terraform-azurerm-web-app/issues/195)) ([5dcf8ba](https://github.com/equinor/terraform-azurerm-web-app/commit/5dcf8bab4f6d90fc335a74312b8cc06f6b1752ef))
+
 ## [15.4.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.0...v15.4.1) (2024-06-19)
 
 
