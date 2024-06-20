@@ -153,6 +153,15 @@ resource "azurerm_linux_web_app" "this" {
       app_settings["BUILD_ID"]
     ]
   }
+
+  backup {
+    name = "app-${var.application}-${var.environment}-backup"
+    schedule {
+      frequency_interval = 7
+      frequency_unit     = "Day"
+    }
+    storage_account_url = "www.placeholder.com"
+  }
 }
 
 resource "azurerm_windows_web_app" "this" {
