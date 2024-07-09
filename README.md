@@ -9,10 +9,10 @@ Terraform module which creates an Azure Web App.
 ## Features
 
 - HTTPS enforced.
-- Application logging enabled.
 - Managed certificates automatically created for custom hostnames.
-- Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
+- Application logging enabled.
 - Audit logs sent to given Log Analytics workspace by default.
+- Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
 
 ## Development
 
