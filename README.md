@@ -9,6 +9,7 @@ Terraform module which creates an Azure Web App.
 ## Features
 
 - HTTPS enforced.
+- Public network access denied by default.
 - Managed certificates automatically created for custom hostnames.
 - Application logging enabled.
 - Audit logs sent to given Log Analytics workspace by default.

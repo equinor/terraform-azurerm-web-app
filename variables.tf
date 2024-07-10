@@ -160,15 +160,25 @@ variable "ip_restrictions" {
 }
 
 variable "ip_restriction_default_action" {
-  description = "The default action for traffic that does not match any IP restriction rule."
+  description = "The default action for traffic that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
   type        = string
-  default     = "Allow"
+  default     = "Deny"
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.ip_restriction_default_action)
+    error_message = "IP restriction default action must be \"Allow\" or \"Deny\"."
+  }
 }
 
 variable "scm_ip_restriction_default_action" {
-  description = "The default action for traffic to the Source Control Manager (SCM) that does not match any IP restriction rule."
+  description = "The default action for traffic to the Source Control Manager (SCM) that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
   type        = string
-  default     = "Allow"
+  default     = "Deny"
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.scm_ip_restriction_default_action)
+    error_message = "SCM IP restriction default action must be \"Allow\" or \"Deny\"."
+  }
 }
 
 variable "application_logs_file_system_level" {
