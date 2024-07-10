@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.4.3](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.2...v15.4.3) (2024-07-10)
+
+
+### Documentation
+
+* add features section to README ([ebd512f](https://github.com/equinor/terraform-azurerm-web-app/commit/ebd512ffc4e3b79550d63a21a825d13264f4dd50))
+
 ## [15.4.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.1...v15.4.2) (2024-06-20)
 
 
