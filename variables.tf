@@ -163,6 +163,7 @@ variable "ip_restriction_default_action" {
   description = "The default action for traffic that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
   type        = string
   default     = "Deny"
+  nullable    = false
 
   validation {
     condition     = contains(["Allow", "Deny"], var.ip_restriction_default_action)
@@ -174,6 +175,7 @@ variable "scm_ip_restriction_default_action" {
   description = "The default action for traffic to the Source Control Manager (SCM) that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
   type        = string
   default     = "Deny"
+  nullable    = false
 
   validation {
     condition     = contains(["Allow", "Deny"], var.scm_ip_restriction_default_action)
