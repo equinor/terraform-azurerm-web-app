@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.5.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.3...v15.5.0) (2024-07-10)
+
+
+### Features
+
+* deny public network access by default ([#200](https://github.com/equinor/terraform-azurerm-web-app/issues/200)) ([277448e](https://github.com/equinor/terraform-azurerm-web-app/commit/277448e2c7788b56b957947c765f6ee5be8a8e13))
+
 ## [15.4.3](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.2...v15.4.3) (2024-07-10)
 
 
