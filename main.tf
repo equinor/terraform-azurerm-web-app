@@ -56,9 +56,9 @@ resource "azurerm_linux_web_app" "this" {
     for_each = var.connection_strings
 
     content {
-      name  = each.value.name
-      type  = each.value.type
-      value = each.value.value
+      name  = connection_string.value.name
+      type  = connection_string.value.type
+      value = connection_string.value.value
     }
   }
 
@@ -186,9 +186,9 @@ resource "azurerm_windows_web_app" "this" {
     for_each = var.connection_strings
 
     content {
-      name  = each.value.name
-      type  = each.value.type
-      value = each.value.value
+      name  = connection_string.value.name
+      type  = connection_string.value.type
+      value = connection_string.value.value
     }
   }
 
