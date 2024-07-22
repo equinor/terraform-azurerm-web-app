@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.6.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.5.0...v15.6.0) (2024-07-22)
+
+
+### Features
+
+* configure connection strings ([#202](https://github.com/equinor/terraform-azurerm-web-app/issues/202)) ([7006ab7](https://github.com/equinor/terraform-azurerm-web-app/commit/7006ab72db13ebbc801bfa8a384c953bcbdcceb0))
+
 ## [15.5.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.4.3...v15.5.0) (2024-07-10)
 
 
