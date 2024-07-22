@@ -52,6 +52,16 @@ resource "azurerm_linux_web_app" "this" {
 
   tags = var.tags
 
+  dynamic "connection_string" {
+    for_each = var.connection_strings
+
+    content {
+      name  = each.value.name
+      type  = each.value.type
+      value = each.value.value
+    }
+  }
+
   dynamic "auth_settings_v2" {
     for_each = var.active_directory_client_id == null ? [] : [1]
 
@@ -171,6 +181,16 @@ resource "azurerm_windows_web_app" "this" {
   virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   tags = var.tags
+
+  dynamic "connection_string" {
+    for_each = var.connection_strings
+
+    content {
+      name  = each.value.name
+      type  = each.value.type
+      value = each.value.value
+    }
+  }
 
   dynamic "auth_settings_v2" {
     for_each = var.active_directory_client_id == null ? [] : [1]
