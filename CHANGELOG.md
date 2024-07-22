@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.6.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.6.0...v15.6.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* configuring connection strings throws error ([#204](https://github.com/equinor/terraform-azurerm-web-app/issues/204)) ([49b4467](https://github.com/equinor/terraform-azurerm-web-app/commit/49b446741fd26da63295e9948f96a6c48d29d3c4))
+
 ## [15.6.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.5.0...v15.6.0) (2024-07-22)
 
 
