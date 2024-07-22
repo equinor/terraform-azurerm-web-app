@@ -46,6 +46,19 @@ variable "app_settings" {
   }
 }
 
+variable "connection_strings" {
+  description = "A list of connection strings to be configured for this Web App."
+
+  type = list(object({
+    name  = string
+    value = string
+    type  = optional(string, "Custom")
+  }))
+
+  default  = []
+  nullable = false
+}
+
 variable "application_stack" {
   description = "An object of application stack settings for this Web App. Note that application stack settings are often configured outside of Terraform (for example when deploying code), so configuring application stack settings in Terraform may cause conflicts."
 
