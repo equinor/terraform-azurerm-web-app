@@ -7,7 +7,8 @@ resource "random_id" "this" {
 }
 
 module "log_analytics" {
-  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.4.0"
+  source  = "equinor/log-analytics/azurerm"
+  version = "2.2.0"
 
   workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = var.resource_group_name
@@ -15,7 +16,8 @@ module "log_analytics" {
 }
 
 module "app_service" {
-  source = "github.com/equinor/terraform-azurerm-app-service?ref=v1.0.0"
+  source  = "equinor/app-service/azurerm"
+  version = "2.1.0"
 
   plan_name           = "plan-${random_id.this.hex}"
   resource_group_name = var.resource_group_name
@@ -29,6 +31,7 @@ module "web_app" {
   resource_group_name        = var.resource_group_name
   location                   = var.location
   app_service_plan_id        = module.app_service.plan_id
+  kind                       = module.app_service.os_type
   log_analytics_workspace_id = module.log_analytics.workspace_id
 
   application_stack = {
