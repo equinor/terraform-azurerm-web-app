@@ -59,18 +59,34 @@ variable "connection_strings" {
   nullable = false
 }
 
-variable "application_stack" {
-  description = "An object of application stack settings for this Web App. Note that application stack settings are often configured outside of Terraform (for example when deploying code), so configuring application stack settings in Terraform may cause conflicts."
+variable "application_stack_docker_image_name" {
+  description = "The name of the Docker image for this Web App."
+  type        = string
+  default     = null
+}
 
-  type = object({
-    docker_image_name        = string
-    docker_registry_url      = optional(string, "https://index.docker.io")
-    docker_registry_username = optional(string)
-    docker_registry_password = optional(string)
-    current_stack            = optional(string)
-  })
+variable "application_stack_docker_registry_url" {
+  description = "The URL of the Docker registry for this Web App."
+  type        = string
+  default     = "https://index.docker.io"
+}
 
-  default = null
+variable "application_stack_docker_registry_username" {
+  description = "The username for the Docker registry for this Web App."
+  type        = string
+  default     = null
+}
+
+variable "application_stack_docker_registry_password" {
+  description = "The password for the Docker registry for this Web App."
+  type        = string
+  default     = null
+}
+
+variable "current_application_stack" {
+  description = "The current stack for this Windows Web App."
+  type        = string
+  default     = null
 }
 
 variable "active_directory_tenant_auth_endpoint" {
