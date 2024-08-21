@@ -81,6 +81,7 @@ variable "application_stack_docker_registry_password" {
   description = "The password for the Docker registry for this Web App."
   type        = string
   default     = null
+  sensitive   = true
 }
 
 variable "current_application_stack" {
