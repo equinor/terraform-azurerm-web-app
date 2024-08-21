@@ -78,7 +78,7 @@ variable "application_stack_docker_registry_username" {
 }
 
 variable "application_stack_docker_registry_password" {
-  description = "The password for the Docker registry for this Web App."
+  description = "A password to use for authenticating to the Docker registry from this Web App."
   type        = string
   default     = null
   sensitive   = true
