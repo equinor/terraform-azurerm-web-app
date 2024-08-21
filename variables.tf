@@ -60,7 +60,7 @@ variable "connection_strings" {
 }
 
 variable "application_stack_docker_image_name" {
-  description = "The name of the Docker image for this Web App."
+  description = "The name of the Docker image, including tag, to be used for this Web App."
   type        = string
   default     = null
 }
