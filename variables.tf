@@ -72,7 +72,7 @@ variable "application_stack_docker_registry_url" {
 }
 
 variable "application_stack_docker_registry_username" {
-  description = "The username for the Docker registry for this Web App."
+  description = "A username to use for authenticating to the Docker registry from this Web App."
   type        = string
   default     = null
 }
