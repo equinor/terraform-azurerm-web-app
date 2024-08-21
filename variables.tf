@@ -66,7 +66,7 @@ variable "application_stack_docker_image_name" {
 }
 
 variable "application_stack_docker_registry_url" {
-  description = "The URL of the Docker registry for this Web App."
+  description = "The URL of the Docker registry that this Web App should pull the Docker image from."
   type        = string
   default     = "https://index.docker.io"
 }
