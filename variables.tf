@@ -85,7 +85,7 @@ variable "application_stack_docker_registry_password" {
 }
 
 variable "current_application_stack" {
-  description = "The current stack for this Windows Web App."
+  description = "The current application stack for this Web App. Value must be \"dotnet\", \"dotnetcore\", \"node\", \"python\", \"php\" or \"java\". Only applicable if value of \"kind\" is \"Windows\"."
   type        = string
   default     = null
 }
