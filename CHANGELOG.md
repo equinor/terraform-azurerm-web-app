@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.6.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.6.1...v15.6.2) (2024-09-10)
+
+
+### Documentation
+
+* clarify how to re-enable application logging ([#211](https://github.com/equinor/terraform-azurerm-web-app/issues/211)) ([20fd15d](https://github.com/equinor/terraform-azurerm-web-app/commit/20fd15d242593adeafc0f2834ebbaa175cc0a943))
+
 ## [15.6.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.6.0...v15.6.1) (2024-07-22)
 
 
