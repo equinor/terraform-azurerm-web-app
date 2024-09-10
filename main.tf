@@ -99,6 +99,19 @@ resource "azurerm_linux_web_app" "this" {
     }
   }
 
+  dynamic "storage_account" {
+    for_each = var.storage_accounts
+
+    content {
+      access_key   = storage_account.value.access_key
+      account_name = storage_account.value.account_name
+      mount_path   = storage_account.value.mount_path
+      name         = storage_account.value.name
+      share_name   = storage_account.value.share_name
+      type         = storage_account.value.type
+    }
+  }
+
   logs {
     application_logs {
       file_system_level = var.application_logs_file_system_level
@@ -227,6 +240,19 @@ resource "azurerm_windows_web_app" "this" {
     content {
       type         = local.identity_type
       identity_ids = local.identity_ids
+    }
+  }
+
+  dynamic "storage_account" {
+    for_each = var.storage_accounts
+
+    content {
+      access_key   = storage_account.value.access_key
+      account_name = storage_account.value.account_name
+      mount_path   = storage_account.value.mount_path
+      name         = storage_account.value.name
+      share_name   = storage_account.value.share_name
+      type         = storage_account.value.type
     }
   }
 

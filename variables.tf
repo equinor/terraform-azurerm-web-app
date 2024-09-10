@@ -285,3 +285,18 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "storage_accounts" {
+  description = "A list of storage accounts to be mounted for this Web App."
+
+  type = list(object({
+    access_key   = string
+    account_name = string
+    mount_path   = optional(string)
+    name         = string
+    share_name   = string
+    type         = string
+  }))
+
+  default = []
+}
