@@ -285,3 +285,34 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "storage_accounts" {
+  description = "A list of Storage accounts to be mounted for this Web App."
+
+  type = list(object({
+    name                    = string
+    account_name            = string
+    access_key_setting_name = string
+    share_name              = string
+    mount_path              = string
+    type                    = optional(string, "AzureFiles")
+  }))
+
+  default = []
+
+  validation {
+    condition     = alltrue([for storage_account in var.storage_accounts : storage_account.mount_path != "" && storage_account.mount_path != null])
+    error_message = "Storage account mount point can not be empty or null."
+  }
+
+  # Ref: https://learn.microsoft.com/en-us/azure/app-service/configure-connect-to-azure-storage#limitations
+  validation {
+    condition     = alltrue([for storage_account in var.storage_accounts : storage_account.mount_path != "/" && storage_account.mount_path != "/home"])
+    error_message = "Storage account mount point can not be \"/\" or \"/home\"."
+  }
+
+  validation {
+    condition     = alltrue([for storage_account in var.storage_accounts : storage_account.type == "AzureFiles" || storage_account.type == "AzureBlob"])
+    error_message = "Storage account type must be either \"AzureFiles\" or \"AzureBlob\"."
+  }
+}
