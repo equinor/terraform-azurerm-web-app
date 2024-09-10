@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.7.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.6.2...v15.7.0) (2024-09-10)
+
+
+### Features
+
+* mount Storage accounts ([#213](https://github.com/equinor/terraform-azurerm-web-app/issues/213)) ([56b5a2d](https://github.com/equinor/terraform-azurerm-web-app/commit/56b5a2d6fbd9a4aaff140b1d6df41b5cda40ddb1))
+
 ## [15.6.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.6.1...v15.6.2) (2024-09-10)
 
 
