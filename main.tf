@@ -103,7 +103,7 @@ resource "azurerm_linux_web_app" "this" {
     for_each = var.storage_accounts
 
     content {
-      access_key   = storage_account.value.access_key
+      access_key   = "@AppSettingRef(${storage_account.value.access_key_setting_name})"
       account_name = storage_account.value.account_name
       mount_path   = storage_account.value.mount_path
       name         = storage_account.value.name
@@ -247,7 +247,7 @@ resource "azurerm_windows_web_app" "this" {
     for_each = var.storage_accounts
 
     content {
-      access_key   = storage_account.value.access_key
+      access_key   = "@AppSettingRef(${storage_account.value.access_key_setting_name})"
       account_name = storage_account.value.account_name
       mount_path   = storage_account.value.mount_path
       name         = storage_account.value.name

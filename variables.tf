@@ -287,15 +287,15 @@ variable "tags" {
 }
 
 variable "storage_accounts" {
-  description = "A list of storage accounts to be mounted for this Web App."
+  description = "A list of Storage accounts to be mounted for this Web App."
 
   type = list(object({
-    access_key   = string
-    account_name = string
-    mount_path   = optional(string)
-    name         = string
-    share_name   = string
-    type         = string
+    name                    = string
+    account_name            = string
+    access_key_setting_name = string
+    share_name              = string
+    mount_path              = optional(string)
+    type                    = optional(string, "AzureFiles")
   }))
 
   default = []
