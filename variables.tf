@@ -294,9 +294,14 @@ variable "storage_accounts" {
     account_name            = string
     access_key_setting_name = string
     share_name              = string
-    mount_path              = optional(string)
+    mount_path              = string
     type                    = optional(string, "AzureFiles")
   }))
 
   default = []
+
+  validation {
+    condition     = alltrue([for storage_account in var.storage_accounts : storage_account.mount_path != "" && storage_account.mount_path != null])
+    error_message = "Storage account mount point can not be empty or null."
+  }
 }
