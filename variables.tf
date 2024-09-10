@@ -304,4 +304,9 @@ variable "storage_accounts" {
     condition     = alltrue([for storage_account in var.storage_accounts : storage_account.mount_path != "" && storage_account.mount_path != null])
     error_message = "Storage account mount point can not be empty or null."
   }
+
+  validation {
+    condition     = alltrue([for storage_account in var.storage_accounts : storage_account.type == "AzureFiles" || storage_account.type == "AzureBlob"])
+    error_message = "Storage account type must be either 'AzureFiles' or 'AzureBlob'."
+  }
 }
