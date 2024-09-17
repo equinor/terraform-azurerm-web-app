@@ -8,7 +8,6 @@ resource "random_id" "this" {
 
 module "log_analytics" {
   source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.4.0"
-  count = var.logs_analytics_enable ? 1 : 0
 
   workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = var.resource_group_name
@@ -30,6 +29,6 @@ module "web_app" {
   resource_group_name        = var.resource_group_name
   location                   = var.location
   app_service_plan_id        = module.app_service.plan_id
-  log_analytics_workspace_id = var.logs_analytics_enable ? module.log_analytics[0].workspace_id : null
+  log_analytics_workspace_id = module.log_analytics.workspace_id
   
 }
