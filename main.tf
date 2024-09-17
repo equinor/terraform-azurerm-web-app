@@ -317,6 +317,8 @@ resource "azurerm_app_service_certificate_binding" "this" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
+  count = !var.create_diagnostic_setting ? 0 : 1
+
   name                       = var.diagnostic_setting_name
   target_resource_id         = local.web_app.id
   log_analytics_workspace_id = var.log_analytics_workspace_id

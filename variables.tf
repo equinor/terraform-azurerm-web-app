@@ -249,6 +249,13 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "create_diagnostic_setting" {
+  description = "Should a diagnostic setting be created for this Web App?"
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
 variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to send diagnostics to."
   type        = string
