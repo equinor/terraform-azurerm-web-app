@@ -332,6 +332,6 @@ variable "client_certificate_mode" {
 
 variable "client_certificate_enabled" {
   description = "Should client certificate be enabled for this Web App?"
-  default = false
-  type = bool
+  type        = bool
+  default     = false
 }
