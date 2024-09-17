@@ -318,20 +318,20 @@ variable "storage_accounts" {
 }
 
 variable "public_network_access_enabled" {
-    description = "Should public access be enabled for this Web App?"
-    default = true
-    type = bool
+    description = "Should public network access be enabled for this Web App?"
+    type        = bool
+    default     = true
 }
 
 
 variable "client_certificate_mode" {
-  description = "Should client cerftificate mode be enabled for this Web App?"
-  default = "Optional"
-  type = string
+  description = "The client cerftificate mode for this Web App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
+  type        = string
+  default     = "Required"
 }
 
 variable "client_certificate_enabled" {
   description = "Should client certificate be enabled for this Web App?"
-  default = false
-  type = bool
+  type        = bool
+  default     = false
 }
