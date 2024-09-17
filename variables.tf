@@ -318,9 +318,9 @@ variable "storage_accounts" {
 }
 
 variable "public_network_access_enabled" {
-    description = "Should public access be enabled for this Web App?"
-    default = true
-    type = bool
+    description = "Should public network access be enabled for this Web App?"
+    type        = bool
+    default     = true
 }
 
 
