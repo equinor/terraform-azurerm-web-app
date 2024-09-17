@@ -325,9 +325,9 @@ variable "public_network_access_enabled" {
 
 
 variable "client_certificate_mode" {
-  description = "Should client cerftificate mode be enabled for this Web App?"
-  default = "Optional"
-  type = string
+  description = "The client cerftificate mode for this Web App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
+  type        = string
+  default     = "Required"
 }
 
 variable "client_certificate_enabled" {
