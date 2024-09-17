@@ -4,6 +4,8 @@ resource "azurerm_linux_web_app" "this" {
   count = local.is_windows ? 0 : 1
 
   name                            = var.app_name
+  client_certificate_enabled      = var.client_certificate_enabled
+  client_certificate_mode         = var.client_certificate_mode
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
@@ -11,7 +13,7 @@ resource "azurerm_linux_web_app" "this" {
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
-  public_network_access_enabled   = true
+  public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   tags = var.tags
@@ -147,6 +149,8 @@ resource "azurerm_windows_web_app" "this" {
   count = local.is_windows ? 1 : 0
 
   name                            = var.app_name
+  client_certificate_enabled      = var.client_certificate_enabled
+  client_certificate_mode         = var.client_certificate_mode
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
@@ -154,7 +158,7 @@ resource "azurerm_windows_web_app" "this" {
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
-  public_network_access_enabled   = true
+  public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
 
   tags = var.tags

@@ -316,3 +316,22 @@ variable "storage_accounts" {
     error_message = "Storage account type must be either \"AzureFiles\" or \"AzureBlob\"."
   }
 }
+
+variable "public_network_access_enabled" {
+    description = "Should public network access be enabled for this Web App?"
+    type        = bool
+    default     = true
+}
+
+
+variable "client_certificate_mode" {
+  description = "The client cerftificate mode for this Web App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
+  type        = string
+  default     = "Required"
+}
+
+variable "client_certificate_enabled" {
+  description = "Should client certificate be enabled for this Web App?"
+  type        = bool
+  default     = false
+}
