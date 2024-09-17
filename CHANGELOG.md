@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.8.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.7.0...v15.8.0) (2024-09-17)
+
+
+### Features
+
+* configure client certificate and public network access ([#215](https://github.com/equinor/terraform-azurerm-web-app/issues/215)) ([f87655b](https://github.com/equinor/terraform-azurerm-web-app/commit/f87655b0409c33ce5642d1c5e3e2c66a13239c29))
+
 ## [15.7.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.6.2...v15.7.0) (2024-09-10)
 
 
