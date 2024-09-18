@@ -140,7 +140,12 @@ resource "azurerm_linux_web_app" "this" {
       # These are usually configured in CI/CD pipelines.
       app_settings["BUILD"],
       app_settings["BUILD_NUMBER"],
-      app_settings["BUILD_ID"]
+      app_settings["BUILD_ID"],
+
+      # Ignore changes to hidden tags that are managed by Azure.
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"]
     ]
   }
 }
@@ -286,7 +291,12 @@ resource "azurerm_windows_web_app" "this" {
       # These are usually configured in CI/CD pipelines.
       app_settings["BUILD"],
       app_settings["BUILD_NUMBER"],
-      app_settings["BUILD_ID"]
+      app_settings["BUILD_ID"],
+
+      # Ignore changes to hidden tags that are managed by Azure.
+      tags["hidden-link: /app-insights-conn-string"],
+      tags["hidden-link: /app-insights-instrumentation-key"],
+      tags["hidden-link: /app-insights-resource-id"]
     ]
   }
 }
