@@ -335,3 +335,9 @@ variable "client_certificate_enabled" {
   type        = bool
   default     = false
 }
+
+variable "zip_deploy_file" {
+  description = "The quick deployment of local package for this Web App."
+  type        = string
+  default     = null
+}
