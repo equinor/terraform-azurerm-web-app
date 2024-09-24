@@ -1,5 +1,17 @@
 # Changelog
 
+## [15.9.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.8.0...v15.9.0) (2024-09-24)
+
+
+### Features
+
+* deploy local ZIP-packaged application ([#220](https://github.com/equinor/terraform-azurerm-web-app/issues/220)) ([742c058](https://github.com/equinor/terraform-azurerm-web-app/commit/742c0582ae3cbc0932edc0978402ec2d971561fd))
+
+
+### Bug Fixes
+
+* ignore changes to hidden tags ([#218](https://github.com/equinor/terraform-azurerm-web-app/issues/218)) ([c0e5e1b](https://github.com/equinor/terraform-azurerm-web-app/commit/c0e5e1bef041df161becb49d4342b3c985bb9afa))
+
 ## [15.8.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.7.0...v15.8.0) (2024-09-17)
 
 
