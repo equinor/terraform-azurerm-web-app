@@ -335,3 +335,9 @@ variable "client_certificate_enabled" {
   type        = bool
   default     = false
 }
+
+variable "zip_deploy_file" {
+  description = "The local path of a ZIP-packaged application to deploy to this Web App."
+  type        = string
+  default     = null
+}

@@ -15,6 +15,7 @@ resource "azurerm_linux_web_app" "this" {
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
+  zip_deploy_file                 = var.zip_deploy_file
 
   tags = var.tags
 
@@ -160,7 +161,8 @@ resource "azurerm_windows_web_app" "this" {
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
   public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
-
+  zip_deploy_file                 = var.zip_deploy_file
+  
   tags = var.tags
 
   dynamic "connection_string" {
