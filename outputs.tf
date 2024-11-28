@@ -27,3 +27,14 @@ output "custom_domain_verification_id" {
   description = "The identifier used by App Service to perform domain ownership verification via DNS TXT record."
   value       = local.web_app.custom_domain_verification_id
 }
+
+output "site_credential_name" {
+  description = "The Site Credentials Username used for publishing."
+  value       = local.web_app.site_credential[0].name
+}
+
+output "site_credential_password" {
+  description = "The Site Credentials Password used for publishing."
+  value       = local.web_app.site_credential[0].password
+  sensitive   = true
+}
