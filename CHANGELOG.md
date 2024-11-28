@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.10.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.9.0...v15.10.0) (2024-11-28)
+
+
+### Features
+
+* output site credential name and password ([#222](https://github.com/equinor/terraform-azurerm-web-app/issues/222)) ([c9a41b2](https://github.com/equinor/terraform-azurerm-web-app/commit/c9a41b2a67c012253fe3a36b6f3fb83d8c4a8182))
+
 ## [15.9.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.8.0...v15.9.0) (2024-09-24)
 
 
