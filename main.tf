@@ -248,9 +248,9 @@ resource "azurerm_windows_web_app" "this" {
       for_each = var.virtual_application
 
       content {
-        virtual_path    = virtual_application.value.virtual_path
-        physical_path   = virtual_application.value.physical_path
-        preload_enabled = virtual_application.value.preload_enabled
+        virtual_path  = virtual_application.value.virtual_path
+        physical_path = virtual_application.value.physical_path
+        preload       = virtual_application.value.preload_enabled
 
         virtual_directory {
           physical_path = virtual_application.value.virtual_directory.physical_path
