@@ -73,10 +73,10 @@ variable "application_stack" {
   default = null
 }
 
-variable "virtual_application" {
+variable "virtual_applications" {
   description = "An object of virtual application path mappings for Windows Web Apps."
 
-  type = object({
+  type = list(object({
     virtual_path  = string
     physical_path = string
     preload       = bool
@@ -85,7 +85,7 @@ variable "virtual_application" {
       physical_path = optional(list(string))
       virtual_path  = optional(list(string))
     }))
-  })
+  }))
 
   default = null
 }
