@@ -244,8 +244,8 @@ resource "azurerm_windows_web_app" "this" {
       }
     }
 
-    dynamic "virtual_application" {
-      for_each = var.virtual_application != null ? [1] : []
+    dynamic "virtual_applications" {
+      for_each = var.virtual_applications != null ? [1] : []
 
       content {
         virtual_path  = virtual_application.value.virtual_path
