@@ -73,6 +73,23 @@ variable "application_stack" {
   default = null
 }
 
+variable "virtual_application" {
+  description = "An object of virtual application settings for this Web App."
+
+  type = object({
+    virtual_path  = string
+    physical_path = string
+    preload       = bool
+
+    virtual_directory = optional(object({
+      physical_path = optional(list(string))
+      virtual_path  = optional(list(string))
+    }))
+  })
+
+  default = null
+}
+
 variable "active_directory_tenant_auth_endpoint" {
   description = "The endpoint of the Microsoft Entra tenant to use for authentication."
   type        = string
@@ -318,9 +335,9 @@ variable "storage_accounts" {
 }
 
 variable "public_network_access_enabled" {
-    description = "Should public network access be enabled for this Web App?"
-    type        = bool
-    default     = true
+  description = "Should public network access be enabled for this Web App?"
+  type        = bool
+  default     = true
 }
 
 
