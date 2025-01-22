@@ -81,10 +81,10 @@ variable "virtual_applications" {
     physical_path = string
     preload       = bool
 
-    virtual_directory = optional(object({
+    virtual_directories = optional(list(object({
       physical_path = optional(list(string))
       virtual_path  = optional(list(string))
-    }))
+    })))
   }))
 
   default = null

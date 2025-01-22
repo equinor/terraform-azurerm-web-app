@@ -244,7 +244,7 @@ resource "azurerm_windows_web_app" "this" {
       }
     }
 
-    dynamic "virtual_applications" {
+    dynamic "virtual_application" {
       for_each = var.virtual_applications
 
       content {
