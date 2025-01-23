@@ -167,7 +167,7 @@ resource "azurerm_windows_web_app" "this" {
   public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
   zip_deploy_file                 = var.zip_deploy_file
-  
+
   tags = var.tags
 
   dynamic "connection_string" {
@@ -241,6 +241,21 @@ resource "azurerm_windows_web_app" "this" {
         docker_registry_username = application_stack.value.docker_registry_username
         docker_registry_password = application_stack.value.docker_registry_password
         current_stack            = application_stack.value.current_stack
+      }
+    }
+
+    dynamic "virtual_application" {
+      for_each = var.virtual_applications
+
+      content {
+        virtual_path  = virtual_application.value.virtual_path
+        physical_path = virtual_application.value.physical_path
+        preload       = virtual_application.value.preload
+
+        virtual_directory {
+          physical_path = virtual_application.value.virtual_directories.physical_path
+          virtual_path  = virtual_application.value.virtual_directories.virtual_path
+        }
       }
     }
   }
