@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.10.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.10.1...v15.10.2) (2025-01-30)
+
+
+### Documentation
+
+* reformat notes ([#227](https://github.com/equinor/terraform-azurerm-web-app/issues/227)) ([383c00d](https://github.com/equinor/terraform-azurerm-web-app/commit/383c00d398d4f0d914601285b380aaad0146521b))
+
 ## [15.10.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.10.0...v15.10.1) (2025-01-30)
 
 
