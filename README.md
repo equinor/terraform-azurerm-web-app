@@ -95,18 +95,19 @@ az webapp log config -n <APP_NAME> -g <RESOURCE_GROUP_NAME> --application-loggin
 
 ## Development
 
-1. Read [this document](https://code.visualstudio.com/docs/devcontainers/containers).
+1. Login to Azure:
 
-1. Clone this repository.
-
-1. Configure Terraform variables in a file `.devcontainer/devcontainer.env`:
-
-    ```env
-    TF_VAR_resource_group_name=
-    TF_VAR_location=
+    ```bash
+    az login
     ```
 
-1. Open repository in dev container.
+1. Set environment variables:
+
+    ```bash
+    export ARM_SUBSCRIPTION_ID="<SUBSCRIPTION_ID>"
+    export TF_VAR_resource_group_name="<RESOURCE_GROUP_NAME>"
+    export TF_VAR_location="<LOCATION>"
+    ```
 
 ## Testing
 
