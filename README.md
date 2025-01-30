@@ -87,11 +87,12 @@ Terraform module which creates Azure Web App resources.
 
 ### Application logging
 
-Application logging is enabled by default, however it'll be automatically disabled after 12 hours. It can be re-enabled at any time by running the following Azure CLI command:
+- Application logging is enabled by default, however it'll be automatically disabled after 12 hours.
+- It can be re-enabled at any time by running the following Azure CLI command:
 
-```console
-az webapp log config -n <APP_NAME> -g <RESOURCE_GROUP_NAME> --application-logging filesystem
-```
+    ```console
+    az webapp log config -n <APP_NAME> -g <RESOURCE_GROUP_NAME> --application-logging filesystem
+    ```
 
 ## Development
 
