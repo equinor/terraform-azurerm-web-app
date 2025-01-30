@@ -16,6 +16,11 @@ Terraform module which creates Azure Web App resources.
 - Audit logs sent to given Log Analytics workspace by default.
 - Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
 
+## Prerequisites
+
+- Install [Terraform](https://developer.hashicorp.com/terraform/install).
+- Install [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+
 ## Notes
 
 ### Application logging
