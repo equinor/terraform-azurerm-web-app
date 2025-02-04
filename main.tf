@@ -16,7 +16,8 @@ resource "azurerm_linux_web_app" "this" {
   public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
   zip_deploy_file                 = var.zip_deploy_file
-  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+
+  ftp_publish_basic_authentication_enabled = var.ftp_publish_basic_authentication_enabled
 
   tags = var.tags
 
@@ -168,7 +169,8 @@ resource "azurerm_windows_web_app" "this" {
   public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
   zip_deploy_file                 = var.zip_deploy_file
-  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+
+  ftp_publish_basic_authentication_enabled = var.ftp_publish_basic_authentication_enabled
 
   tags = var.tags
 
