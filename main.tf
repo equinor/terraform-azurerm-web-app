@@ -69,6 +69,7 @@ resource "azurerm_linux_web_app" "this" {
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
     http2_enabled                                 = var.http2_enabled
+    use_32_bit_worker                             = var.use_32_bit_worker
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
@@ -224,6 +225,7 @@ resource "azurerm_windows_web_app" "this" {
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
     http2_enabled                                 = var.http2_enabled
+    use_32_bit_worker                             = var.use_32_bit_worker
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
