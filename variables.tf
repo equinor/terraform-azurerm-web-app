@@ -361,3 +361,10 @@ variable "webdeploy_publish_basic_authentication_enabled" {
   default     = false
   nullable    = false
 }
+
+variable "use_32_bit_worker" {
+  description = "Should this Web App use a 32-bit worker?"
+  type        = bool
+  default     = true
+  nullable    = false
+}
