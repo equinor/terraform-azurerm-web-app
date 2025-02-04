@@ -151,6 +151,12 @@ variable "ftps_state" {
   default     = "Disabled"
 }
 
+variable "http2_enabled" {
+  description = "Should the HTTP/2 protocol be enabled for this Web App?"
+  type        = bool
+  default     = false
+}
+
 variable "ip_restrictions" {
   description = "A list of IP restrictions to be configured for this Web App."
 
@@ -318,9 +324,9 @@ variable "storage_accounts" {
 }
 
 variable "public_network_access_enabled" {
-    description = "Should public network access be enabled for this Web App?"
-    type        = bool
-    default     = true
+  description = "Should public network access be enabled for this Web App?"
+  type        = bool
+  default     = true
 }
 
 

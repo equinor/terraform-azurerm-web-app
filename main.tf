@@ -65,6 +65,7 @@ resource "azurerm_linux_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+    http2_enabled                                 = var.http2_enabled
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
@@ -167,7 +168,7 @@ resource "azurerm_windows_web_app" "this" {
   public_network_access_enabled   = var.public_network_access_enabled
   virtual_network_subnet_id       = var.virtual_network_subnet_id
   zip_deploy_file                 = var.zip_deploy_file
-  
+
   tags = var.tags
 
   dynamic "connection_string" {
@@ -216,6 +217,7 @@ resource "azurerm_windows_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+    http2_enabled                                 = var.http2_enabled
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
