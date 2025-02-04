@@ -1,5 +1,13 @@
 # Changelog
 
+## [15.11.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.10.2...v15.11.0) (2025-02-04)
+
+
+### Features
+
+* configure basic authentication for publishing ([#230](https://github.com/equinor/terraform-azurerm-web-app/issues/230)) ([0381a64](https://github.com/equinor/terraform-azurerm-web-app/commit/0381a641b7203a987b7fb9b7bfaf426868404d55))
+* configure HTTP/2 protocol ([#229](https://github.com/equinor/terraform-azurerm-web-app/issues/229)) ([f0aff3f](https://github.com/equinor/terraform-azurerm-web-app/commit/f0aff3f9d55150bf31b62b04ff57be58261eebd4))
+
 ## [15.10.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.10.1...v15.10.2) (2025-01-30)
 
 
