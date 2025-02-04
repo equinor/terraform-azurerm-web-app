@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.12.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.11.0...v15.12.0) (2025-02-04)
+
+
+### Features
+
+* configure 32-bit worker ([#232](https://github.com/equinor/terraform-azurerm-web-app/issues/232)) ([8341989](https://github.com/equinor/terraform-azurerm-web-app/commit/8341989a50d757a099b1da65c7d250dfccf38426))
+
 ## [15.11.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.10.2...v15.11.0) (2025-02-04)
 
 
