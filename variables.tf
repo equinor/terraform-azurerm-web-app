@@ -318,9 +318,9 @@ variable "storage_accounts" {
 }
 
 variable "public_network_access_enabled" {
-    description = "Should public network access be enabled for this Web App?"
-    type        = bool
-    default     = true
+  description = "Should public network access be enabled for this Web App?"
+  type        = bool
+  default     = true
 }
 
 
@@ -344,6 +344,13 @@ variable "zip_deploy_file" {
 
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
   type        = bool
   default     = false
   nullable    = false
