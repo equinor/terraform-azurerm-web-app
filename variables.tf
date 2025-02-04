@@ -341,3 +341,10 @@ variable "zip_deploy_file" {
   type        = string
   default     = null
 }
+
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
