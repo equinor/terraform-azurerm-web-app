@@ -74,7 +74,7 @@ variable "application_stack" {
 }
 
 variable "virtual_applications" {
-  description = "An object of virtual application path mappings for Windows Web Apps."
+  description = "A list of virtual applications to configure for this Web App. Only applicable if value of kind is \"Windows\"."
 
   type = list(object({
     virtual_path  = string
