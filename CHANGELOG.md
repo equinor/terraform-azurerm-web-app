@@ -1,5 +1,17 @@
 # Changelog
 
+## [15.13.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.12.0...v15.13.0) (2025-02-05)
+
+
+### Features
+
+* configure virtual applications ([#224](https://github.com/equinor/terraform-azurerm-web-app/issues/224)) ([2b1ca35](https://github.com/equinor/terraform-azurerm-web-app/commit/2b1ca356fad569ac4b3c05e802adca718aff71c6))
+
+
+### Bug Fixes
+
+* prevent configuration of hidden tags ([#234](https://github.com/equinor/terraform-azurerm-web-app/issues/234)) ([ba94c35](https://github.com/equinor/terraform-azurerm-web-app/commit/ba94c3569a8b648c42be556eac4e66fe27dc4583))
+
 ## [15.12.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.11.0...v15.12.0) (2025-02-04)
 
 

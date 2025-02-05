@@ -38,7 +38,7 @@ Terraform module which creates Azure Web App resources.
 
     module "web_app" {
       source  = "equinor/web-app/azurerm"
-      version = "~> 15.12"
+      version = "~> 15.13"
 
       app_name                   = "example-app"
       resource_group_name        = azurerm_resource_group.example.name
