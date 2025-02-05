@@ -73,6 +73,24 @@ variable "application_stack" {
   default = null
 }
 
+variable "virtual_applications" {
+  description = "A list of virtual applications to configure for this Web App. Only applicable if value of kind is \"Windows\"."
+
+  type = list(object({
+    virtual_path  = string
+    physical_path = string
+    preload       = bool
+
+    virtual_directories = optional(list(object({
+      physical_path = optional(string)
+      virtual_path  = optional(string)
+    })))
+  }))
+
+  default  = []
+  nullable = false
+}
+
 variable "active_directory_tenant_auth_endpoint" {
   description = "The endpoint of the Microsoft Entra tenant to use for authentication."
   type        = string

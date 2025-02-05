@@ -253,6 +253,25 @@ resource "azurerm_windows_web_app" "this" {
         current_stack            = application_stack.value.current_stack
       }
     }
+
+    dynamic "virtual_application" {
+      for_each = var.virtual_applications
+
+      content {
+        virtual_path  = virtual_application.value.virtual_path
+        physical_path = virtual_application.value.physical_path
+        preload       = virtual_application.value.preload
+
+        dynamic "virtual_directory" {
+          for_each = virtual_application.value.virtual_directories
+          
+          content {
+            physical_path = virtual_directory.value.physical_path
+            virtual_path  = virtual_directory.value.virtual_path
+          }
+        }
+      }
+    }
   }
 
   dynamic "identity" {
