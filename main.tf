@@ -262,9 +262,13 @@ resource "azurerm_windows_web_app" "this" {
         physical_path = virtual_application.value.physical_path
         preload       = virtual_application.value.preload
 
-        virtual_directory {
-          physical_path = virtual_application.value.virtual_directories.physical_path
-          virtual_path  = virtual_application.value.virtual_directories.virtual_path
+        dynamic "virtual_directory" {
+          for_each = virtual_application.value.virtual_directories
+          
+          content {
+            physical_path = virtual_directory.value.physical_path
+            virtual_path  = virtual_directory.value.virtual_path
+          }
         }
       }
     }
