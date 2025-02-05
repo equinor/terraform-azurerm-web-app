@@ -82,8 +82,8 @@ variable "virtual_applications" {
     preload       = bool
 
     virtual_directories = optional(list(object({
-      physical_path = optional(list(string))
-      virtual_path  = optional(list(string))
+      physical_path = optional(string)
+      virtual_path  = optional(string)
     })))
   }))
 
