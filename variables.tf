@@ -87,7 +87,8 @@ variable "virtual_applications" {
     })))
   }))
 
-  default = null
+  default  = []
+  nullable = false
 }
 
 variable "active_directory_tenant_auth_endpoint" {
