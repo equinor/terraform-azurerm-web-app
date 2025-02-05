@@ -17,6 +17,9 @@ resource "azurerm_linux_web_app" "this" {
   virtual_network_subnet_id       = var.virtual_network_subnet_id
   zip_deploy_file                 = var.zip_deploy_file
 
+  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+  webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
   tags = var.tags
 
   dynamic "connection_string" {
@@ -65,6 +68,8 @@ resource "azurerm_linux_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+    http2_enabled                                 = var.http2_enabled
+    use_32_bit_worker                             = var.use_32_bit_worker
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 
@@ -168,6 +173,9 @@ resource "azurerm_windows_web_app" "this" {
   virtual_network_subnet_id       = var.virtual_network_subnet_id
   zip_deploy_file                 = var.zip_deploy_file
 
+  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+  webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
   tags = var.tags
 
   dynamic "connection_string" {
@@ -216,6 +224,8 @@ resource "azurerm_windows_web_app" "this" {
     container_registry_managed_identity_client_id = var.container_registry_managed_identity_client_id
     always_on                                     = var.always_on
     ftps_state                                    = var.ftps_state
+    http2_enabled                                 = var.http2_enabled
+    use_32_bit_worker                             = var.use_32_bit_worker
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
 

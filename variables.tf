@@ -168,6 +168,12 @@ variable "ftps_state" {
   default     = "Disabled"
 }
 
+variable "http2_enabled" {
+  description = "Should the HTTP/2 protocol be enabled for this Web App?"
+  type        = bool
+  default     = false
+}
+
 variable "ip_restrictions" {
   description = "A list of IP restrictions to be configured for this Web App."
 
@@ -301,6 +307,11 @@ variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
   default     = {}
+
+  validation {
+    condition     = length(setintersection(["hidden-link: /app-insights-conn-string", "hidden-link: /app-insights-instrumentation-key", "hidden-link: /app-insights-resource-id"], keys(var.tags))) == 0
+    error_message = "Hidden tags (\"hidden-link: *\") are managed by Azure."
+  }
 }
 
 variable "storage_accounts" {
@@ -357,4 +368,25 @@ variable "zip_deploy_file" {
   description = "The local path of a ZIP-packaged application to deploy to this Web App."
   type        = string
   default     = null
+}
+
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "use_32_bit_worker" {
+  description = "Should this Web App use a 32-bit worker?"
+  type        = bool
+  default     = true
+  nullable    = false
 }
