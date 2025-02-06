@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.13.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.0...v15.13.1) (2025-02-06)
+
+
+### Bug Fixes
+
+* null default value for virtual directory ([#236](https://github.com/equinor/terraform-azurerm-web-app/issues/236)) ([a5e0a52](https://github.com/equinor/terraform-azurerm-web-app/commit/a5e0a52d4cc456c0192ebdb0b088a62e1eeb7a41))
+
 ## [15.13.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.12.0...v15.13.0) (2025-02-05)
 
 
