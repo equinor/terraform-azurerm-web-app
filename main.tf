@@ -264,7 +264,7 @@ resource "azurerm_windows_web_app" "this" {
 
         dynamic "virtual_directory" {
           for_each = virtual_application.value.virtual_directories
-          
+
           content {
             physical_path = virtual_directory.value.physical_path
             virtual_path  = virtual_directory.value.virtual_path
