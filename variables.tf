@@ -84,7 +84,7 @@ variable "virtual_applications" {
     virtual_directories = optional(list(object({
       physical_path = optional(string)
       virtual_path  = optional(string)
-    })))
+    })), [])
   }))
 
   default  = []
