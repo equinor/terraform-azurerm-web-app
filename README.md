@@ -9,6 +9,7 @@ Terraform module which creates Azure Web App resources.
 
 ## Features
 
+- Linux Web App created by default.
 - HTTPS enforced.
 - Public network access denied by default.
 - Managed certificates automatically created for custom hostnames.
