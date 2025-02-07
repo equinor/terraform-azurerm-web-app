@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.13.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.1...v15.13.2) (2025-02-07)
+
+
+### Documentation
+
+* clarify kind of Web App created by default ([#238](https://github.com/equinor/terraform-azurerm-web-app/issues/238)) ([b158d5b](https://github.com/equinor/terraform-azurerm-web-app/commit/b158d5b58f5fbc02832a0f6c6b1260bead01b980))
+
 ## [15.13.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.0...v15.13.1) (2025-02-06)
 
 
