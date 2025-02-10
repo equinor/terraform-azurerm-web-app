@@ -92,7 +92,7 @@ variable "virtual_applications" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = "The endpoint of the Microsoft Entra tenant to use for built-in authentication. If value is set to null, the endpoint of the current tenant will be used."
+  description = "The authorization endpoint of the Microsoft Entra tenant to use for built-in authentication. If value is set to null, the endpoint of the current tenant will be used."
   type        = string
   nullable    = true
   default     = null
@@ -115,6 +115,7 @@ variable "active_directory_client_secret_setting_name" {
 variable "active_directory_login_parameters" {
   description = "A map of key-value pairs to send to the authorization endpoint when a user logs in."
   type        = map(string)
+  nullable    = false
   default     = {}
 }
 
