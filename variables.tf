@@ -106,8 +106,9 @@ variable "active_directory_client_id" {
 }
 
 variable "active_directory_client_secret_setting_name" {
-  description = "The name of the app setting to get the client secret of the Microsoft Entra app registration from."
+  description = "The name of the app setting containing the client secret of the Microsoft Entra app registration to use for built-in authentication."
   type        = string
+  nullable    = false
   default     = "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
 }
 
