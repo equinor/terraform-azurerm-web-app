@@ -92,7 +92,7 @@ variable "virtual_applications" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = "The authorization endpoint of the Microsoft Entra tenant to use for built-in authentication. If value is set to null, the endpoint of the current tenant will be used."
+  description = "The authorization endpoint of the Microsoft Entra tenant to use for built-in authentication. If value is set to null, the authorization endpoint of the current tenant will be used."
   type        = string
   nullable    = true
   default     = null
