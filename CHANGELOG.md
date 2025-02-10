@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.13.3](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.2...v15.13.3) (2025-02-10)
+
+
+### Documentation
+
+* update descriptions for Microsoft Entra variables ([#240](https://github.com/equinor/terraform-azurerm-web-app/issues/240)) ([7ed70b9](https://github.com/equinor/terraform-azurerm-web-app/commit/7ed70b92806dfbbb9710798dd41610288951d4c7))
+
 ## [15.13.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.1...v15.13.2) (2025-02-07)
 
 
