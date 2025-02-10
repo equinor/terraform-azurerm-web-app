@@ -92,15 +92,16 @@ variable "virtual_applications" {
 }
 
 variable "active_directory_tenant_auth_endpoint" {
-  description = "The endpoint of the Microsoft Entra tenant to use for authentication. If value is set to null, the endpoint of the current tenant will be used."
+  description = "The endpoint of the Microsoft Entra tenant to use for built-in authentication. If value is set to null, the endpoint of the current tenant will be used."
   type        = string
   nullable    = true
   default     = null
 }
 
 variable "active_directory_client_id" {
-  description = "The client ID of the Microsoft Entra app registration to use for authentication."
+  description = "The client ID of the Microsoft Entra app registration to use for built-in authentication. If value is set to null, built-in authentication will not be used."
   type        = string
+  nullable    = true
   default     = null
 }
 
