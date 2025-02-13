@@ -348,7 +348,6 @@ resource "azurerm_windows_web_app" "this" {
       connection_string_names = length(var.sticky_settings_connection_string_names) > 0 ? var.sticky_settings_connection_string_names : null
     }
   }
-
 }
 
 check "build_settings_check" {
