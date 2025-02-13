@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.14.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.3...v15.14.0) (2025-02-13)
+
+
+### Features
+
+* configure for sticky settings in web app ([#242](https://github.com/equinor/terraform-azurerm-web-app/issues/242)) ([4203d8e](https://github.com/equinor/terraform-azurerm-web-app/commit/4203d8e19a7fe9e16b7cb9d4f824f2accc12b43b))
+
 ## [15.13.3](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.2...v15.13.3) (2025-02-10)
 
 
