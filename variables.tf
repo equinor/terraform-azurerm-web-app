@@ -94,10 +94,10 @@ variable "virtual_applications" {
 variable "cors" {
   description = "A list of CORS settings to configure for this Web App."
 
-  type = list(object({
+  type = object({
     allowed_origins     = optional(list(string))
     support_credentials = optional(bool)
-  }))
+  })
 
   default  = []
   nullable = false
