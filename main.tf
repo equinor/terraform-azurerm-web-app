@@ -101,7 +101,7 @@ resource "azurerm_linux_web_app" "this" {
       for_each = var.cors
 
       content {
-        allowed_origins     = cors.value.allowed_origins != null ? [cors.value.allowed_origins] : []
+        allowed_origins     = cors.value.allowed_origins
         support_credentials = cors.value.support_credentials
       }
     }
