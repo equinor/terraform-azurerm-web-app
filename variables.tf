@@ -91,6 +91,18 @@ variable "virtual_applications" {
   nullable = false
 }
 
+variable "cors" {
+  description = "A list of CORS settings to configure for this Web App."
+
+  type = list(object({
+    allowed_origins     = optional(list(string))
+    support_credentials = optional(bool)
+  }))
+
+  default  = []
+  nullable = false
+}
+
 variable "active_directory_tenant_auth_endpoint" {
   description = "The authorization endpoint of the Microsoft Entra tenant to use for built-in authentication. If value is set to null, the authorization endpoint of the current tenant will be used."
   type        = string
