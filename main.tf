@@ -292,11 +292,11 @@ resource "azurerm_windows_web_app" "this" {
     }
 
     dynamic "cors" {
-      for_each = var.cors
+      for_each = length(var.cors_allowed_origins) > 0 || var.cors_support_credentials ? [0] : []
 
       content {
-        allowed_origins     = cors.value.allowed_origins
-        support_credentials = cors.value.support_credentials
+        allowed_origins     = var.cors_allowed_origins
+        support_credentials = var.cors_support_credentials
       }
     }
   }

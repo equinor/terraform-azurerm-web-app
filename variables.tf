@@ -91,16 +91,18 @@ variable "virtual_applications" {
   nullable = false
 }
 
-variable "cors" {
-  description = "A list of CORS settings to configure for this Web App."
+variable "cors_allowed_origins" {
+  description = "Specifies a list of origins that should be allowed to make cross-origin calls."
 
-  type = object({
-    allowed_origins     = optional(list(string))
-    support_credentials = optional(bool)
-  })
+  type    = list(string)
+  default = []
+}
 
-  default  = []
-  nullable = false
+variable "cors_support_credentials" {
+  description = "Whether CORS requests with credentials are allowed. Defaults to `false`"
+
+  type    = bool
+  default = false
 }
 
 variable "active_directory_tenant_auth_endpoint" {
