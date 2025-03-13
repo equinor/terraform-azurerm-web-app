@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.15.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.14.0...v15.15.0) (2025-03-13)
+
+
+### Features
+
+* add cors settings ([#244](https://github.com/equinor/terraform-azurerm-web-app/issues/244)) ([816c715](https://github.com/equinor/terraform-azurerm-web-app/commit/816c715b6a77f21a6074c7582993173d134abecd))
+
 ## [15.14.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.13.3...v15.14.0) (2025-02-13)
 
 
