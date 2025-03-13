@@ -105,6 +105,7 @@ resource "azurerm_linux_web_app" "this" {
         support_credentials = var.cors_support_credentials
       }
     }
+  }
 
   dynamic "identity" {
     for_each = local.identity_type != "" ? [1] : []
