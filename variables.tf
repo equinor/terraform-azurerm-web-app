@@ -98,7 +98,7 @@ variable "cors_allowed_origins" {
 }
 
 variable "cors_support_credentials" {
-  description = "Whether CORS requests with credentials are allowed. Defaults to \"False\""
+  description = "Whether CORS requests with credentials are allowed. Defaults to \"False\"."
   type        = bool
   default     = false
 }
