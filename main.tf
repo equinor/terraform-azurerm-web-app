@@ -96,6 +96,15 @@ resource "azurerm_linux_web_app" "this" {
         docker_registry_password = application_stack.value.docker_registry_password
       }
     }
+
+    dynamic "cors" {
+      for_each = length(var.cors_allowed_origins) > 0 || var.cors_support_credentials ? [0] : []
+
+      content {
+        allowed_origins     = var.cors_allowed_origins
+        support_credentials = var.cors_support_credentials
+      }
+    }
   }
 
   dynamic "identity" {
@@ -279,6 +288,15 @@ resource "azurerm_windows_web_app" "this" {
             virtual_path  = virtual_directory.value.virtual_path
           }
         }
+      }
+    }
+
+    dynamic "cors" {
+      for_each = length(var.cors_allowed_origins) > 0 || var.cors_support_credentials ? [0] : []
+
+      content {
+        allowed_origins     = var.cors_allowed_origins
+        support_credentials = var.cors_support_credentials
       }
     }
   }
