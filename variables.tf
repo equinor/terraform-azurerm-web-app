@@ -93,16 +93,14 @@ variable "virtual_applications" {
 
 variable "cors_allowed_origins" {
   description = "Specifies a list of origins that should be allowed to make cross-origin calls."
-
-  type    = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "cors_support_credentials" {
   description = "Whether CORS requests with credentials are allowed. Defaults to `false`"
-
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "active_directory_tenant_auth_endpoint" {
