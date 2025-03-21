@@ -364,13 +364,6 @@ resource "azurerm_windows_web_app" "this" {
   }
 }
 
-# check "build_settings_check" {
-#   assert {
-#     condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
-#     error_message = "App settings \"BUILD\", \"BUILD_NUMBER\" and \"BUILD_ID\" should be configured outside of Terraform, commonly in a CI/CD pipeline. Any changes made to these app settings will be ignored."
-#   }
-# }
-
 # Manage app settings using AzAPI provider instead of AzureRM.
 # This enables the possibility of managing app settings either in Terraform or outside Terraform.
 # - If you want to manage app settings in Terraform, this resource will be created.
