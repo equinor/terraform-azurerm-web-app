@@ -33,17 +33,17 @@ variable "app_settings" {
   description = "A map of app settings to be configured for this Web App."
   type        = map(string)
   default     = {}
-  nullable    = false
+  nullable    = true
 
-  validation {
-    condition     = length(setintersection(["DOCKER_REGISTRY_SERVER_URL", "DOCKER_REGISTRY_SERVER_USERNAME", "DOCKER_REGISTRY_SERVER_PASSWORD"], keys(var.app_settings))) == 0
-    error_message = "Docker settings (\"DOCKER_*\") must be configured using \"application_stack\"."
-  }
+  # validation {
+  #   condition     = length(setintersection(["DOCKER_REGISTRY_SERVER_URL", "DOCKER_REGISTRY_SERVER_USERNAME", "DOCKER_REGISTRY_SERVER_PASSWORD"], keys(var.app_settings))) == 0
+  #   error_message = "Docker settings (\"DOCKER_*\") must be configured using \"application_stack\"."
+  # }
 
-  validation {
-    condition     = length(setintersection(["WEBSITE_HTTPLOGGING_ENABLED", "WEBSITE_HTTPLOGGING_RETENTION_DAYS", "WEBSITE_HTTPLOGGING_CONTAINER_URL"], keys(var.app_settings))) == 0
-    error_message = "HTTP logging settings (\"WEBSITE_HTTPLOGGING_*\") must be configured using \"http_logs_file_system_retention_in_mb\" and \"http_logs_file_system_retention_in_days\"."
-  }
+  # validation {
+  #   condition     = length(setintersection(["WEBSITE_HTTPLOGGING_ENABLED", "WEBSITE_HTTPLOGGING_RETENTION_DAYS", "WEBSITE_HTTPLOGGING_CONTAINER_URL"], keys(var.app_settings))) == 0
+  #   error_message = "HTTP logging settings (\"WEBSITE_HTTPLOGGING_*\") must be configured using \"http_logs_file_system_retention_in_mb\" and \"http_logs_file_system_retention_in_days\"."
+  # }
 }
 
 variable "connection_strings" {
