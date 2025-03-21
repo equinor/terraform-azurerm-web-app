@@ -15,7 +15,7 @@ Terraform module which creates Azure Web App resources.
 - Managed certificates automatically created for custom hostnames.
 - Application logging enabled (automatically disabled after 12 hours, see [notes](#application-logging)).
 - Audit logs sent to given Log Analytics workspace by default.
-- Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
+- Changes to app settings not configured by this module are ignored, allowing some app settings to be configured outside of Terraform (commonly in a CI/CD pipeline).
 
 ## Prerequisites
 
