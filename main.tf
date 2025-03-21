@@ -9,7 +9,7 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = null
+  app_settings                    = null # Manage using standalone resource instead.
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -152,6 +152,7 @@ resource "azurerm_linux_web_app" "this" {
       logs[0].application_logs,
 
       # Ignore changes to app settings.
+      # Manage using standalone resource instead.
       app_settings,
 
       # Ignore changes to hidden tags that are managed by Azure.
@@ -180,7 +181,7 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = null
+  app_settings                    = null # Manage using standalone resource instead.
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -343,6 +344,7 @@ resource "azurerm_windows_web_app" "this" {
       logs[0].application_logs,
 
       # Ignore changes to app settings.
+      # Manage using standalone resource instead.
       app_settings,
 
       # Ignore changes to hidden tags that are managed by Azure.
