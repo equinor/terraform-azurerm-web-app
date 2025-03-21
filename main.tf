@@ -151,8 +151,7 @@ resource "azurerm_linux_web_app" "this" {
       # Ignore changes to prevent cycle of turning on/off...
       logs[0].application_logs,
 
-      # Ignore changes to common build settings.
-      # These are usually configured in CI/CD pipelines.
+      # Ignore changes to app settings.
       app_settings,
 
       # Ignore changes to hidden tags that are managed by Azure.
@@ -343,8 +342,7 @@ resource "azurerm_windows_web_app" "this" {
       # Ignore changes to prevent cycle of turning on/off...
       logs[0].application_logs,
 
-      # Ignore changes to common build settings.
-      # These are usually configured in CI/CD pipelines.
+      # Ignore changes to app settings.
       app_settings,
 
       # Ignore changes to hidden tags that are managed by Azure.
@@ -366,8 +364,6 @@ resource "azurerm_windows_web_app" "this" {
 
 # Manage app settings using AzAPI provider instead of AzureRM.
 # This enables the possibility of managing app settings either in Terraform or outside Terraform.
-# - If you want to manage app settings in Terraform, this resource will be created.
-# - If you want to manage app settings outside of Terraform, this resource won't be created.
 resource "azapi_update_resource" "app_settings" {
   type      = "Microsoft.Web/sites/config@2022-09-01"
   name      = "appsettings"
@@ -376,11 +372,6 @@ resource "azapi_update_resource" "app_settings" {
   body = {
     properties = var.app_settings
   }
-
-  depends_on = [
-    # Ensure existing Web App operations are complete before trying to update it.
-    local.web_app
-  ]
 }
 
 resource "azurerm_app_service_custom_hostname_binding" "this" {
