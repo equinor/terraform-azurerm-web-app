@@ -369,8 +369,6 @@ resource "azurerm_windows_web_app" "this" {
 # - If you want to manage app settings in Terraform, this resource will be created.
 # - If you want to manage app settings outside of Terraform, this resource won't be created.
 resource "azapi_update_resource" "app_settings" {
-  count = var.app_settings != null ? 1 : 0
-
   type      = "Microsoft.Web/sites/config@2022-09-01"
   name      = "appsettings"
   parent_id = local.web_app.id
