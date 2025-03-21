@@ -30,4 +30,5 @@ module "web_app" {
   location                   = var.location
   app_service_plan_id        = module.app_service.plan_id
   log_analytics_workspace_id = module.log_analytics.workspace_id
+
 }
