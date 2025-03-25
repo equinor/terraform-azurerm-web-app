@@ -12,7 +12,7 @@ Terraform module which creates Azure Web App resources.
 - Linux Web App created by default.
 - HTTPS enforced.
 - Public network access denied by default.
-- App settings updated incrementally, allowing configuration outside of Terraform (e.g. in a CI/CD pipeline).
+- App settings incrementally updated, allowing configuration outside of Terraform (e.g. in a CI/CD pipeline).
 - Managed certificates automatically created for custom hostnames.
 - Application logging enabled (automatically disabled after 12 hours, see [notes](#application-logging)).
 - Audit logs sent to given Log Analytics workspace by default.
