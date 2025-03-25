@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.16.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.15.0...v15.16.0) (2025-03-25)
+
+
+### Features
+
+* update app settings incrementally ([#246](https://github.com/equinor/terraform-azurerm-web-app/issues/246)) ([eafe28f](https://github.com/equinor/terraform-azurerm-web-app/commit/eafe28fcd49b14a15db5efa655d67f9f89de1df5))
+
 ## [15.15.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.14.0...v15.15.0) (2025-03-13)
 
 
