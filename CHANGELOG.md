@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.16.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.1...v15.16.2) (2025-03-27)
+
+
+### Bug Fixes
+
+* app settings implicitly managed by Terraform lost during update ([#249](https://github.com/equinor/terraform-azurerm-web-app/issues/249)) ([64586be](https://github.com/equinor/terraform-azurerm-web-app/commit/64586beaa1856f2cdc787ee417825521ff43443b))
+
 ## [15.16.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.0...v15.16.1) (2025-03-25)
 
 
