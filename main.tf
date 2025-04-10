@@ -9,7 +9,7 @@ resource "azurerm_linux_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = null # Manage using standalone resource instead.
+  app_settings                    = var.app_settings
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -151,9 +151,11 @@ resource "azurerm_linux_web_app" "this" {
       # Ignore changes to prevent cycle of turning on/off...
       logs[0].application_logs,
 
-      # Ignore changes to app settings.
-      # Manage using standalone resource instead.
-      app_settings,
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"],
 
       # Ignore changes to hidden tags that are managed by Azure.
       tags["hidden-link: /app-insights-conn-string"],
@@ -181,7 +183,7 @@ resource "azurerm_windows_web_app" "this" {
   location                        = var.location
   resource_group_name             = var.resource_group_name
   service_plan_id                 = var.app_service_plan_id
-  app_settings                    = null # Manage using standalone resource instead.
+  app_settings                    = var.app_settings
   https_only                      = local.https_only
   client_affinity_enabled         = var.client_affinity_enabled
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -343,9 +345,11 @@ resource "azurerm_windows_web_app" "this" {
       # Ignore changes to prevent cycle of turning on/off...
       logs[0].application_logs,
 
-      # Ignore changes to app settings.
-      # Manage using standalone resource instead.
-      app_settings,
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"],
 
       # Ignore changes to hidden tags that are managed by Azure.
       tags["hidden-link: /app-insights-conn-string"],
@@ -364,30 +368,10 @@ resource "azurerm_windows_web_app" "this" {
   }
 }
 
-data "azapi_resource_id" "app_settings" {
-  type      = "Microsoft.Web/sites/config@2022-09-01"
-  parent_id = local.web_app.id
-  name      = "appsettings"
-}
-
-# Getting app settings directly from the Web App resource state does not include app settings that are implicitly managed by Terraform (e.g. "DOCKER_REGISTRY_SERVER_URL").
-data "azapi_resource_action" "list_app_settings" {
-  type        = "Microsoft.Web/sites/config@2022-09-01"
-  resource_id = data.azapi_resource_id.app_settings.id
-  action      = "list"
-  method      = "POST"
-
-  response_export_values = ["properties"]
-}
-
-resource "azapi_update_resource" "app_settings" {
-  type        = "Microsoft.Web/sites/config@2022-09-01"
-  resource_id = data.azapi_resource_id.app_settings.id
-
-  body = {
-    # Apply app settings managed in Terraform on top of app settings managed outside of Terraform.
-    # Ensures that app settings managed outside of Terraform are not lost.
-    properties = merge(data.azapi_resource_action.list_app_settings.output.properties, var.app_settings)
+check "build_settings_check" {
+  assert {
+    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
+    error_message = "App settings \"BUILD\", \"BUILD_NUMBER\" and \"BUILD_ID\" should be configured outside of Terraform, commonly in a CI/CD pipeline. Any changes made to these app settings will be ignored."
   }
 }
 
