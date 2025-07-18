@@ -292,6 +292,7 @@ variable "identity_ids" {
 variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to send diagnostics to."
   type        = string
+  default     = null
 }
 
 variable "diagnostic_setting_enabled_log_categories" {
