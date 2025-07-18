@@ -396,5 +396,3 @@ resource "azurerm_app_service_certificate_binding" "this" {
   certificate_id      = azurerm_app_service_managed_certificate.this[each.key].id
   ssl_state           = each.value["ssl_state"]
 }
-
-}
