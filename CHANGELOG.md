@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.16.5](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.4...v15.16.5) (2025-07-28)
+
+
+### Bug Fixes
+
+* argument `metric` for resource `azurerm_monitor_diagnostic_setting` has been deprecated ([#254](https://github.com/equinor/terraform-azurerm-web-app/issues/254)) ([9e47f68](https://github.com/equinor/terraform-azurerm-web-app/commit/9e47f684a9af3eff14654a9b571d19408b268323))
+
 ## [15.16.4](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.3...v15.16.4) (2025-04-23)
 
 
