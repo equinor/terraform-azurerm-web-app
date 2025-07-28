@@ -30,6 +30,4 @@ locals {
   identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
 
   web_app = local.is_windows ? azurerm_windows_web_app.this[0] : azurerm_linux_web_app.this[0]
-
-  diagnostic_setting_metric_categories = ["AllMetrics"]
 }
