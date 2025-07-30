@@ -86,6 +86,19 @@ resource "azurerm_linux_web_app" "this" {
       }
     }
 
+    dynamic "scm_ip_restriction" {
+      for_each = var.scm_ip_restrictions
+
+      content {
+        action      = scm_ip_restriction.value.action
+        headers     = scm_ip_restriction.value.headers != null ? [scm_ip_restriction.value.headers] : []
+        ip_address  = scm_ip_restriction.value.ip_address
+        name        = scm_ip_restriction.value.name
+        priority    = scm_ip_restriction.value.priority
+        service_tag = scm_ip_restriction.value.service_tag
+      }
+    }
+
     dynamic "application_stack" {
       for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
 
@@ -257,6 +270,19 @@ resource "azurerm_windows_web_app" "this" {
         name        = ip_restriction.value.name
         priority    = ip_restriction.value.priority
         service_tag = ip_restriction.value.service_tag
+      }
+    }
+
+    dynamic "scm_ip_restriction" {
+      for_each = var.scm_ip_restrictions
+
+      content {
+        action      = scm_ip_restriction.value.action
+        headers     = scm_ip_restriction.value.headers != null ? [scm_ip_restriction.value.headers] : []
+        ip_address  = scm_ip_restriction.value.ip_address
+        name        = scm_ip_restriction.value.name
+        priority    = scm_ip_restriction.value.priority
+        service_tag = scm_ip_restriction.value.service_tag
       }
     }
 

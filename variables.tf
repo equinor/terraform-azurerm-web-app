@@ -224,6 +224,27 @@ variable "ip_restriction_default_action" {
   }
 }
 
+variable "scm_ip_restrictions" {
+  description = "A list of IP restrictions to be configured for the Source Control Manager (SCM)."
+
+  type = list(object({
+    action      = optional(string, "Allow")
+    ip_address  = optional(string)
+    name        = string
+    priority    = number
+    service_tag = optional(string)
+
+    headers = optional(object({
+      x_forwarded_for   = optional(list(string))
+      x_forwarded_host  = optional(list(string))
+      x_azure_fdid      = optional(list(string))
+      x_fd_health_probe = optional(list(string))
+    }))
+  }))
+
+  default = []
+}
+
 variable "scm_ip_restriction_default_action" {
   description = "The default action for traffic to the Source Control Manager (SCM) that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
   type        = string
