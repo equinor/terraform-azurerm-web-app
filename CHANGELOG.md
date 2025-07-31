@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.17.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.5...v15.17.0) (2025-07-31)
+
+
+### Features
+
+* add variable `scm_ip_restrictions` ([#256](https://github.com/equinor/terraform-azurerm-web-app/issues/256)) ([154db3d](https://github.com/equinor/terraform-azurerm-web-app/commit/154db3d4d3f1f6a9a0335471d78e9a1be7f0c967))
+
 ## [15.16.5](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.4...v15.16.5) (2025-07-28)
 
 
