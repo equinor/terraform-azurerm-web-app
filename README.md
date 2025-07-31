@@ -32,7 +32,7 @@ provider "azurerm" {
 
 module "web_app" {
   source  = "equinor/web-app/azurerm"
-  version = "~> 15.16"
+  version = "~> 15.17"
 
   app_name                   = "example-app"
   resource_group_name        = azurerm_resource_group.example.name
