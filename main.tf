@@ -443,7 +443,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     for_each = toset(var.diagnostic_setting_enabled_metric_categories)
 
     content {
-      category = metric.value
+      category = enabled_metric.value
     }
   }
 }
