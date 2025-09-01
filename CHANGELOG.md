@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.17.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.17.0...v15.17.1) (2025-09-01)
+
+
+### Bug Fixes
+
+* **database:** reference to dynamic block iterator `metric` should be `enabled_metric` ([#258](https://github.com/equinor/terraform-azurerm-web-app/issues/258)) ([455a9bd](https://github.com/equinor/terraform-azurerm-web-app/commit/455a9bd2890c5e6f49cfb2307c67da3758a981a4))
+
 ## [15.17.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.16.5...v15.17.0) (2025-07-31)
 
 
