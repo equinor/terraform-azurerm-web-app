@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.17.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.17.1...v15.17.2) (2025-09-24)
+
+
+### Documentation
+
+* update badges ([d961ce3](https://github.com/equinor/terraform-azurerm-web-app/commit/d961ce3d9dceb987a3905d3ab98b037261b3f838))
+
 ## [15.17.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.17.0...v15.17.1) (2025-09-01)
 
 
