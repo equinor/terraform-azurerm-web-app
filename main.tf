@@ -52,7 +52,7 @@ resource "azurerm_linux_web_app" "this" {
         tenant_auth_endpoint            = local.active_directory_tenant_auth_endpoint
         allowed_audiences               = local.active_directory_allowed_audiences
         allowed_groups                  = local.active_directory_allowed_groups
-        allowed_applications            = local.active_directory_allowed_applications
+        allowed_applications            = var.active_directory_allowed_applications
         allowed_identities              = local.active_directory_allowed_identities
         jwt_allowed_client_applications = local.active_directory_jwt_allowed_client_applications
         jwt_allowed_groups              = local.active_directory_jwt_allowed_groups
@@ -239,7 +239,7 @@ resource "azurerm_windows_web_app" "this" {
         tenant_auth_endpoint            = local.active_directory_tenant_auth_endpoint
         allowed_audiences               = local.active_directory_allowed_audiences
         allowed_groups                  = local.active_directory_allowed_groups
-        allowed_applications            = local.active_directory_allowed_applications
+        allowed_applications            = var.active_directory_allowed_applications
         allowed_identities              = local.active_directory_allowed_identities
         jwt_allowed_client_applications = local.active_directory_jwt_allowed_client_applications
         jwt_allowed_groups              = local.active_directory_jwt_allowed_groups
