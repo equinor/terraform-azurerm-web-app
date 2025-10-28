@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.18.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.17.2...v15.18.0) (2025-10-28)
+
+
+### Features
+
+* add variable `active_directory_allowed_applications` ([#263](https://github.com/equinor/terraform-azurerm-web-app/issues/263)) ([05346e4](https://github.com/equinor/terraform-azurerm-web-app/commit/05346e4c7c2c9d3493bf75905e9e1ced2c568c9a))
+
 ## [15.17.2](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.17.1...v15.17.2) (2025-09-24)
 
 
