@@ -16,7 +16,6 @@ locals {
   active_directory_tenant_auth_endpoint            = coalesce(var.active_directory_tenant_auth_endpoint, "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}/v2.0")
   active_directory_allowed_audiences               = var.active_directory_client_id != null ? ["api://${var.active_directory_client_id}"] : []
   active_directory_allowed_groups                  = []
-  active_directory_allowed_applications            = []
   active_directory_allowed_identities              = []
   active_directory_jwt_allowed_client_applications = []
   active_directory_jwt_allowed_groups              = []

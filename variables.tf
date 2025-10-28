@@ -440,3 +440,9 @@ variable "sticky_settings_connection_string_names" {
   type        = list(string)
   default     = []
 }
+
+variable "active_directory_allowed_applications" {
+  description = "A list of application client IDs that are allowed to access this Web App."
+  type        = list(string)
+  default     = []
+}
