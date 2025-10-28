@@ -118,7 +118,7 @@ variable "active_directory_client_id" {
 }
 
 variable "active_directory_client_secret_setting_name" {
-  description = "The name of an app setting containing a client secret for the Microsoft Entra app registration to use for built-in authentication. Required if the client application is a confidential client application (https://docs.azure.cn/en-us/entra/identity-platform/msal-client-applications)."
+  description = "The name of an app setting containing a client secret for the Microsoft Entra app registration to use for built-in authentication. Required if the client is a confidential client application (https://docs.azure.cn/en-us/entra/identity-platform/msal-client-applications)."
   type        = string
   nullable    = false
   default     = "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
