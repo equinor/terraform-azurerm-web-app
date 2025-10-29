@@ -1,12 +1,5 @@
 # Terraform module for Azure Web App
 
-[![GitHub Release](https://img.shields.io/github/v/release/equinor/terraform-azurerm-web-app)](https://github.com/equinor/terraform-azurerm-web-app/releases/latest)
-[![Terraform Module Downloads](https://img.shields.io/terraform/module/dt/equinor/web-app/azurerm)](https://registry.terraform.io/modules/equinor/web-app/azurerm/latest)
-[![GitHub contributors](https://img.shields.io/github/contributors/equinor/terraform-azurerm-web-app)](https://github.com/equinor/terraform-azurerm-web-app/graphs/contributors)
-[![GitHub Issues by label](https://img.shields.io/github/issues/equinor/terraform-baseline/equinor%2Fweb-app%2Fazurerm?label=issues)](https://github.com/equinor/terraform-baseline/issues?q=is%3Aissue%20state%3Aopen%20label%3Aequinor%2Fweb-app%2Fazurerm)
-[![GitHub Pull requests](https://img.shields.io/github/issues-pr/equinor/terraform-azurerm-web-app)](https://github.com/equinor/terraform-azurerm-web-app/pulls)
-[![GitHub License](https://img.shields.io/github/license/equinor/terraform-azurerm-web-app)](https://github.com/equinor/terraform-azurerm-web-app/blob/main/LICENSE)
-
 Terraform module which creates Azure Web App resources.
 
 ## Features
