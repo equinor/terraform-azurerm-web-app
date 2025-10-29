@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.18.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.18.0...v15.18.1) (2025-10-29)
+
+
+### Documentation
+
+* update variable `active_directory_client_secret_setting_name` description to reference Microsoft Learn instead of Azure Docs alias ([#265](https://github.com/equinor/terraform-azurerm-web-app/issues/265)) ([7c297ca](https://github.com/equinor/terraform-azurerm-web-app/commit/7c297ca00125fce91e9f3dcaa785b0f47515aa93))
+
 ## [15.18.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.17.2...v15.18.0) (2025-10-28)
 
 
