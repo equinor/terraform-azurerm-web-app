@@ -450,11 +450,16 @@ variable "active_directory_allowed_applications" {
 variable "health_check_path" {
   description = "The path for the health check endpoint."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "health_check_eviction_time_in_min" {
   description = "The amount of time in minutes that a node can be unhealthy before being removed."
   type        = number
-  default     = 5
+  default     = null
+
+  validation {
+    condition     = var.health_check_eviction_time_in_min == null || (var.health_check_eviction_time_in_min >= 2 && var.health_check_eviction_time_in_min <= 10 && var.health_check_path != null)
+    error_message = "Health check eviction time must be null (disabled) or between 2-10 minutes with a valid health check path."
+  }
 }
