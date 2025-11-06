@@ -448,7 +448,7 @@ variable "active_directory_allowed_applications" {
 }
 
 variable "health_check_path" {
-  description = "The path for the health check endpoint. Value must be in URL path format, e.g. \"/health\" or \"/api/health\"."
+  description = "The path for the health check endpoint. Value must be in URL path format, e.g. \"/healthz\" or \"/api/healthz\"."
   type        = string
   default     = null
 
