@@ -446,3 +446,9 @@ variable "active_directory_allowed_applications" {
   type        = list(string)
   default     = []
 }
+
+variable "health_check_path" {
+  description = "The path for the health check endpoint."
+  type        = string
+  default     = ""
+}

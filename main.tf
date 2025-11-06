@@ -72,6 +72,7 @@ resource "azurerm_linux_web_app" "this" {
     use_32_bit_worker                             = var.use_32_bit_worker
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
+    health_check_path                             = var.health_check_path
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -259,6 +260,7 @@ resource "azurerm_windows_web_app" "this" {
     use_32_bit_worker                             = var.use_32_bit_worker
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
+    health_check_path                             = var.health_check_path
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
