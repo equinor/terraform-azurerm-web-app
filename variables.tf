@@ -452,3 +452,9 @@ variable "health_check_path" {
   type        = string
   default     = ""
 }
+
+variable "health_check_eviction_time_in_min" {
+  description = "The amount of time in minutes that a node can be unhealthy before being removed."
+  type        = number
+  default     = 5
+}

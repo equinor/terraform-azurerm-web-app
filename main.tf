@@ -73,6 +73,7 @@ resource "azurerm_linux_web_app" "this" {
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
     health_check_path                             = var.health_check_path
+    health_check_eviction_time_in_min             = var.health_check_eviction_time_in_min
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -261,6 +262,7 @@ resource "azurerm_windows_web_app" "this" {
     ip_restriction_default_action                 = var.ip_restriction_default_action
     scm_ip_restriction_default_action             = var.scm_ip_restriction_default_action
     health_check_path                             = var.health_check_path
+    health_check_eviction_time_in_min             = var.health_check_eviction_time_in_min
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
