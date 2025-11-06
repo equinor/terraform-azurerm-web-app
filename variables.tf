@@ -446,3 +446,25 @@ variable "active_directory_allowed_applications" {
   type        = list(string)
   default     = []
 }
+
+variable "health_check_path" {
+  description = "The path for the health check endpoint. Value must be in URL path format, e.g. \"/healthz\" or \"/api/healthz\"."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.health_check_path == null || startswith(var.health_check_path, "/")
+    error_message = "Health check path must start with \"/\"."
+  }
+}
+
+variable "health_check_eviction_time_in_min" {
+  description = "The amount of time in minutes that a node can be unhealthy before being removed. Value must be between 2 and 10."
+  type        = number
+  default     = null
+
+  validation {
+    condition     = var.health_check_eviction_time_in_min == null || (var.health_check_eviction_time_in_min >= 2 && var.health_check_eviction_time_in_min <= 10)
+    error_message = "Health check eviction time must be between 2 and 10 minutes."
+  }
+}
