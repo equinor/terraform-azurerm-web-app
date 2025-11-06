@@ -448,7 +448,7 @@ variable "active_directory_allowed_applications" {
 }
 
 variable "health_check_path" {
-  description = "The path for the health check endpoint. Must start with \"/\"."
+  description = "The path for the health check endpoint. Value must be in URL path format, e.g. \"/health\" or \"/api/health\"."
   type        = string
   default     = null
 
@@ -459,7 +459,7 @@ variable "health_check_path" {
 }
 
 variable "health_check_eviction_time_in_min" {
-  description = "The amount of time in minutes that a node can be unhealthy before being removed. Allowed values are 2 to 10."
+  description = "The amount of time in minutes that a node can be unhealthy before being removed. Value must be between 2 and 10."
   type        = number
   default     = null
 
