@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.19.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.18.1...v15.19.0) (2025-11-06)
+
+
+### Features
+
+* add variables `health_check_path` and `health_check_eviction_time_in_min` ([#267](https://github.com/equinor/terraform-azurerm-web-app/issues/267)) ([47fe08f](https://github.com/equinor/terraform-azurerm-web-app/commit/47fe08fc348a0e1a2a99842f769840e4d8347ba6))
+
 ## [15.18.1](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.18.0...v15.18.1) (2025-10-29)
 
 
