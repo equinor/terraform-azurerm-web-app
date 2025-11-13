@@ -31,8 +31,6 @@ module "web_app" {
   app_service_plan_id        = module.app_service.plan_id
   log_analytics_workspace_id = module.log_analytics.workspace_id
 
-  application_stack = {
-    docker_image_name   = "appsvc/staticsite:latest"
-    docker_registry_url = "https://mcr.microsoft.com"
-  }
+  docker_image_name   = "appsvc/staticsite:latest"
+  docker_registry_url = "https://mcr.microsoft.com"
 }

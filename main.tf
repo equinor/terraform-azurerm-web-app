@@ -102,7 +102,7 @@ resource "azurerm_linux_web_app" "this" {
     }
 
     dynamic "application_stack" {
-      for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
+      for_each = local.docker_stack
 
       content {
         docker_image_name        = application_stack.value.docker_image_name
@@ -291,7 +291,7 @@ resource "azurerm_windows_web_app" "this" {
     }
 
     dynamic "application_stack" {
-      for_each = var.application_stack == null ? toset([]) : toset([var.application_stack])
+      for_each = local.docker_stack
 
       content {
         docker_image_name        = application_stack.value.docker_image_name
