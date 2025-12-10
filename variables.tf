@@ -468,3 +468,47 @@ variable "health_check_eviction_time_in_min" {
     error_message = "Health check eviction time must be between 2 and 10 minutes."
   }
 }
+
+variable "auto_heal_setting_action_type" {
+  description = ""
+  type        = string
+  default     = null
+}
+
+variable "auto_heal_setting_action_minimum_process_execution_time" {
+  description = "The minimum amount of time a process must be running before the auto-heal action is executed."
+  type        = string
+  default     = null
+}
+
+variable "auto_heal_setting_action_custom_action" {
+  description = ""
+
+  type = object({
+    executable = string
+    parameters = optional(string)
+  })
+
+  default = null
+}
+
+variable "auto_heal_setting_trigger_private_memory_kb" {
+  description = "The private memory threshold in kilobytes that will trigger auto-heal."
+  type        = number
+  default     = null
+}
+
+variable "auto_heal_setting_trigger_status_code" {
+  description = "The HTTP status code that will trigger auto-heal."
+
+  type = object({
+    count             = number
+    interval          = string
+    status_code_range = string
+    path              = optional(string)
+    sub_status        = optional(number)
+    win32_status_code = optional(number)
+  })
+
+  default = null
+}
