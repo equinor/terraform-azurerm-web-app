@@ -470,7 +470,7 @@ variable "health_check_eviction_time_in_min" {
 }
 
 variable "auto_heal_setting_action_type" {
-  description = ""
+  description = "Action to be taken to an Auto Heal trigger. Possible values include: Recycle, LogEvent, and CustomAction."
   type        = string
   default     = null
 }
@@ -482,7 +482,7 @@ variable "auto_heal_setting_action_minimum_process_execution_time" {
 }
 
 variable "auto_heal_setting_action_custom_action" {
-  description = ""
+  description = "Custom action to be taken to an Auto Heal trigger."
 
   type = object({
     executable = string
