@@ -120,6 +120,32 @@ resource "azurerm_linux_web_app" "this" {
         support_credentials = var.cors_support_credentials
       }
     }
+
+    dynamic "auto_heal_setting" {
+      for_each = var.auto_heal_setting_action_type != null ? [1] : []
+
+      content {
+        action {
+          action_type                    = var.auto_heal_setting_action_type
+          minimum_process_execution_time = var.auto_heal_setting_action_minimum_process_execution_time
+        }
+
+        trigger {
+          dynamic "status_code" {
+            for_each = var.auto_heal_setting_trigger_status_code
+
+            content {
+              count             = status_code.value["count"]
+              interval          = status_code.value["interval"]
+              status_code_range = status_code.value["status_code_range"]
+              path              = status_code.value["path"]
+              sub_status        = status_code.value["sub_status"]
+              win32_status_code = status_code.value["win32_status_code"]
+            }
+          }
+        }
+      }
+    }
   }
 
   dynamic "identity" {
@@ -327,6 +353,43 @@ resource "azurerm_windows_web_app" "this" {
       content {
         allowed_origins     = var.cors_allowed_origins
         support_credentials = var.cors_support_credentials
+      }
+    }
+
+    dynamic "auto_heal_setting" {
+      for_each = var.auto_heal_setting_action_type != null ? [1] : []
+
+      content {
+        action {
+          action_type                    = var.auto_heal_setting_action_type
+          minimum_process_execution_time = var.auto_heal_setting_action_minimum_process_execution_time
+
+          dynamic "custom_action" {
+            for_each = var.auto_heal_setting_action_custom_action != null ? [var.auto_heal_setting_action_custom_action] : []
+
+            content {
+              executable = custom_action.value["executable"]
+              parameters = custom_action.value["parameters"]
+            }
+          }
+        }
+
+        trigger {
+          private_memory_kb = var.auto_heal_setting_trigger_private_memory_kb
+
+          dynamic "status_code" {
+            for_each = var.auto_heal_setting_trigger_status_code
+
+            content {
+              count             = status_code.value["count"]
+              interval          = status_code.value["interval"]
+              status_code_range = status_code.value["status_code_range"]
+              path              = status_code.value["path"]
+              sub_status        = status_code.value["sub_status"]
+              win32_status_code = status_code.value["win32_status_code"]
+            }
+          }
+        }
       }
     }
   }

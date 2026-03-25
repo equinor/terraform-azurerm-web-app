@@ -453,7 +453,7 @@ variable "health_check_path" {
   default     = null
 
   validation {
-    condition     = var.health_check_path == null || startswith(var.health_check_path, "/")
+    condition     = var.health_check_path == null || startswith(coalesce(var.health_check_path, "/"), "/")
     error_message = "Health check path must start with \"/\"."
   }
 }
@@ -464,7 +464,61 @@ variable "health_check_eviction_time_in_min" {
   default     = null
 
   validation {
-    condition     = var.health_check_eviction_time_in_min == null || (var.health_check_eviction_time_in_min >= 2 && var.health_check_eviction_time_in_min <= 10)
+    condition     = var.health_check_eviction_time_in_min == null || (coalesce(var.health_check_eviction_time_in_min, 2) >= 2 && coalesce(var.health_check_eviction_time_in_min, 2) <= 10)
     error_message = "Health check eviction time must be between 2 and 10 minutes."
   }
+}
+
+variable "auto_heal_setting_action_type" {
+  description = "Action to be taken to an Auto Heal trigger. Possible values include: Recycle, LogEvent, and CustomAction."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.auto_heal_setting_action_type == null || contains(["Recycle", "LogEvent", "CustomAction"], coalesce(var.auto_heal_setting_action_type, "Recycle"))
+    error_message = "Value must be one of: Recycle, LogEvent, CustomAction."
+  }
+}
+
+variable "auto_heal_setting_action_minimum_process_execution_time" {
+  description = "The minimum amount of time a process must be running before the auto-heal action is executed."
+  type        = string
+  default     = null
+}
+
+variable "auto_heal_setting_action_custom_action" {
+  description = "Custom action to be taken to an Auto Heal trigger."
+
+  type = object({
+    executable = string
+    parameters = optional(string)
+  })
+
+  default = null
+
+  validation {
+    condition     = var.auto_heal_setting_action_custom_action == null || var.kind == "Windows"
+    error_message = "custom_action is only supported on Windows web apps."
+  }
+}
+
+variable "auto_heal_setting_trigger_private_memory_kb" {
+  description = "The private memory threshold in kilobytes that will trigger auto-heal."
+  type        = number
+  default     = null
+}
+
+variable "auto_heal_setting_trigger_status_code" {
+  description = "The HTTP status code that will trigger auto-heal."
+
+  type = list(object({
+    count             = number
+    interval          = string
+    status_code_range = string
+    path              = optional(string)
+    sub_status        = optional(number)
+    win32_status_code = optional(number)
+  }))
+
+  default = []
 }
