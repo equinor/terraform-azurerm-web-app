@@ -132,7 +132,7 @@ resource "azurerm_linux_web_app" "this" {
 
         trigger {
           dynamic "status_code" {
-            for_each = var.auto_heal_setting_trigger_status_code != null ? [var.auto_heal_setting_trigger_status_code] : []
+            for_each = var.auto_heal_setting_trigger_status_code
 
             content {
               count             = status_code.value["count"]
@@ -378,7 +378,7 @@ resource "azurerm_windows_web_app" "this" {
           private_memory_kb = var.auto_heal_setting_trigger_private_memory_kb
 
           dynamic "status_code" {
-            for_each = var.auto_heal_setting_trigger_status_code != null ? [var.auto_heal_setting_trigger_status_code] : []
+            for_each = var.auto_heal_setting_trigger_status_code
 
             content {
               count             = status_code.value["count"]

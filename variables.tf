@@ -473,6 +473,11 @@ variable "auto_heal_setting_action_type" {
   description = "Action to be taken to an Auto Heal trigger. Possible values include: Recycle, LogEvent, and CustomAction."
   type        = string
   default     = null
+
+  validation {
+    condition     = var.auto_heal_setting_action_type == null || contains(["Recycle", "LogEvent", "CustomAction"], var.auto_heal_setting_action_type)
+    error_message = "Value must be one of: Recycle, LogEvent, CustomAction."
+  }
 }
 
 variable "auto_heal_setting_action_minimum_process_execution_time" {
@@ -490,6 +495,11 @@ variable "auto_heal_setting_action_custom_action" {
   })
 
   default = null
+
+  validation {
+    condition     = var.auto_heal_setting_action_custom_action == null || var.kind == "Windows"
+    error_message = "custom_action is only supported on Windows web apps."
+  }
 }
 
 variable "auto_heal_setting_trigger_private_memory_kb" {
@@ -501,14 +511,14 @@ variable "auto_heal_setting_trigger_private_memory_kb" {
 variable "auto_heal_setting_trigger_status_code" {
   description = "The HTTP status code that will trigger auto-heal."
 
-  type = object({
+  type = list(object({
     count             = number
     interval          = string
     status_code_range = string
     path              = optional(string)
     sub_status        = optional(number)
     win32_status_code = optional(number)
-  })
+  }))
 
-  default = null
+  default = []
 }
