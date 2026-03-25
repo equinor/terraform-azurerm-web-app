@@ -464,7 +464,7 @@ variable "health_check_eviction_time_in_min" {
   default     = null
 
   validation {
-    condition     = var.health_check_eviction_time_in_min == null || (var.health_check_eviction_time_in_min >= 2 && var.health_check_eviction_time_in_min <= 10)
+    condition     = var.health_check_eviction_time_in_min == null || (coalesce(var.health_check_eviction_time_in_min, 2) >= 2 && coalesce(var.health_check_eviction_time_in_min, 2) <= 10)
     error_message = "Health check eviction time must be between 2 and 10 minutes."
   }
 }
@@ -475,7 +475,7 @@ variable "auto_heal_setting_action_type" {
   default     = null
 
   validation {
-    condition     = var.auto_heal_setting_action_type == null || contains(["Recycle", "LogEvent", "CustomAction"], var.auto_heal_setting_action_type)
+    condition     = var.auto_heal_setting_action_type == null || contains(["Recycle", "LogEvent", "CustomAction"], coalesce(var.auto_heal_setting_action_type, "Recycle"))
     error_message = "Value must be one of: Recycle, LogEvent, CustomAction."
   }
 }
