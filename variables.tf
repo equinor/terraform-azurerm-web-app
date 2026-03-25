@@ -453,7 +453,7 @@ variable "health_check_path" {
   default     = null
 
   validation {
-    condition     = var.health_check_path == null || startswith(var.health_check_path, "/")
+    condition     = var.health_check_path == null || startswith(coalesce(var.health_check_path, "/"), "/")
     error_message = "Health check path must start with \"/\"."
   }
 }
