@@ -1,5 +1,16 @@
 # Changelog
 
+## [15.20.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.19.0...v15.20.0) (2026-03-26)
+
+
+### Features
+
+* add variable `auto_heal_setting_action_custom_action` [#269](https://github.com/equinor/terraform-azurerm-web-app/issues/269) ([1a78852](https://github.com/equinor/terraform-azurerm-web-app/commit/1a7885219378e64d000468da57e7e88f68f0e0ea))
+* add variable `auto_heal_setting_action_minimum_process_execution_time` [#269](https://github.com/equinor/terraform-azurerm-web-app/issues/269) ([1a78852](https://github.com/equinor/terraform-azurerm-web-app/commit/1a7885219378e64d000468da57e7e88f68f0e0ea))
+* add variable `auto_heal_setting_action_type` [#269](https://github.com/equinor/terraform-azurerm-web-app/issues/269) ([1a78852](https://github.com/equinor/terraform-azurerm-web-app/commit/1a7885219378e64d000468da57e7e88f68f0e0ea))
+* add variable `auto_heal_setting_trigger_private_memory_kb` [#269](https://github.com/equinor/terraform-azurerm-web-app/issues/269) ([1a78852](https://github.com/equinor/terraform-azurerm-web-app/commit/1a7885219378e64d000468da57e7e88f68f0e0ea))
+* add variable `auto_heal_setting_trigger_status_code` [#269](https://github.com/equinor/terraform-azurerm-web-app/issues/269) ([1a78852](https://github.com/equinor/terraform-azurerm-web-app/commit/1a7885219378e64d000468da57e7e88f68f0e0ea))
+
 ## [15.19.0](https://github.com/equinor/terraform-azurerm-web-app/compare/v15.18.1...v15.19.0) (2025-11-06)
 
 
