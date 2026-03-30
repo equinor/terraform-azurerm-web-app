@@ -37,7 +37,7 @@ variable "app_settings" {
 
   validation {
     condition     = length(setintersection(["DOCKER_REGISTRY_SERVER_URL", "DOCKER_REGISTRY_SERVER_USERNAME", "DOCKER_REGISTRY_SERVER_PASSWORD"], keys(var.app_settings))) == 0
-    error_message = "Docker settings (\"DOCKER_*\") must be configured using \"application_stack\"."
+    error_message = "Docker settings (\"DOCKER_*\") must be configured using \"docker_image_name\", \"docker_registry_url\", \"docker_registry_username\" and \"docker_registry_password\"."
   }
 
   validation {
@@ -59,18 +59,29 @@ variable "connection_strings" {
   nullable = false
 }
 
-variable "application_stack" {
-  description = "An object of application stack settings for this Web App. Note that application stack settings are often configured outside of Terraform (for example when deploying code), so configuring application stack settings in Terraform may cause conflicts."
+variable "docker_image_name" {
+  description = "" # TODO: write a description
+  type        = string
+  default     = null
+}
 
-  type = object({
-    docker_image_name        = string
-    docker_registry_url      = optional(string, "https://index.docker.io")
-    docker_registry_username = optional(string)
-    docker_registry_password = optional(string)
-    current_stack            = optional(string)
-  })
+variable "docker_registry_url" {
+  description = "" # TODO: write a description
+  type        = string
+  default     = "https://index.docker.io"
+}
 
-  default = null
+variable "docker_registry_username" {
+  description = "" # TODO: write a description
+  type        = string
+  default     = null
+}
+
+variable "docker_registry_password" {
+  description = "" # TODO: write a description
+  type        = string
+  sensitive   = true
+  default     = null
 }
 
 variable "virtual_applications" {
